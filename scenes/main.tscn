@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://bty0egqfu1rky"]
 
 [ext_resource type="Script" uid="uid://xnv5bqmgtnmy" path="res://scripts/spin.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://br2w7sloa7po4" path="res://scenes/isometric_camera.tscn" id="2_0wfyh"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bhunq"]
 
 [sub_resource type="Environment" id="Environment_bhunq"]
 background_energy_multiplier = 1.07
 ambient_light_energy = 2.12
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhunq"]
+size = Vector3(6.2822266, 0.09472656, 8.491943)
+
+[sub_resource type="PrismMesh" id="PrismMesh_0wfyh"]
 
 [node name="Node3D" type="Node3D" unique_id=378511965]
 
@@ -15,14 +21,11 @@ transform = Transform3D(1, 0, 0, 0, 0.3957985, -0.9183374, 0, 0.9183374, 0.39579
 mesh = SubResource("CylinderMesh_bhunq")
 script = ExtResource("1_o5qli")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=667687966]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82606685, 0, 1.0971296)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1432453662]
 environment = SubResource("Environment_bhunq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=184720297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3690262, 1.4395847)
+transform = Transform3D(1, 0, 0, 0, 0.9044453, 0.42658958, 0, -0.42658958, 0.9044453, 0, 1.3690262, 1.4395847)
 
 [node name="Label" type="Label" parent="." unique_id=908949636]
 offset_left = 718.0
@@ -31,3 +34,14 @@ offset_right = 1157.0
 offset_bottom = 407.0
 theme_override_font_sizes/font_size = 64
 text = "676767676767"
+
+[node name="Camera3D" parent="." unique_id=792124723 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.680357, 8.658979)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=907727026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7709961, -0.45263672, -2.5845947)
+mesh = SubResource("BoxMesh_bhunq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=166622456]
+transform = Transform3D(1, 0, 0, 0, 7.8161645, 0, 0, 0, 1, -0.7912836, 0.38495493, -6.5168877)
+mesh = SubResource("PrismMesh_0wfyh")
