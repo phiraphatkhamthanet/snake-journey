@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ejcxo1stgfmk"]
+
+[ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://player.tscn" id="1_ig7tw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1lj4"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(50, 1, 50)
+
+[node name="Main" type="Node3D" unique_id=961251990]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1992320558]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1563999670]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 6.472042, 26.4654, -1.2197304)
+
+[node name="Area3D" type="StaticBody3D" parent="." unique_id=1958081966]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=583252311]
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1246169706]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Area3D2" type="StaticBody3D" parent="." unique_id=2034396229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.251556, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2" unique_id=1573428662]
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=527475661]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Area3D3" type="StaticBody3D" parent="." unique_id=1348049476]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 11.329031, -23.043749)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3" unique_id=1335058640]
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3" unique_id=1291818751]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Area3D5" type="StaticBody3D" parent="." unique_id=1549059300]
+transform = Transform3D(5.397668e-09, -0.18111572, 0.98346174, -2.9309446e-08, 0.98346174, 0.18111572, -1, -2.9802322e-08, -9.980545e-16, 46.244675, 3.4791584, -0.26789284)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D5" unique_id=1689294689]
+transform = Transform3D(1, 0, 0, 0, 1, 2.646978e-23, 0, 3.8823512e-23, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5" unique_id=720680241]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Area3D7" type="StaticBody3D" parent="." unique_id=679283259]
+transform = Transform3D(5.397668e-09, -0.18111572, 0.98346174, -2.9309446e-08, 0.98346174, 0.18111572, -1, -2.9802322e-08, -9.980545e-16, 88.42908, 11.7150135, -0.26789284)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D7" unique_id=1268544288]
+transform = Transform3D(1, 0, 0, 0, 1, 2.646978e-23, 0, 3.8823512e-23, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D7" unique_id=1844105572]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Area3D6" type="StaticBody3D" parent="." unique_id=1275054889]
+transform = Transform3D(2.9802322e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, -2.9802322e-08, -8.881784e-16, -25, 11.329031, 0.95625114)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D6" unique_id=1376949475]
+mesh = SubResource("BoxMesh_b1lj4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D6" unique_id=1124926390]
+shape = SubResource("BoxShape3D_xrivr")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="Player" parent="." unique_id=1738546809 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.241892, 0.52996534, 8.4744215)
