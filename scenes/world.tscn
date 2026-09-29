@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b2kg5lt0g7ko3"]
+
+[ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://d0a2y02dhg6cu" path="res://scenes/player.tscn" id="2_rwgxs"]
+[ext_resource type="Script" uid="uid://dar4nyqo78yvf" path="res://scripts/world_generator.gd" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://cfatf6ucfygmk" path="res://scenes/Chunks/grass.tscn" id="4_71j4m"]
+[ext_resource type="PackedScene" uid="uid://b5gxbgyiqjf6s" path="res://scenes/Chunks/snow.tscn" id="5_qfnet"]
+
+[node name="World" type="Node3D" unique_id=353269156]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1101495476]
+mesh_library = ExtResource("1_nnsk1")
+cell_size = Vector3(1, 0.5, 1)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="player" parent="." unique_id=1041478615 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(0.3, 0, 0, 0, 0.30000004, 0, 0, 0, 0.3, 0, 1.1103799, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=21633873]
+transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.7584221, 0, 4.4708242, 2.4642544)
+
+[node name="WorldGenerator" type="Node3D" parent="." unique_id=309712316 node_paths=PackedStringArray("player")]
+script = ExtResource("3_k0juu")
+player = NodePath("../player")
+chunk_scenes = Array[PackedScene]([ExtResource("4_71j4m"), ExtResource("5_qfnet")])
+chunk_rows = 9
+
+[node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]

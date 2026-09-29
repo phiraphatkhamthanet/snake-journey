@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="snake-journey"
-run/main_scene="uid://bty0egqfu1rky"
+run/main_scene="uid://b2kg5lt0g7ko3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
