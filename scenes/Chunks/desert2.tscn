@@ -1,0 +1,102 @@
+[gd_scene format=4 uid="uid://c2mpuv48focu4"]
+
+[ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_81yat"]
+[ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_trkb8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aj5x"]
+resource_name = "lambert2SG"
+albedo_color = Color(0.6262097, 0.5271128, 0.36556464, 1)
+emission_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thvac"]
+resource_name = "lambert3SG"
+albedo_color = Color(0.7483791, 0.6799757, 0.58383155, 1)
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3c3wa"]
+_surfaces = [{
+"aabb": AABB(-110.05844, -1.38297, -110.05845, 220.11688, 97.219185, 220.1169),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("CAAJAAIAAgAEAAgAAQAJAAgAAwAJAAEACAAAAAEACQADAAoACgACAAkABgAKAAMAAgAKAAUACwAGAAAAAAAIAAsACgAGAAsACwAFAAoACwAIAAQABQALAAcABAAHAAsA"),
+"lods": [74.34462, PackedByteArray("AAABAAIAAwACAAEAAgAEAAAAAgADAAUABgAAAAQABgAFAAMABAAHAAYABQAGAAcA")],
+"name": "lambert2SG",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAAAAAAAN6m5v8gWQAA//8AAP//AAANWbL/DVkAANWm///VpgAAAAAAAP//AAAWWcv/6KYAAOgBphToAQAAFP6qFOoBAAAT/qwUE/4AAOkBqBQV/gAA")
+}, {
+"aabb": AABB(-34.40869, 95.72328, -34.40874, 68.75305, 42.537888, 68.78642),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAgAEAAMABQAAAAMABQADAAQAAQAAAAUABAACAAYAAQAGAAIABAAHAAUAAQAFAAcABgABAAgABwAIAAEA"),
+"name": "lambert3SG",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("HoD//w6AAAD//8QJPQAAAOH//AnC/wAAHQCHCf//AACLAzgAkfwAAAAATgkAAAAAc/ytAFT8AABuAwAAbQMAAJD8dgCrAwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rkyo3"]
+resource_name = "Pyramid by Poly by Google - 3pabPM-VTTH_SM_Pyramid_SM_Pyramid1_1"
+_surfaces = [{
+"aabb": AABB(-110.05844, -1.38297, -110.05845, 220.11688, 97.219185, 220.1169),
+"attribute_data": PackedByteArray("nQkAAET2AAALp+VY41jlWAunDqedCf//41gOp0T2//8AAMr2AAA/CuNY5VjjWA6n//+/9Qun5Vj//7oJC6cOp50JnQlg9p0JnQlg9mD2YPadCWD2nQmdCWD2YPZg9p0JYPZg9p0JYPZg9p0JYPZg9p0JnQlg9p0JnQlg9p0JnQk="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("EAARAAIAAgADABAABAASAAYAEgAEABMAFAAVAAoACgALABQAFgANABcADQAWAA8AGAAFABkABQAYAAcADAAaAA4AGgAMABsAHAAAAAEAAQAdABwAHgAIAAkACQAfAB4A"),
+"lods": [74.34462, PackedByteArray("AAABAAIAAgADAAAABAAFAAYABQAEAAcACAAJAAoACgALAAgADAANAA4ADQAMAA8A")],
+"material": SubResource("StandardMaterial3D_0aj5x"),
+"name": "lambert2SG",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAAAAAAAlPf//wAAAACU996m5v8gWYvjDVmy/w1Zi+PVpv//1aZznAAAAAD//2yIFlnL/+imc5z//wAA//9siAAAAAD//ybUAAAAAAAAX8sNWbL/DVlmxxZZy//opkrI//8AAP//i9bepub/IFlnx///AAAAADbM1ab//9WmUMjoAaYU6AGj5hT+qhTqAaPm6QGoFBX+W5kT/qwUE/5bmekBqBQV/mvK6AGmFOgBgsUT/qwUE/4HzBT+qhTqASfGE/6sFBP+W5npAagUFf5bmRT+qhTqASfGE/6sFBP+B8zoAaYU6AGj5hT+qhTqAaPm6QGoFBX+a8roAaYU6AGCxf7//3/+/wCA8/8HgN3/F4D2/+B//f/4f+b/pH/9//5/Cd1bzRnQjdJU4ba9UONQvdezAmBHwlZhDK6VUbHCX2P7/wKA/v8AgPv/8n/+//5/TeP6v2DYfsKywENm470NWv7//n/7//J/470NWrLAQ2b7/wKA/v8AgE3j+r9g2H7C")
+}, {
+"aabb": AABB(-34.40869, 95.72328, -34.40874, 68.75305, 42.537888, 68.78642),
+"attribute_data": PackedByteArray("CIACgIugZV+LoI+gi6BlXwiAAoBiX2VfYl+PoAiAAoCLoI+gYl9lXwiAAoBiX4+gi6BlXwunDqeLoI+gC6flWONY5VgLp+VYi6BlX2JfZV+LoI+g41gOp2Jfj6ALpw6n41gOp+NY5VhiX2VfYl+PoA=="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADQAMAA8AEAARABIAEgATABAAFAAVABYAFQAUABcAGAAZABoAGgAbABgA"),
+"material": SubResource("StandardMaterial3D_thvac"),
+"name": "lambert3SG",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("HoD//w6AUMf//8QJPQBQx+H//AnC/1DH///ECT0Ai+MegP//DoCL4wAATgkAAIvjHQCHCf//c5wegP//DoBznOH//AnC/3OcAABOCQAAUMcegP//DoBQxx0Ahwn//1DH///ECT0Arvhz/K0AVPzCxeH//AnC/6vFkPx2AKsDVfhuAwAAbQMb6pD8dgCrAxvq///ECT0AG+oAAE4JAAAb6uH//AnC/+KViwM4AJH84pUdAIcJ///ilXP8rQBU/OKViwM4AJH8wcVuAwAAbQNS+AAATgkAAKr4HQCHCf//qsU9wiFhPcIhYT3CIWHe/xeA3v8XgN7/F4Dn/6d/5/+nf+f/p38g4cG9IOHBvSDhwb0bFiXNQnOHLP1yjizWFezMDgDcfw4A3H8OANx/DgDcf0kAgn9KAIJ/SgCCf0kAgn93Uz3z60wraiNN5mlxU/ny")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3c3wa")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e8iyx"]
+data = PackedVector3Array(-108.419395, 6.4586997, -108.419395, 108.409294, 6.4645996, -108.4127, 33.4214, 95.799095, -33.4248, 33.4214, 95.799095, -33.4248, -33.488598, 95.722, -33.488598, -108.419395, 6.4586997, -108.419395, 33.3912, 95.8362, 33.3912, -108.416, 6.4616, 108.4127, -33.4584, 95.759094, 33.454998, -108.416, 6.4616, 108.4127, 33.3912, 95.8362, 33.3912, 108.4059, 6.4676, 108.4059, -108.416, 6.4616, 108.4127, -108.419395, 6.4586997, -108.419395, -33.488598, 95.722, -33.488598, -33.488598, 95.722, -33.488598, -33.4584, 95.759094, 33.454998, -108.416, 6.4616, 108.4127, 108.4059, 6.4676, 108.4059, 33.4214, 95.799095, -33.4248, 108.409294, 6.4645996, -108.4127, 33.4214, 95.799095, -33.4248, 108.4059, 6.4676, 108.4059, 33.3912, 95.8362, 33.3912, 108.4059, 6.4676, 108.4059, -110.058395, -1.383, 110.058495, -108.416, 6.4616, 108.4127, -110.058395, -1.383, 110.058495, 108.4059, 6.4676, 108.4059, 110.058395, -1.383, 110.058495, 110.058395, -1.383, 110.058495, 108.409294, 6.4645996, -108.4127, 110.058395, -1.383, -110.058495, 108.409294, 6.4645996, -108.4127, 110.058395, -1.383, 110.058495, 108.4059, 6.4676, 108.4059, -108.419395, 6.4586997, -108.419395, -110.058395, -1.383, -110.058495, 110.058395, -1.383, -110.058495, 110.058395, -1.383, -110.058495, 108.409294, 6.4645996, -108.4127, -108.419395, 6.4586997, -108.419395, -108.416, 6.4616, 108.4127, -110.058395, -1.383, 110.058495, -110.058395, -1.383, -110.058495, -110.058395, -1.383, -110.058495, -108.419395, 6.4586997, -108.419395, -108.416, 6.4616, 108.4127, -0.0002, 138.2612, -0.00029999999, 34.3444, 97.346, -34.3447, 34.3129, 97.3823, 34.313698, 34.3444, 97.346, -34.3447, -0.0002, 138.2612, -0.00029999999, -34.4087, 97.269394, -34.4087, -34.3783, 97.3064, 34.3777, -0.0002, 138.2612, -0.00029999999, 34.3129, 97.3823, 34.313698, -34.4087, 97.269394, -34.4087, -0.0002, 138.2612, -0.00029999999, -34.3783, 97.3064, 34.3777, 34.3444, 97.346, -34.3447, 33.3918, 95.835594, 33.392097, 34.3129, 97.3823, 34.313698, 33.3918, 95.835594, 33.392097, 34.3444, 97.346, -34.3447, 33.4222, 95.7999, -33.4232, -33.4876, 95.7233, -33.488197, 33.4222, 95.7999, -33.4232, 34.3444, 97.346, -34.3447, 34.3444, 97.346, -34.3447, -34.4087, 97.269394, -34.4087, -33.4876, 95.7233, -33.488197, 34.3129, 97.3823, 34.313698, -33.4572, 95.7596, 33.4561, -34.3783, 97.3064, 34.3777, -33.4572, 95.7596, 33.4561, 34.3129, 97.3823, 34.313698, 33.3918, 95.835594, 33.392097, -33.4572, 95.7596, 33.4561, -33.4876, 95.7233, -33.488197, -34.4087, 97.269394, -34.4087, -34.4087, 97.269394, -34.4087, -34.3783, 97.3064, 34.3777, -33.4572, 95.7596, 33.4561)
+
+[node name="desert" type="Node3D" unique_id=353269156]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1101495476]
+mesh_library = ExtResource("1_81yat")
+cell_size = Vector3(2, 1.5, 2)
+cell_scale = 3.0
+data = {
+"cells": PackedInt32Array(65529, 65529, 655422, 65529, 65530, 62, 65529, 65531, 62, 65529, 65532, 62, 65529, 65533, 62, 65529, 65534, 62, 65530, 65529, 655422, 65530, 65530, 62, 65530, 65531, 62, 65530, 65532, 62, 65530, 65533, 62, 65530, 65534, 62, 65531, 65529, 655422, 65531, 65530, 62, 65531, 65531, 62, 65531, 65532, 62, 65531, 65533, 62, 65531, 65534, 62, 65532, 65529, 655422, 65532, 65530, 62, 65532, 65531, 62, 65532, 65532, 62, 65532, 65533, 62, 65532, 65534, 62, 65533, 65529, 655422, 65533, 65530, 62, 65533, 65531, 62, 65533, 65532, 62, 65533, 65533, 62, 65533, 65534, 62, 65534, 65529, 655422, 65534, 65530, 62, 65534, 65531, 62, 65534, 65532, 62, 65534, 65533, 62, 65534, 65534, 62, 65535, 65528, 655422, 65535, 65529, 655422, 65535, 65530, 62, 65535, 65531, 62, 65535, 65532, 62, 65535, 65533, 62, 65535, 65534, 62, 0, 65528, 655422, 0, 65529, 655422, 0, 65530, 62, 0, 65532, 62, 0, 65533, 62, 0, 65534, 62, 1, 65529, 655422, 1, 65531, 62, 1, 65532, 62, 1, 65533, 62, 1, 65534, 62, 2, 65531, 62, 2, 65532, 62, 2, 65533, 62, 2, 65534, 62, 3, 65531, 62, 3, 65532, 62, 3, 65533, 62, 3, 65534, 62, 4, 65531, 62, 4, 65532, 62, 4, 65533, 62, 4, 65534, 62, 5, 65530, 62, 5, 65531, 62, 5, 65532, 62, 5, 65533, 62, 5, 65534, 62, 65529, 65528, 655422, 65530, 65528, 655422, 65531, 65528, 655422, 65532, 65528, 655422, 65533, 65528, 655422, 65534, 65528, 655422, 1, 65528, 655422, 2, 65528, 655422, 2, 65529, 655422, 3, 65528, 655422, 3, 65529, 655422, 4, 65528, 655422, 4, 65529, 655422, 5, 65528, 655422, 5, 65529, 655422, 131065, 65534, 1442037, 65541, 65532, 655605, 65539, 65534, 1048821, 131070, 65532, 1048821, 131064, 65531, 1048820, 131067, 65528, 1048820, 65541, 65529, 1048820, 131065, 65528, 245)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Pyramid by Poly by Google - 3pabPM-VTTH" type="Node3D" parent="." unique_id=820170626]
+transform = Transform3D(0.032777116, 0, 0, 0, 0.032777116, 0, 0, 0, 0.032777116, 2.5783463, 2.4849634, -14.479831)
+
+[node name="SM_Pyramid_SM_Pyramid1" type="MeshInstance3D" parent="Pyramid by Poly by Google - 3pabPM-VTTH" unique_id=1551893609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.232639, -62.91803)
+mesh = SubResource("ArrayMesh_rkyo3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pyramid by Poly by Google - 3pabPM-VTTH/SM_Pyramid_SM_Pyramid1" unique_id=681777354]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pyramid by Poly by Google - 3pabPM-VTTH/SM_Pyramid_SM_Pyramid1/StaticBody3D" unique_id=1365418603]
+shape = SubResource("ConcavePolygonShape3D_e8iyx")
+
+[node name="Wall" parent="." unique_id=450491366 instance=ExtResource("2_trkb8")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -17.2, 1.267, -4.81)
+
+[node name="Wall2" parent="." unique_id=600776528 instance=ExtResource("2_trkb8")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 15.38, 1.267, -4.81)
