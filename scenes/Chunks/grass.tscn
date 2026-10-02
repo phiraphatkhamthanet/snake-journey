@@ -3,8 +3,10 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_yarb5"]
 
 [node name="grassland" type="Node3D" unique_id=353269156]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1101495476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("1_yarb5")
 cell_size = Vector3(1, 0.5, 1)
 data = {
