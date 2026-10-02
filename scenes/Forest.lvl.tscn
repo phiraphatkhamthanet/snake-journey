@@ -25,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.758
 script = ExtResource("3_1qwms")
 player = NodePath("../player")
 chunk_scenes = Array[PackedScene]([ExtResource("4_6w704"), ExtResource("5_2qkej"), ExtResource("6_u7iwk"), ExtResource("7_vfsgj")])
+chunk_length = 17.0
 grid_size = 2.0
 chunk_rows = 9
 chunks_ahead = 3

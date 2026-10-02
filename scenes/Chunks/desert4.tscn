@@ -64,7 +64,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 4.8834653, 2.8331833, -17.441118)
 
 [node name="Node" type="MeshInstance3D" parent="Flying saucer by Poly by Google - 6hu2h8v78mO" unique_id=1082636922]
-transform = Transform3D(1.2923688, 0, 0, 0, 1.2923688, 0, 0, 0, 1.2923688, 0, -27.8564, 25.599548)
+transform = Transform3D(0.90514976, 0, 0, 0, 0.90514976, 0, 0, 0, 0.90514976, 0, -12.310074, 139.78076)
 mesh = SubResource("ArrayMesh_f20kg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Flying saucer by Poly by Google - 6hu2h8v78mO/Node" unique_id=1780538995]
