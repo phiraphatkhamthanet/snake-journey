@@ -1,13 +1,16 @@
 extends Node3D
 
 @export var player: CharacterBody3D
-@export var chunk_scenes: Array[PackedScene]
-@export var chunk_length: float = 20.0
-@export var grid_size: float = 1.0
-@export var chunk_rows: int = 5
 
+@export_category("Chunks")
+@export var chunk_scenes: Array[PackedScene]
+@export var chunk_chances: Array[float]
+
+@export_category("Generation")
+@export var chunk_length: float = 20.0
 @export var chunks_ahead: int = 4
 @export var chunks_behind: int = 2
+
 
 var highest_chunk: int = 0
 var generated_chunks: Dictionary = {}
@@ -45,7 +48,11 @@ func create_chunk(chunk_index: int) -> void:
 	if generated_chunks.has(chunk_index):
 		return
 
-	var selected_scene: PackedScene = chunk_scenes.pick_random()
+	var selected_scene := get_random_chunk()
+
+	if selected_scene == null:
+		return
+
 	var chunk := selected_scene.instantiate()
 
 	$Chunks.add_child(chunk)
@@ -57,6 +64,35 @@ func create_chunk(chunk_index: int) -> void:
 	)
 
 	generated_chunks[chunk_index] = chunk
+
+
+func get_random_chunk() -> PackedScene:
+	if chunk_scenes.is_empty():
+		return null
+
+	# จำนวน chance ต้องตรงกับจำนวน scene
+	if chunk_chances.size() != chunk_scenes.size():
+		push_warning("chunk_chances size does not match chunk_scenes size.")
+		return chunk_scenes.pick_random()
+
+	var total_weight := 0.0
+
+	for chance in chunk_chances:
+		total_weight += chance
+
+	if total_weight <= 0.0:
+		return chunk_scenes.pick_random()
+
+	var random_value := randf_range(0.0, total_weight)
+	var current_weight := 0.0
+
+	for i in range(chunk_scenes.size()):
+		current_weight += chunk_chances[i]
+
+		if random_value <= current_weight:
+			return chunk_scenes[i]
+
+	return chunk_scenes.back()
 
 
 func remove_old_chunks(player_chunk: int) -> void:

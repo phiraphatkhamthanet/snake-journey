@@ -16,7 +16,7 @@ cell_size = Vector3(1, 0.5, 1)
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="player" parent="." unique_id=1041478615 instance=ExtResource("2_e0x3u")]
-transform = Transform3D(0.3, 0, 0, 0, 0.30000004, 0, 0, 0, 0.3, 0, 2.699812, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.30000004, 0, 0, 0, 0.3, 0, 9.509294, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=21633873]
 transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.7584221, 0, 4.4708242, 2.4642544)
@@ -25,9 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.758
 script = ExtResource("3_1qwms")
 player = NodePath("../player")
 chunk_scenes = Array[PackedScene]([ExtResource("4_6w704"), ExtResource("5_2qkej"), ExtResource("6_u7iwk"), ExtResource("7_vfsgj")])
-chunk_length = 17.0
-grid_size = 2.0
-chunk_rows = 9
+chunk_length = 120.0
 chunks_ahead = 3
 
 [node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]

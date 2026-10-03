@@ -21,11 +21,9 @@ transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.758
 script = ExtResource("3_eivgd")
 player = NodePath("../Player")
 chunk_scenes = Array[PackedScene]([ExtResource("4_dwc0w"), ExtResource("5_bavtp"), ExtResource("6_p7sxg")])
-chunk_length = 27.0
-grid_size = 2.0
-chunk_rows = 9
+chunk_length = 120.0
 
 [node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]
 
 [node name="Player" parent="." unique_id=1738546809 instance=ExtResource("6_bavtp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2468622, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.94191, 0)
