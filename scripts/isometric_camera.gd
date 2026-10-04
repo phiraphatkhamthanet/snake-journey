@@ -15,6 +15,7 @@ func _input(event):
 
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * cameraSens
+		rotation.x -= event.relative.y * cameraSens
 
 	_camera_zoom()
 

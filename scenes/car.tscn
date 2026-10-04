@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bugtjjh7w7aun"]
+
+[ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_c35m8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_riqys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+
+[node name="Car" type="Node3D" unique_id=1675819581]
+script = ExtResource("1_c35m8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=848990743]
+mesh = SubResource("BoxMesh_riqys")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D" unique_id=1360078829]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=1273207321]
+shape = SubResource("BoxShape3D_bhunq")

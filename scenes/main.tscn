@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://xnv5bqmgtnmy" path="res://scripts/spin.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://br2w7sloa7po4" path="res://scenes/isometric_camera.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://caktclcksnlx7" path="res://scripts/spawn_cars.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bugtjjh7w7aun" path="res://scenes/car.tscn" id="4_jyhfs"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bhunq"]
 
@@ -45,3 +47,80 @@ mesh = SubResource("BoxMesh_bhunq")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=166622456]
 transform = Transform3D(1, 0, 0, 0, 7.8161645, 0, 0, 0, 1, -0.7912836, 0.38495493, -6.5168877)
 mesh = SubResource("PrismMesh_0wfyh")
+
+[node name="SpawnCars" type="Marker3D" parent="." unique_id=1792483760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76004124, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 8.0
+direction = Vector3(0, 0, 0.1)
+
+[node name="SpawnCars2" type="Marker3D" parent="." unique_id=2088201370]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8983905, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, 0.1)
+
+[node name="SpawnCars3" type="Marker3D" parent="." unique_id=335912415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4041023, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, 0.1)
+
+[node name="SpawnCars4" type="Marker3D" parent="." unique_id=887737882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.968379, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, 0.1)
+
+[node name="SpawnCars5" type="Marker3D" parent="." unique_id=1198909383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.853005, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, 0.1)
+
+[node name="SpawnCars7" type="Marker3D" parent="." unique_id=1856151904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8124285, 0.66564655, 28.281113)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 8.0
+direction = Vector3(0, 0, -0.1)
+
+[node name="SpawnCars8" type="Marker3D" parent="." unique_id=1315710826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4708602, 0.66564655, 28.281113)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, -0.1)
+
+[node name="SpawnCars9" type="Marker3D" parent="." unique_id=497779023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.976572, 0.66564655, 28.281113)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, -0.1)
+
+[node name="SpawnCars10" type="Marker3D" parent="." unique_id=1858689963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.540849, 0.66564655, 28.281113)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, -0.1)
+
+[node name="SpawnCars11" type="Marker3D" parent="." unique_id=860834869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.425475, 0.66564655, 28.281113)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, -0.1)
+
+[node name="SpawnCars6" type="Marker3D" parent="." unique_id=1131205501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.87058, 0.66564655, -0.9979105)
+script = ExtResource("3_sugp2")
+car = ExtResource("4_jyhfs")
+rand = 5.0
+direction = Vector3(0, 0, 0.1)
