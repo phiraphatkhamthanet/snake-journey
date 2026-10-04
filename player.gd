@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var ragdoll_jump_force : float = 67
 
 @onready var lead_bone: PhysicalBone3D = find_child("Physical Bone Body", true, false) 
-#
+
 @onready var model = $"Root Scene/RootNode/SnakeArmature"
 @onready var spring_arm: Node3D = $CameraPivot
 @onready var main_collision: CollisionShape3D = $CollisionShape3D
@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 		process_ragdoll_movement(delta)
 
 	# ให้กล้องเล็งตามตำแหน่งตัวละครตลอดเวลา
-	spring_arm.global_position = lerp(spring_arm.global_position, global_position, delta * follow_lerp_factor)
+	if spring_arm:
+		spring_arm.global_position = lerp(spring_arm.global_position, global_position, delta * follow_lerp_factor)
 
 # --- โหมด Ragdoll (ลอดช่อง/ไถลตัว) ---
 func process_ragdoll_movement(delta: float) -> void:
@@ -53,21 +54,22 @@ func process_ragdoll_movement(delta: float) -> void:
 	move_direction.z = Input.get_axis("forward", "back")
 
 	if move_direction != Vector3.ZERO:
-		move_direction = move_direction.rotated(Vector3.UP, spring_arm.rotation.y).normalized()
+		var cam_y_rot = spring_arm.rotation.y if spring_arm else 0.0
+		move_direction = move_direction.rotated(Vector3.UP, cam_y_rot).normalized()
 		# ส่งแรงผลักตรงไปยังกระดูกหลัก
 		lead_bone.apply_central_impulse(move_direction * ragdoll_crawl_force * delta)
-	# 2. การกระโดด (Jump)
+		
+	# 3. การกระโดด (Jump)
 	if Input.is_action_just_pressed("jump") and is_ragdoll_grounded():
 		# ส่งแรงเด้งขึ้นด้านบน
 		lead_bone.apply_central_impulse(Vector3.UP * ragdoll_jump_force)
-		
 
 func is_ragdoll_grounded() -> bool:
 	if lead_bone == null:
 		return false
 
 	var space_state = get_world_3d().direct_space_state
-	# ยิงลำแสงจากตำแหน่งกระดูกลงไปด้านล่าง 0.6 เมตร (ปรับระยะตามขนาดตัวละคร)
+	# ยิงลำแสงจากตำแหน่งกระดูกลงไปด้านล่าง 0.6 เมตร
 	var query = PhysicsRayQueryParameters3D.create(
 		lead_bone.global_position,
 		lead_bone.global_position + Vector3.DOWN * 0.6
@@ -78,3 +80,19 @@ func is_ragdoll_grounded() -> bool:
 
 	var result = space_state.intersect_ray(query)
 	return not result.is_empty()
+
+## ฟังก์ชันรับแรงดีดกระเด็น (ถูกเรียกจากสคริปต์รถ)
+func apply_knockback(force: Vector3) -> void:
+	if ragdoll == null:
+		return
+
+	# วนลูปส่งแรงกระแทกเข้าไปยังกระดูกทุกชิ้นใน PhysicalBoneSimulator3D
+	for child in ragdoll.get_children():
+		if child is PhysicalBone3D:
+			# 1. รีเซ็ตความเร็วเดิมก่อนรับแรงใหม่
+			child.linear_velocity = Vector3.ZERO
+			child.angular_velocity = Vector3.ZERO
+			
+			# 2. ส่งแรงดีดกระเด็นพุ่งออกไป พร้อมใส่ออฟเซ็ตเล็กน้อยเพื่อให้ตัวละครหมุนคว้างกลางอากาศ
+			var offset := Vector3(randf_range(-0.2, 0.2), randf_range(-0.2, 0.2), randf_range(-0.2, 0.2))
+			child.apply_impulse(force * 2.0, offset)

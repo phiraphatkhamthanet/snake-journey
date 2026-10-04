@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://yh1tmhb7wtyb"]
+
+[ext_resource type="Script" uid="uid://1gqkh7svhx6h" path="res://scripts/seclect_level.gd" id="1_7eahy"]
+[ext_resource type="Texture2D" uid="uid://dnfjcikhlmvrl" path="res://asset/picture/forest.jpeg" id="1_tmixf"]
+[ext_resource type="PackedScene" uid="uid://btrtfe0wbo2uw" path="res://scenes/Use_scenes/World_story.tscn" id="2_8blqg"]
+[ext_resource type="Texture2D" uid="uid://cekkda6kshbsy" path="res://asset/picture/story_scelect.jpg" id="3_kduba"]
+[ext_resource type="PackedScene" uid="uid://ewollb8mugo0" path="res://scenes/Use_scenes/World_endless.tscn" id="3_ssnd0"]
+[ext_resource type="Texture2D" uid="uid://bssurrd4qdrb0" path="res://asset/picture/endless.jpg" id="4_w5nok"]
+[ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="5_8blqg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ssnd0"]
+texture = ExtResource("5_8blqg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ttvhj"]
+texture = ExtResource("5_8blqg")
+
+[node name="SeclectLevel" type="Node3D" unique_id=1522160429]
+script = ExtResource("1_7eahy")
+scenes1 = ExtResource("2_8blqg")
+scenes2 = ExtResource("3_ssnd0")
+
+[node name="Forest" type="Sprite2D" parent="." unique_id=1599932660]
+position = Vector2(579, 295)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_tmixf")
+
+[node name="StoryScelect" type="Sprite2D" parent="." unique_id=54870430]
+position = Vector2(282, 284)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_kduba")
+
+[node name="Endless" type="Sprite2D" parent="." unique_id=1565454429]
+position = Vector2(875, 284)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_w5nok")
+
+[node name="Button" type="Button" parent="." unique_id=789150797]
+offset_left = 159.0
+offset_top = 87.0
+offset_right = 167.0
+offset_bottom = 95.0
+scale = Vector2(30.592312, 47.891926)
+theme_override_styles/normal = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Button2" type="Button" parent="." unique_id=287264008]
+offset_left = 753.0
+offset_top = 93.0
+offset_right = 761.0
+offset_bottom = 101.0
+scale = Vector2(30.592312, 47.891926)
+theme_override_styles/normal = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Button3" type="Button" parent="." unique_id=647338038]
+offset_left = 508.0
+offset_top = 55.0
+offset_right = 648.0
+offset_bottom = 111.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.98039216, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ssnd0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ttvhj")
+text = "Back"
+alignment = 2
+
+[node name="Label" type="Label" parent="." unique_id=1747273915]
+offset_left = 392.0
+offset_top = 213.0
+offset_right = 558.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "Story Mode"
+
+[node name="Label2" type="Label" parent="." unique_id=221926935]
+offset_left = 567.0
+offset_top = 349.0
+offset_right = 766.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 30
+text = "Endless Mode"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

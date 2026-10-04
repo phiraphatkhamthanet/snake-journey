@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ewollb8mugo0"]
+
+[ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_spvt2"]
+[ext_resource type="Script" uid="uid://bnrj3w2tbtw6k" path="res://scripts/world_generator_ver_endless.gd" id="2_ypm2n"]
+[ext_resource type="PackedScene" uid="uid://d0t6kdpruxnso" path="res://scenes/Chunks/City1.tscn" id="3_ovov8"]
+[ext_resource type="PackedScene" uid="uid://chmaxsnc0hh13" path="res://scenes/Chunks/City2.tscn" id="4_vegd2"]
+[ext_resource type="PackedScene" uid="uid://dwtib4xs6f2ot" path="res://scenes/Chunks/City3.tscn" id="5_p5sj4"]
+[ext_resource type="PackedScene" uid="uid://b5gxbgyiqjf6s" path="res://scenes/Chunks/desert1.tscn" id="6_xfj7q"]
+[ext_resource type="PackedScene" uid="uid://c2mpuv48focu4" path="res://scenes/Chunks/desert2.tscn" id="7_2ntge"]
+[ext_resource type="PackedScene" uid="uid://uo7a57kvcd0g" path="res://scenes/Chunks/desert3.tscn" id="8_u6xrx"]
+[ext_resource type="PackedScene" uid="uid://ba423qpnssp5t" path="res://scenes/Chunks/desert4.tscn" id="9_na6f8"]
+[ext_resource type="PackedScene" uid="uid://cfatf6ucfygmk" path="res://scenes/Chunks/grass1.tscn" id="10_qaodi"]
+[ext_resource type="PackedScene" uid="uid://cth6ryrkjvtvp" path="res://scenes/Chunks/grass2.tscn" id="11_qiqrx"]
+[ext_resource type="PackedScene" uid="uid://bktftur7suclc" path="res://scenes/Chunks/grass3.tscn" id="12_e7u5h"]
+[ext_resource type="PackedScene" uid="uid://buva0ngksw1v" path="res://scenes/Chunks/grass4.tscn" id="13_1lsps"]
+[ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://snake_can_use/player.tscn" id="14_718ov"]
+
+[sub_resource type="Environment" id="Environment_g4v7s"]
+background_mode = 1
+background_color = Color(0.62352943, 0.7882353, 0.9137255, 1)
+ambient_light_color = Color(0.6627451, 0.69411767, 0.77254903, 1)
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[node name="World" type="Node3D" unique_id=353269156]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1101495476]
+mesh_library = ExtResource("1_spvt2")
+cell_size = Vector3(1, 0.5, 1)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=21633873]
+transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.7584221, 0, 4.4708242, 2.4642544)
+
+[node name="WorldGenerator" type="Node3D" parent="." unique_id=309712316 node_paths=PackedStringArray("player", "score_label")]
+script = ExtResource("2_ypm2n")
+player = NodePath("../Player")
+chunk_scenes = Array[PackedScene]([ExtResource("3_ovov8"), ExtResource("4_vegd2"), ExtResource("5_p5sj4")])
+chunk_scenes1 = Array[PackedScene]([ExtResource("6_xfj7q"), ExtResource("7_2ntge"), ExtResource("8_u6xrx"), ExtResource("9_na6f8")])
+chunk_scenes2 = Array[PackedScene]([ExtResource("10_qaodi"), ExtResource("11_qiqrx"), ExtResource("12_e7u5h"), ExtResource("13_1lsps")])
+chunks_per_level = 10
+score_label = NodePath("../CanvasLayer/Control/Label")
+
+[node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]
+
+[node name="Player" parent="." unique_id=1738546809 instance=ExtResource("14_718ov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.941677, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=932311153]
+environment = SubResource("Environment_g4v7s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=37146082]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=849347369]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1669155955]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 34.0
+offset_right = 1083.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 25
+text = "Level 0"

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cx0my0ex2xejb"]
 
-[ext_resource type="Script" uid="uid://dcagawr22ntet" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://bvnd7tme0at5d" path="res://Snake by Quaternius - x9x0viZs8V.glb" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://cpp81ofd61jf7" path="res://camera.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://kkebpla7qe5w" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cqaoyelk5o7q0" path="res://Snake by Quaternius - x9x0viZs8V.glb" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://dc7bypgigkdll" path="res://camera.gd" id="3_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xrivr"]
 height = 3.2329102
@@ -51,7 +51,7 @@ debug_color = Color(0, 0.6, 1, 0.41960785)
 [node name="Root Scene" parent="." unique_id=410571623 instance=ExtResource("2_i3pqv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.13800359, 0, -0.37096596)
 
-[node name="Skeleton3D" parent="Root Scene/RootNode/SnakeArmature" parent_id_path=PackedInt32Array(410571623, 1341239018) index="0" unique_id=1338526843]
+[node name="Skeleton3D" parent="Root Scene/RootNode/SnakeArmature" parent_id_path=PackedInt32Array(410571623, 537129081) index="0" unique_id=1659234969]
 bones/1/position = Vector3(-0.0006397734, 0.010372523, -0.0030048233)
 bones/2/rotation = Quaternion(0.050559457, 0.2579568, -0.0010962292, 0.964832)
 bones/3/rotation = Quaternion(-0.456581, -0.22577703, -0.11998317, 0.8521518)
@@ -65,16 +65,16 @@ bones/11/rotation = Quaternion(-0.18678674, -0.0030607982, -0.0005821035, 0.9823
 bones/12/rotation = Quaternion(0.0006094161, 0.98064125, -0.19578832, 0.0030591113)
 bones/13/rotation = Quaternion(-1.3438552e-06, 0.9641733, -0.26527342, -1.83996e-06)
 
-[node name="Head" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="0" unique_id=1555426277]
+[node name="Head" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="0" unique_id=1150587293]
 transform = Transform3D(-0.9875558, 0.047987282, -0.14977026, -0.15633783, -0.4030813, 0.9017115, -0.017098907, 0.91390496, 0.4055676, -0.0004125989, -0.0012158034, 0.018824589)
 
-[node name="Tail3" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="1" unique_id=1481143279]
+[node name="Tail3" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="1" unique_id=1963574195]
 transform = Transform3D(0.98998076, 0.14094836, 0.00845696, -0.14120188, 0.9882031, 0.0592923, -4.2087397e-08, -0.059892513, 0.9982044, 0.0010989743, 0.008684695, 0.0011600384)
 
-[node name="LowerMouth" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="3" unique_id=1208612547]
+[node name="LowerMouth" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="3" unique_id=1004364897]
 transform = Transform3D(-0.99999994, 9.9651515e-08, -8.880161e-07, 2.4281326e-07, -0.92603546, -0.37743652, -8.600764e-07, -0.37743634, 0.9260355, -7.805663e-05, -0.0058107404, 0.02399624)
 
-[node name="Tongue3" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="4" unique_id=1116473443]
+[node name="Tongue3" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="4" unique_id=1280239722]
 transform = Transform3D(-0.9999999, -7.181325e-08, 1.6575149e-06, 8.8138705e-07, -0.86951876, 0.49389958, 1.4055555e-06, 0.49389952, 0.86951846, -0.00010253048, -0.013738246, 0.02301671)
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D" index="6" unique_id=1974591439]
@@ -187,10 +187,10 @@ shape = SubResource("CapsuleShape3D_1jxqw")
 debug_color = Color(18.892157, 18.892157, 18.892157, 1)
 
 [node name="Physical Bone Tail2" type="PhysicalBone3D" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1468131642]
-transform = Transform3D(0.00989981, -1.3242109e-08, -0.001412008, -0.001412008, 2.9811276e-09, -0.00989981, 1.3530373e-08, 0.01, 1.0814634e-09, 0.0019241113, 0.005939842, 0.0012033369)
+transform = Transform3D(0.00989981, -1.3297361e-08, -0.001412008, -0.001412008, 2.9800333e-09, -0.00989981, 1.3584918e-08, 0.01, 1.0725782e-09, 0.0019241113, 0.005939842, 0.0012033369)
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12044492, -0.0043296283, 0.098127596)
-body_offset = Transform3D(0.01, -1.3992901e-08, 1.14087015e-08, 1.1059456e-08, 3.7099213e-11, -0.010000005, 1.3987607e-08, 0.010000004, -1.302723e-09, 0.001204448, 0.0009812779, 4.3298118e-05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12044492, -0.0043296274, 0.098127596)
+body_offset = Transform3D(0.01, -1.4047445e-08, 1.14087015e-08, 1.1059456e-08, 2.821432e-11, -0.010000005, 1.40421506e-08, 0.010000004, -1.3116084e-09, 0.001204448, 0.0009812779, 4.3298118e-05)
 angular_damp = 0.001
 bone_name = "Tail2"
 joint_constraints/swing_span = 45.0
@@ -205,10 +205,10 @@ shape = SubResource("CapsuleShape3D_dw050")
 debug_color = Color(18.892157, 18.892157, 18.892157, 1)
 
 [node name="Physical Bone Mouth" type="PhysicalBone3D" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=215867807]
-transform = Transform3D(-0.01, 1.0257404e-08, 6.2174506e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.005578351, -0.0062180255, -0.017457401, 0.026919775)
+transform = Transform3D(-0.01, 1.0257404e-08, 6.2174506e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.005578351, -0.006218026, -0.017457401, 0.026837416)
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61399704, -0.89233077, 1.0185856)
-body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187957e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484576, 0.0061281663, 0.0134112695, 0.0019130334)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6139971, -0.8854953, 1.0231798)
+body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187957e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484576, 0.00612868, 0.013412195, 0.0018306803)
 angular_damp = 0.001
 bone_name = "Mouth"
 joint_constraints/swing_span = 45.0

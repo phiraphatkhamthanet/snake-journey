@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bugtjjh7w7aun"]
+
+[ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_2m1i6"]
+[ext_resource type="PackedScene" uid="uid://bt6fx8du1ndsj" path="res://Cars Bundle-glb/Taxi.glb" id="2_suou7"]
+[ext_resource type="Script" uid="uid://bmmy3bfx5bd70" path="res://scenes/Car can move/area_3d.gd" id="3_suou7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(1, 1.2924805, 1)
+
+[node name="Car" type="Node3D" unique_id=1675819581]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_2m1i6")
+
+[node name="Taxi" parent="." unique_id=221710776 instance=ExtResource("2_suou7")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1360078829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46586597, 0.18170168)
+script = ExtResource("3_suou7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1273207321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14624023, 0)
+shape = SubResource("BoxShape3D_bhunq")

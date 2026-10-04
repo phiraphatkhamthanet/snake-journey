@@ -14,74 +14,85 @@ extends Node3D
 @export var chunk_scenes2: Array[PackedScene]
 @export var chunk_chances2: Array[float]
 
+@export_category("Story Final Settings")
+@export var final_chunk_scene: PackedScene  # ด่านพิเศษฉากจบเมื่อผ่านทุกเลเวล
+@export var total_levels: int = 3
+@export var chunks_per_level: int = 20
+
 @export_category("Generation")
-@export var chunk_length: float = 20.0
+@export var chunk_length: float = 120.0
 @export var chunks_ahead: int = 4
 @export var chunks_behind: int = 2
-@export var chunks_per_level: int = 20  # จำนวน Chunk ที่วางต่อ 1 ด่านก่อนสลับแพ็ค
 
+@export_category("UI & Timer")
+@export var time_label: Label
 
 var highest_chunk: int = 0
 var generated_chunks: Dictionary = {}
 
+var elapsed_time: float = 0.0
+var is_timer_running: bool = true
+var max_story_chunks: int = 0  # จำนวน Chunk ทั้งหมดของ Story (20 * 3 = 60)
 
 func _ready() -> void:
+	max_story_chunks = chunks_per_level * total_levels
+	
 	for chunk_index in range(-chunks_behind, chunks_ahead + 1):
 		create_chunk(chunk_index)
 
 	highest_chunk = chunks_ahead
 
+func _process(delta: float) -> void:
+	# จับเวลาใน Story Mode
+	if is_timer_running:
+		elapsed_time += delta
+		update_timer_ui()
 
-func _process(_delta: float) -> void:
+	if player == null:
+		return
+
 	var player_chunk := get_player_chunk()
-
 	generate_ahead(player_chunk)
 	remove_old_chunks(player_chunk)
 
-
 func get_player_chunk() -> int:
-	return floori(
-		-player.global_position.z / chunk_length
-	)
-
+	return floori(-player.global_position.z / chunk_length)
 
 func generate_ahead(player_chunk: int) -> void:
 	var target_chunk := player_chunk + chunks_ahead
 
-	while highest_chunk < target_chunk:
+	# สร้างจนถึงแค่ Chunk ด่านพิเศษ (max_story_chunks) ไม่สร้างต่อเรื่อยๆ
+	while highest_chunk < target_chunk and highest_chunk <= max_story_chunks:
 		highest_chunk += 1
 		create_chunk(highest_chunk)
-
 
 func create_chunk(chunk_index: int) -> void:
 	if generated_chunks.has(chunk_index):
 		return
 
-	# ส่ง chunk_index เพื่อให้ฟังก์ชันเลือกด่านตามตำแหน่ง Chunk
-	var selected_scene := get_random_chunk_for_index(chunk_index)
+	var selected_scene: PackedScene = null
+
+	# เช็คว่าถึงด่านจบพิเศษหรือยัง
+	if chunk_index == max_story_chunks + 1:
+		selected_scene = final_chunk_scene
+	elif chunk_index <= max_story_chunks:
+		selected_scene = get_random_chunk_for_index(chunk_index)
 
 	if selected_scene == null:
 		return
 
 	var chunk := selected_scene.instantiate()
-
 	$Chunks.add_child(chunk)
-
-	chunk.position = Vector3(
-		0,
-		0,
-		-chunk_index * chunk_length
-	)
-
+	chunk.position = Vector3(0, 0, -chunk_index * chunk_length)
 	generated_chunks[chunk_index] = chunk
 
-
 func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
-	# คำนวณหาลำดับด่าน (0, 1, 2) จาก chunk_index
-	# ใช้ posmod เพื่อให้เมื่อพ้นด่าน 2 (index 2) จะวนกลับมาด่าน 0 ใหม่
-	var level_index := posmod(floori(float(chunk_index) / chunks_per_level), 3)
+	if chunk_index < 0:
+		return chunk_scenes.pick_random() if not chunk_scenes.is_empty() else null
 
-	# เลือกดึงตัวแปรตาม level_index
+	var level_index := floori(float(chunk_index) / chunks_per_level)
+	level_index = clamp(level_index, 0, total_levels - 1)
+
 	var current_scenes: Array[PackedScene] = []
 	var current_chances: Array[float] = []
 
@@ -99,13 +110,10 @@ func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
 	if current_scenes.is_empty():
 		return null
 
-	# จำนวน chance ต้องตรงกับจำนวน scene
 	if current_chances.size() != current_scenes.size():
-		push_warning("chunk_chances size does not match chunk_scenes size at level " + str(level_index))
 		return current_scenes.pick_random()
 
 	var total_weight := 0.0
-
 	for chance in current_chances:
 		total_weight += chance
 
@@ -117,17 +125,28 @@ func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
 
 	for i in range(current_scenes.size()):
 		current_weight += current_chances[i]
-
 		if random_value <= current_weight:
 			return current_scenes[i]
 
 	return current_scenes.back()
 
-
 func remove_old_chunks(player_chunk: int) -> void:
 	var minimum_chunk := player_chunk - chunks_behind
-
 	for chunk_index in generated_chunks.keys():
 		if chunk_index < minimum_chunk:
 			generated_chunks[chunk_index].queue_free()
 			generated_chunks.erase(chunk_index)
+
+func update_timer_ui() -> void:
+	if time_label:
+		var total_sec := int(elapsed_time)
+		var hrs := total_sec / 3600
+		var mins := (total_sec % 3600) / 60
+		var secs := total_sec % 60
+		time_label.text = "Time %02d:%02d:%02d" % [hrs, mins, secs]
+
+# ฟังก์ชันนี้ให้เรียกใช้เมื่อผู้เล่นวิ่งเข้าเส้นชัยในด่านจบ
+func finish_story_mode() -> void:
+	is_timer_running = false
+	ScoreManager.save_story_time(elapsed_time)
+	print("Story Mode Clear! Time saved: ", elapsed_time)

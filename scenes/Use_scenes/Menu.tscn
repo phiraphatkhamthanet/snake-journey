@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://dormgvlapmxn"]
+
+[ext_resource type="Script" uid="uid://dhtd2vr8uyckg" path="res://scripts/menu.gd" id="1_uq7h4"]
+[ext_resource type="PackedScene" uid="uid://c5yp6laf2pne2" path="res://asset/Waterfall scene by Nikki Morin - dkbjOPcyB2l.glb" id="4_o7p11"]
+[ext_resource type="PackedScene" uid="uid://cqaoyelk5o7q0" path="res://Snake by Quaternius - x9x0viZs8V.glb" id="5_p0ni1"]
+[ext_resource type="Texture2D" uid="uid://dfck8rty8w4kh" path="res://asset/picture/egel.png" id="6_j122a"]
+[ext_resource type="Texture2D" uid="uid://cno3a6adbdckl" path="res://asset/picture/snake.png" id="7_47gmt"]
+[ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="8_im3ly"]
+
+[sub_resource type="Environment" id="Environment_jmdev"]
+background_mode = 1
+background_color = Color(0.62352943, 0.7882353, 0.9137255, 1)
+ambient_light_color = Color(0.6627451, 0.69411767, 0.77254903, 1)
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33x8s"]
+albedo_color = Color(0.6313726, 1, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5s0fj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b6cxs"]
+texture = ExtResource("6_j122a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4umqm"]
+texture = ExtResource("6_j122a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aaywf"]
+texture = ExtResource("7_47gmt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pp5m5"]
+texture = ExtResource("7_47gmt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1abgu"]
+texture = ExtResource("8_im3ly")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt8fu"]
+texture = ExtResource("8_im3ly")
+
+[node name="Menu" type="Node3D" unique_id=951437750]
+script = ExtResource("1_uq7h4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1152466114]
+environment = SubResource("Environment_jmdev")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1050288874]
+transform = Transform3D(-0.11716695, -0.13430384, 0.983989, -0.01587984, 0.9909402, 0.13336173, -0.99298525, 0, -0.118238166, 2.532276, 1.3047996, -1.618729)
+
+[node name="Waterfall scene by Nikki Morin - dkbjOPcyB2l" parent="." unique_id=472831278 instance=ExtResource("4_o7p11")]
+transform = Transform3D(5.3190355, 0, 0, 0, 5.913333, 0, 0, 0, 7.7321405, 0, 0, 0)
+
+[node name="Root Scene" parent="." unique_id=1310647478 instance=ExtResource("5_p0ni1")]
+transform = Transform3D(0.45733055, -0.037326217, 0.07914141, -3.3696104e-09, 0.32041952, 0.14943719, -0.117267594, -0.14556813, 0.30864275, 0.6347429, -0.1953566, -1.3939314)
+
+[node name="water" type="GPUParticles3D" parent="." unique_id=772287955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7516108, 4.107422, 1.0293831)
+material_override = SubResource("StandardMaterial3D_33x8s")
+amount = 1
+amount_ratio = 0.6268
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("CapsuleMesh_5s0fj")
+
+[node name="water2" type="GPUParticles3D" parent="." unique_id=1605826235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7516108, 4.927786, 0.14295232)
+material_override = SubResource("StandardMaterial3D_33x8s")
+amount = 1
+amount_ratio = 0.5507
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("CapsuleMesh_5s0fj")
+
+[node name="water3" type="GPUParticles3D" parent="." unique_id=1281832413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7516108, 5.575577, -1.1427585)
+material_override = SubResource("StandardMaterial3D_33x8s")
+amount = 1
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("CapsuleMesh_5s0fj")
+
+[node name="water4" type="GPUParticles3D" parent="." unique_id=811531332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7516108, 4.428856, -2.233554)
+material_override = SubResource("StandardMaterial3D_33x8s")
+amount = 1
+amount_ratio = 0.7
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("CapsuleMesh_5s0fj")
+
+[node name="water5" type="GPUParticles3D" parent="." unique_id=1156899129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7516108, 5.375781, -3.1887443)
+material_override = SubResource("StandardMaterial3D_33x8s")
+amount = 1
+amount_ratio = 0.8
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+draw_pass_1 = SubResource("CapsuleMesh_5s0fj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1528354849]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=197493917]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=1333205517]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 146.0
+offset_right = 233.0
+offset_bottom = 202.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_b6cxs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4umqm")
+text = "Start"
+alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control" unique_id=306952316]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 246.0
+offset_right = 233.0
+offset_bottom = 302.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_aaywf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pp5m5")
+text = "Credit"
+alignment = 0
+
+[node name="Button3" type="Button" parent="CanvasLayer/Control" unique_id=1239689467]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 346.0
+offset_right = 233.0
+offset_bottom = 402.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1abgu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yt8fu")
+text = "leave"
+alignment = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1650545543]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 34.0
+offset_right = 1083.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 25
+text = "Your High Score 
+Time 00:00:00
+Level 0"
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1638170493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9034109, -0.74495006)
+light_energy = 1.5
+shadow_enabled = true
+area_range = 2.191
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button3" to="." method="_on_button_3_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://djrscx55h8f8w"]
+
+[ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_tw027"]
+[ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_g6dvu"]
+[ext_resource type="PackedScene" uid="uid://dbsifjtwnlh3e" path="res://Cars Bundle-glb/Police Car.glb" id="3_tw027"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(1.6030884, 1.4309082, 3.872528)
+
+[node name="Car" type="Node3D" unique_id=1675819581]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_tw027")
+next_scene = ExtResource("2_g6dvu")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1360078829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46586597, 0.18170168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1273207321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103851356, 0.07702637, 0.036270127)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="Police Car" parent="." unique_id=506678439 instance=ExtResource("3_tw027")]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

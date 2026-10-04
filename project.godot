@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="snake-journey"
-run/main_scene="uid://btrtfe0wbo2uw"
+run/main_scene="uid://dormgvlapmxn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ScoreManager="*uid://bhbplbfn02c7k"
 
 [display]
 

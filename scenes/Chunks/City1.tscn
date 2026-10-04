@@ -2,6 +2,8 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_eh471"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_g0hjg"]
+[ext_resource type="PackedScene" uid="uid://bugtjjh7w7aun" path="res://scenes/Car can move/car.tscn" id="3_g0hjg"]
+[ext_resource type="PackedScene" uid="uid://djrscx55h8f8w" path="res://scenes/Car can move/car_police.tscn" id="4_kwiej"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -19,3 +21,21 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.03262, -52.537857, -4
 
 [node name="Wall2" parent="." unique_id=1293980692 instance=ExtResource("2_g0hjg")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.53438, -52.537857, -41.61217)
+
+[node name="Car2" parent="." unique_id=2110557408 instance=ExtResource("3_g0hjg")]
+transform = Transform3D(0.06249545, 0, -3.4994419, 0, 3.5, 0, 3.4994419, 0, 0.06249545, 91.58478, 12.119469, -59.935333)
+move_speed = -100.0
+despawn_time = 5.0
+
+[node name="Car4" parent="." unique_id=352828376 instance=ExtResource("4_kwiej")]
+transform = Transform3D(-0.025309324, 0, 3.4999082, 0, 3.4999993, 0, -3.4999082, 0, -0.025309324, -131.62518, 12.056915, -53.669773)
+move_speed = 100.0
+
+[node name="Car6" parent="." unique_id=79815633 instance=ExtResource("3_g0hjg")]
+transform = Transform3D(0.06249545, 0, -3.4994419, 0, 3.5, 0, 3.4994419, 0, 0.06249545, 91.58478, 12.119469, -91.00048)
+move_speed = -100.0
+despawn_time = 5.0
+
+[node name="Car8" parent="." unique_id=803490985 instance=ExtResource("4_kwiej")]
+transform = Transform3D(-0.025309324, 0, 3.4999082, 0, 3.4999993, 0, -3.4999082, 0, -0.025309324, -131.62518, 12.056915, -84.734924)
+move_speed = 100.0

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ejcxo1stgfmk"]
 
 [ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://snake_can_use/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bugtjjh7w7aun" path="res://scenes/Car can move/car.tscn" id="2_v1mwu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -91,3 +92,6 @@ debug_color = Color(1, 1, 1, 1)
 
 [node name="Player" parent="." unique_id=1738546809 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.241892, 0.52996534, 8.4744215)
+
+[node name="Car" parent="." unique_id=1675819581 instance=ExtResource("2_v1mwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.885828, 5.653742, 10.267168)
