@@ -7,7 +7,14 @@ extends Node3D
 @export var knockback_force: float = 80.0             # แรงดีดไปข้างหน้า (ตามแกน X)
 @export var knockback_up_force: float = 40.0          # แรงดีดพุ่งขึ้นฟ้า
 @export var delay_before_change_scene: float = 3.0    # เวลาหน่วงก่อนเปลี่ยนซีน (วินาที)
-@export var next_scene: PackedScene                   # ซีนที่จะเปลี่ยนไปหลังโดนชน
+@export var next_scene: PackedScene                   # ซีนที่จะเปลี่ยนไปหลังโดนชนปกติ
+
+@export_category("Ad System")
+@export var ad_scenes: Array[PackedScene]             # อาร์เรย์เก็บซีนโฆษณาหลายๆ ซีนสำหรับสุ่ม
+@export var max_hits_for_ad: int = 2                  # จำนวนครั้งที่โดนชนแล้วจะสุ่มโฆษณา
+
+# ตัวแปร static เพื่อให้นับจำนวนครั้งสะสมข้ามการ Reload Scene ได้
+static var hit_counter: int = 0
 
 var current_time: float = 0.0
 var spawn_position: Vector3              # ตัวแปรเก็บตำแหน่งเริ่มต้น
@@ -42,7 +49,10 @@ func _on_area_3d_body_entered(body: Node) -> void:
 	# ตรวจสอบว่าเป็น PhysicalBone3D ของผู้เล่นหรือไม่
 	if body is PhysicalBone3D:
 		is_hit = true
-		print("ชน PhysicalBone3D แล้ว! ผลักกระเด็นทันที...")
+		
+		# เพิ่มจำนวนครั้งที่โดนชน
+		hit_counter += 1
+		print("ชน PhysicalBone3D แล้ว! จำนวนครั้งที่โดนชนสะสม: ", hit_counter)
 		
 		# 1. รีเซ็ตความเร็วเดิมก่อนส่งแรงกระแทกใหม่
 		body.linear_velocity = Vector3.ZERO
@@ -56,14 +66,30 @@ func _on_area_3d_body_entered(body: Node) -> void:
 		body.apply_impulse(knockback_impulse, random_offset)
 
 		# 4. ถ้าต้องการให้ตัวผู้เล่น (CharacterBody3D) รับรู้แรงด้วย
-		var player_owner = body.owner
+		var player_owner: Node = body.owner
 		if player_owner and player_owner.has_method("apply_knockback"):
 			player_owner.apply_knockback(knockback_impulse)
 
-		# 5. รอ 3 วินาทีให้เห็นตัวละครลอยกระเด็น แล้วเปลี่ยนซีน
+		# 5. รอตามเวลาที่กำหนดให้เห็นตัวละครลอยกระเด็น
 		await get_tree().create_timer(delay_before_change_scene).timeout
 		
-		if next_scene != null:
-			get_tree().change_scene_to_packed(next_scene)
+		# 6. ตรวจสอบเงื่อนไขการเปลี่ยน Scene / สุ่มแสดงโฆษณา
+		if hit_counter >= max_hits_for_ad:
+			# รีเซ็ตค่างวดนับกลับไปเป็น 0
+			hit_counter = 0
+			
+			# เช็คว่ามี Scene โฆษณาอยู่ใน Array หรือไม่
+			if not ad_scenes.is_empty():
+				# ระบุประเภท PackedScene ชัดเจนแทนการใช้ :=
+				var random_ad: PackedScene = ad_scenes.pick_random()
+				print("โดนชนครบกำหนด! สุ่มเปลี่ยนไปซีนโฆษณา...")
+				get_tree().change_scene_to_packed(random_ad)
+			else:
+				print("ไม่มี Scene ใน ad_scenes! กำลังรีโหลดฉากเดิม...")
+				get_tree().reload_current_scene()
 		else:
-			get_tree().reload_current_scene()
+			# หากยังไม่ครบตามจำนวนครั้ง ให้ย้ายไป next_scene หรือ reload ฉากเดิม
+			if next_scene != null:
+				get_tree().change_scene_to_packed(next_scene)
+			else:
+				get_tree().reload_current_scene()

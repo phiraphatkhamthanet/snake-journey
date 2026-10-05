@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://lpor3mnuqo1d"]
+
+[ext_resource type="Script" uid="uid://gy625i4mvjvg" path="res://scripts/ads.gd" id="1_ls4vu"]
+[ext_resource type="Texture2D" uid="uid://c3yokjoup32io" path="res://asset/picture/white back ground.jpg" id="2_1dops"]
+[ext_resource type="Texture2D" uid="uid://bjal0iljbqwty" path="res://asset/picture/Ads1.png" id="2_pkcla"]
+
+[node name="Ad1" type="Node3D" unique_id=1078127180]
+script = ExtResource("1_ls4vu")
+time = 7
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1882376209]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=382929114]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=907927354]
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 26.0
+offset_right = 1109.0
+offset_bottom = 57.0
+text = "X"
+
+[node name="WhiteBackGround" type="Sprite2D" parent="." unique_id=107333338]
+position = Vector2(573, 329)
+scale = Vector2(2.0015771, 2.0015771)
+texture = ExtResource("2_1dops")
+
+[node name="Ads1" type="Sprite2D" parent="." unique_id=1163150806]
+position = Vector2(578.99994, 324)
+scale = Vector2(0.5991846, 0.5991846)
+texture = ExtResource("2_pkcla")
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

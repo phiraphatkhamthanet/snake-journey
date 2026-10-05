@@ -16,6 +16,8 @@ extends Node3D
 
 @export_category("Story Final Settings")
 @export var final_chunk_scene: PackedScene  # ด่านพิเศษฉากจบเมื่อผ่านทุกเลเวล
+@export var next_scene: PackedScene  # ซีนใหม่ที่จะเปลี่ยนไปเมื่อจบด่านสุดท้าย
+@export var change_scene_delay: float = 1.0  # เวลาหน่วงก่อนเปลี่ยนซีน (วินาที)
 @export var total_levels: int = 3
 @export var chunks_per_level: int = 20
 
@@ -52,6 +54,11 @@ func _process(delta: float) -> void:
 		return
 
 	var player_chunk := get_player_chunk()
+
+	# หยุดเวลาและเปลี่ยนซีนเมื่อผู้เล่นวิ่งมาถึง Chunk ฉากจบ (max_story_chunks + 1)
+	if is_timer_running and player_chunk >= max_story_chunks + 1:
+		finish_story_mode()
+
 	generate_ahead(player_chunk)
 	remove_old_chunks(player_chunk)
 
@@ -61,8 +68,8 @@ func get_player_chunk() -> int:
 func generate_ahead(player_chunk: int) -> void:
 	var target_chunk := player_chunk + chunks_ahead
 
-	# สร้างจนถึงแค่ Chunk ด่านพิเศษ (max_story_chunks) ไม่สร้างต่อเรื่อยๆ
-	while highest_chunk < target_chunk and highest_chunk <= max_story_chunks:
+	# อนุญาตให้สร้างล่วงหน้าไปถึง max_story_chunks + 1 เพื่อให้ด่านจบถูกโหลด
+	while highest_chunk < target_chunk and highest_chunk <= max_story_chunks + 1:
 		highest_chunk += 1
 		create_chunk(highest_chunk)
 
@@ -90,6 +97,7 @@ func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
 	if chunk_index < 0:
 		return chunk_scenes.pick_random() if not chunk_scenes.is_empty() else null
 
+	# คำนวณ Level Index (0, 1, 2)
 	var level_index := floori(float(chunk_index) / chunks_per_level)
 	level_index = clamp(level_index, 0, total_levels - 1)
 
@@ -107,9 +115,15 @@ func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
 			current_scenes = chunk_scenes2
 			current_chances = chunk_chances2
 
+	# ถ้าระดับนั้นไม่มี Scene กำหนดไว้ ให้ดึง Level 0 มาใช้สำรอง
+	if current_scenes.is_empty():
+		current_scenes = chunk_scenes
+		current_chances = chunk_chances
+
 	if current_scenes.is_empty():
 		return null
 
+	# ถ้าน้ำหนัก (Chances) ใส่มาไม่เท่ากับจำนวน Scene ให้สุ่มแบบปกติ
 	if current_chances.size() != current_scenes.size():
 		return current_scenes.pick_random()
 
@@ -145,8 +159,19 @@ func update_timer_ui() -> void:
 		var secs := total_sec % 60
 		time_label.text = "Time %02d:%02d:%02d" % [hrs, mins, secs]
 
-# ฟังก์ชันนี้ให้เรียกใช้เมื่อผู้เล่นวิ่งเข้าเส้นชัยในด่านจบ
+# ฟังก์ชันนี้ถูกเรียกอัตโนมัติเมื่อผู้เล่นวิ่งถึง Chunk ฉากจบ
 func finish_story_mode() -> void:
+	if not is_timer_running:
+		return
+		
 	is_timer_running = false
 	ScoreManager.save_story_time(elapsed_time)
 	print("Story Mode Clear! Time saved: ", elapsed_time)
+	
+	# เปลี่ยนไป Scene ใหม่
+	if next_scene != null:
+		if change_scene_delay > 0.0:
+			await get_tree().create_timer(change_scene_delay).timeout
+		get_tree().change_scene_to_packed(next_scene)
+	else:
+		print("Warning: next_scene is not assigned in Inspector!")

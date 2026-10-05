@@ -30,6 +30,7 @@ despawn_time = 5.0
 [node name="Car4" parent="." unique_id=352828376 instance=ExtResource("4_kwiej")]
 transform = Transform3D(-0.025309324, 0, 3.4999082, 0, 3.4999993, 0, -3.4999082, 0, -0.025309324, -131.62518, 12.056915, -53.669773)
 move_speed = 100.0
+despawn_time = 3.0
 
 [node name="Car6" parent="." unique_id=79815633 instance=ExtResource("3_g0hjg")]
 transform = Transform3D(0.06249545, 0, -3.4994419, 0, 3.5, 0, 3.4994419, 0, 0.06249545, 91.58478, 12.119469, -91.00048)
@@ -39,3 +40,4 @@ despawn_time = 5.0
 [node name="Car8" parent="." unique_id=803490985 instance=ExtResource("4_kwiej")]
 transform = Transform3D(-0.025309324, 0, 3.4999082, 0, 3.4999993, 0, -3.4999082, 0, -0.025309324, -131.62518, 12.056915, -84.734924)
 move_speed = 100.0
+despawn_time = 3.0

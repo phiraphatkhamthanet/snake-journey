@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_2m1i6"]
 [ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_f2jfq"]
 [ext_resource type="PackedScene" uid="uid://bt6fx8du1ndsj" path="res://Cars Bundle-glb/Taxi.glb" id="2_suou7"]
+[ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="3_c0h5v"]
+[ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="4_b288j"]
+[ext_resource type="PackedScene" uid="uid://db0niefwvgbd0" path="res://scenes/Ads/Ad3.tscn" id="5_27mtm"]
+[ext_resource type="PackedScene" uid="uid://cw8hy8ukjqka4" path="res://scenes/Ads/Ad4.tscn" id="6_30xu4"]
+[ext_resource type="PackedScene" uid="uid://bccw3saurx6j1" path="res://scenes/Ads/Ad5.tscn" id="7_4cxi3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
 size = Vector3(1.6030884, 1.4309082, 3.872528)
@@ -11,6 +16,7 @@ size = Vector3(1.6030884, 1.4309082, 3.872528)
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 script = ExtResource("1_2m1i6")
 next_scene = ExtResource("2_f2jfq")
+ad_scenes = Array[PackedScene]([ExtResource("3_c0h5v"), ExtResource("4_b288j"), ExtResource("5_27mtm"), ExtResource("6_30xu4"), ExtResource("7_4cxi3")])
 
 [node name="Taxi" parent="." unique_id=221710776 instance=ExtResource("2_suou7")]
 
