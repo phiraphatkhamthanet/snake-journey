@@ -7,7 +7,10 @@ extends Node3D
 @export var knockback_force: float = 80.0             # แรงดีดไปข้างหน้า (ตามแกน X)
 @export var knockback_up_force: float = 40.0          # แรงดีดพุ่งขึ้นฟ้า
 @export var delay_before_change_scene: float = 3.0    # เวลาหน่วงก่อนเปลี่ยนซีน (วินาที)
-@export var next_scene: PackedScene                   # ซีนที่จะเปลี่ยนไปหลังโดนชนปกติ
+@export var next_scene: PackedScene        
+		   # ซีนที่จะเปลี่ยนไปหลังโดนชนปกติ
+@export_category("Sound System")
+@export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx") var Sound: String = "honk_sfx"
 
 @export_category("Ad System")
 @export var ad_scenes: Array[PackedScene]             # อาร์เรย์เก็บซีนโฆษณาหลายๆ ซีนสำหรับสุ่ม
@@ -49,6 +52,10 @@ func _on_area_3d_body_entered(body: Node) -> void:
 	# ตรวจสอบว่าเป็น PhysicalBone3D ของผู้เล่นหรือไม่
 	if body is PhysicalBone3D:
 		is_hit = true
+		
+		var sound_node = AudioManager.get(Sound)
+		if sound_node and sound_node.has_method("play"):
+			sound_node.play()
 		
 		# เพิ่มจำนวนครั้งที่โดนชน
 		hit_counter += 1

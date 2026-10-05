@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://uo7a57kvcd0g"]
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_mxodc"]
-[ext_resource type="PackedScene" uid="uid://ogk1dr6cipva" path="res://asset/creature/Camel by Poly by Google - 7XeLogrxLad.glb" id="2_vg0rg"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="3_0q5o8"]
+[ext_resource type="PackedScene" uid="uid://cxdmykij7iog" path="res://scenes/Enermy/Camel.tscn" id="3_8ynrs"]
 
 [node name="desert" type="Node3D" unique_id=353269156]
 
@@ -15,14 +15,26 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="Camel by Poly by Google - 7XeLogrxLad" parent="." unique_id=189107050 instance=ExtResource("2_vg0rg")]
-transform = Transform3D(0.033583406, 0, 0.08052445, 0, 0.087246954, 0, -0.08052445, 0, 0.033583406, -8.343029, 21.272873, -49.31261)
-
-[node name="Camel by Poly by Google - 7XeLogrxLad2" parent="." unique_id=427415357 instance=ExtResource("2_vg0rg")]
-transform = Transform3D(0.019553266, 0, -0.08502765, 0, 0.087246954, 0, 0.08502765, 0, 0.019553266, 42.01838, 21.272873, -68.47882)
-
 [node name="Wall" parent="." unique_id=450491366 instance=ExtResource("3_0q5o8")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.534, -52.538, -41.612)
 
 [node name="Wall2" parent="." unique_id=1786161213 instance=ExtResource("3_0q5o8")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612)
+
+[node name="Enemy" parent="." unique_id=369938083 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.13559, 12.198888, -97.12674)
+
+[node name="Enemy2" parent="." unique_id=168391836 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(0.5872524, 0, 0.80940384, 0, 1, 0, -0.80940384, 0, 0.5872524, -61.549873, 12.198892, -45.765343)
+
+[node name="Enemy3" parent="." unique_id=1662770107 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(0.42254695, 0, 0.906341, 0, 1, 0, -0.906341, 0, 0.42254695, -96.58433, 12.198908, -102.802826)
+
+[node name="Enemy4" parent="." unique_id=1524341891 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.54197, 12.094943, -44.815758)
+
+[node name="Enemy5" parent="." unique_id=1349295854 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.756767, 12.0949545, -90.58838)
+
+[node name="Enemy6" parent="." unique_id=265053160 instance=ExtResource("3_8ynrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7365093, 12.094958, -54.13713)

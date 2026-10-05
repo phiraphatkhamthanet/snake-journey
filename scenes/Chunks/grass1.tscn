@@ -2,6 +2,9 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_yarb5"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_qt16o"]
+[ext_resource type="PackedScene" uid="uid://b674nwbwj4wp5" path="res://scenes/Enermy/Elephant.tscn" id="3_rwrr5"]
+[ext_resource type="PackedScene" uid="uid://ofr42hdomsiy" path="res://scenes/Enermy/Tiger.tscn" id="4_ooc8i"]
+[ext_resource type="PackedScene" uid="uid://cxdmykij7iog" path="res://scenes/Enermy/Camel.tscn" id="5_twrsf"]
 
 [node name="grassland" type="Node3D" unique_id=353269156]
 
@@ -19,3 +22,21 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612
 
 [node name="Wall2" parent="." unique_id=847283515 instance=ExtResource("2_qt16o")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.534, -52.538, -41.612)
+
+[node name="Enemy" parent="." unique_id=369938083 instance=ExtResource("3_rwrr5")]
+transform = Transform3D(0.6801976, 0, 0.7330288, 0, 1, 0, -0.7330288, 0, 0.6801976, -75.85484, 12.094951, -41.370327)
+
+[node name="Enemy2" parent="." unique_id=1404750662 instance=ExtResource("3_rwrr5")]
+transform = Transform3D(0.6547612, 0, -0.7558358, 0, 1, 0, 0.7558358, 0, 0.6547612, 61.27703, 12.094943, -100.88832)
+
+[node name="Enemy3" parent="." unique_id=1808157130 instance=ExtResource("4_ooc8i")]
+transform = Transform3D(0.5513749, 0, 0.8342576, 0, 1, 0, -0.8342576, 0, 0.5513749, 51.386887, 12.094943, -39.32707)
+
+[node name="Enemy4" parent="." unique_id=2031763188 instance=ExtResource("4_ooc8i")]
+transform = Transform3D(0.8353001, 0, -0.54979426, 0, 1, 0, 0.54979426, 0, 0.8353001, -3.035986, 12.094943, -77.17585)
+
+[node name="Enemy6" parent="." unique_id=138241614 instance=ExtResource("4_ooc8i")]
+transform = Transform3D(0.74237514, 0, 0.66998446, 0, 1, 0, -0.66998446, 0, 0.74237514, -41.373734, 12.094943, -62.752495)
+
+[node name="Enemy5" parent="." unique_id=1363437527 instance=ExtResource("5_twrsf")]
+transform = Transform3D(0.9701698, 0, 0.24242656, 0, 1, 0, -0.24242656, 0, 0.9701698, -69.3921, 12.094943, -98.39794)

@@ -3,6 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_jg6u5"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_hg7hb"]
 [ext_resource type="PackedScene" uid="uid://c5yp6laf2pne2" path="res://asset/Waterfall scene by Nikki Morin - dkbjOPcyB2l.glb" id="3_hg7hb"]
+[ext_resource type="PackedScene" uid="uid://1om1714kiki5" path="res://Animals.undefined-glb/Capybara.glb" id="4_18bcy"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -24,3 +25,9 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 39.997158, -132.033, -52.538, 
 
 [node name="Waterfall scene by Nikki Morin - dkbjOPcyB2l" parent="." unique_id=472831278 instance=ExtResource("3_hg7hb")]
 transform = Transform3D(-4.645422, 0, -149.92804, 0, 150, 0, 149.92804, 0, -4.645422, -21.778023, 12.875946, -116.33543)
+
+[node name="Capybara" parent="." unique_id=1344379421 instance=ExtResource("4_18bcy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.49405, 3.7494926, -52.11356)
+
+[node name="Capybara2" parent="." unique_id=1860704158 instance=ExtResource("4_18bcy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.54264, 4.6878853, -41.51611)

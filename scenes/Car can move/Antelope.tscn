@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://buo3b8qv57c6u"]
+
+[ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_3wmm5"]
+[ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_br6np"]
+[ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="3_6kri4"]
+[ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="4_i3k0x"]
+[ext_resource type="PackedScene" uid="uid://db0niefwvgbd0" path="res://scenes/Ads/Ad3.tscn" id="5_3d4cj"]
+[ext_resource type="PackedScene" uid="uid://cw8hy8ukjqka4" path="res://scenes/Ads/Ad4.tscn" id="6_wef71"]
+[ext_resource type="PackedScene" uid="uid://bccw3saurx6j1" path="res://scenes/Ads/Ad5.tscn" id="7_ndiiv"]
+[ext_resource type="PackedScene" uid="uid://cayg7mgruunhu" path="res://Animals.undefined-glb/Antelope.glb" id="8_3wmm5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(1.6030884, 1.4309082, 3.872528)
+
+[node name="Car" type="Node3D" unique_id=1675819581]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_3wmm5")
+next_scene = ExtResource("2_br6np")
+Sound = "horse_sfx"
+ad_scenes = Array[PackedScene]([ExtResource("3_6kri4"), ExtResource("4_i3k0x"), ExtResource("5_3d4cj"), ExtResource("6_wef71"), ExtResource("7_ndiiv")])
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1360078829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46586597, 0.18170168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1273207321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103851356, 0.07702637, 0.036270127)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="Antelope" parent="." unique_id=971669809 instance=ExtResource("8_3wmm5")]
+transform = Transform3D(0.035000008, 0, 0, 0, 0.035000008, 0, 0, 0, 0.035000008, 0, 2.45613, 0.9520046)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

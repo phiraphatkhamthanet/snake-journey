@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_feok1"]
 [ext_resource type="Texture2D" uid="uid://d03gyt4se3w7x" path="res://asset/building/Flying saucer by Poly by Google - 6hu2h8v78mO_fying_saucerSurface_Color.png" id="2_8oock"]
-[ext_resource type="PackedScene" uid="uid://bkp0fj1lo86ib" path="res://asset/creature/Alien by Poly by Google - 6FrJ3_CzH8S.glb" id="3_mt12r"]
+[ext_resource type="PackedScene" uid="uid://06bfsr08eoih" path="res://scenes/Enermy/Alien.tscn" id="4_blq35"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="4_mt12r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7b1a"]
@@ -72,17 +72,21 @@ mesh = SubResource("ArrayMesh_f20kg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Flying saucer by Poly by Google - 6hu2h8v78mO/Node/StaticBody3D" unique_id=273876435]
 shape = SubResource("ConcavePolygonShape3D_blq35")
 
-[node name="Alien by Poly by Google - 6FrJ3_CzH8S" parent="." unique_id=1499132682 instance=ExtResource("3_mt12r")]
-transform = Transform3D(0.7525151, 0, 0, 0, 0.7525151, 0, 0, 0, 0.7525151, -10.8520775, 12.749125, -67.896164)
-
-[node name="Alien by Poly by Google - 6FrJ3_CzH8S2" parent="." unique_id=1459709593 instance=ExtResource("3_mt12r")]
-transform = Transform3D(0.7525151, 0, 0, 0, 0.7525151, 0, 0, 0, 0.7525151, 3.886786, 12.749125, -67.896164)
-
-[node name="Alien by Poly by Google - 6FrJ3_CzH8S3" parent="." unique_id=750450153 instance=ExtResource("3_mt12r")]
-transform = Transform3D(0.7525151, 0, 0, 0, 0.7525151, 0, 0, 0, 0.7525151, 17.721151, 12.749125, -67.896164)
-
 [node name="Wall" parent="." unique_id=450491366 instance=ExtResource("4_mt12r")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.534, -52.538, -41.612)
 
 [node name="Wall2" parent="." unique_id=270622520 instance=ExtResource("4_mt12r")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612)
+
+[node name="Enemy" parent="." unique_id=369938083 instance=ExtResource("4_blq35")]
+transform = Transform3D(-0.9854077, 0, 0.17021053, 0, 1, 0, -0.17021053, 0, -0.9854077, -20.677044, 12.094943, -78.998375)
+attack_speed = 100.0
+
+[node name="Enemy2" parent="." unique_id=388214321 instance=ExtResource("4_blq35")]
+transform = Transform3D(-0.9950715, 0, 0.09916061, 0, 1, 0, -0.09916061, 0, -0.9950715, 7.9721923, 12.094943, -64.14859)
+
+[node name="Enemy3" parent="." unique_id=2129449646 instance=ExtResource("4_blq35")]
+transform = Transform3D(-0.90930194, 0, 0.416137, 0, 1, 0, -0.416137, 0, -0.90930194, 39.958927, 12.094943, -73.740616)
+
+[node name="Enemy4" parent="." unique_id=885545134 instance=ExtResource("4_blq35")]
+transform = Transform3D(0.22692217, 0, -0.9739129, 0, 1, 0, 0.9739129, 0, 0.22692217, -90.92345, 12.094943, -51.08024)

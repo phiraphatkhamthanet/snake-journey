@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_81yat"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_trkb8"]
+[ext_resource type="PackedScene" uid="uid://gnjvtyhqvkxp" path="res://scenes/Car can move/Carmel.tscn" id="3_mvsi4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aj5x"]
 resource_name = "lambert2SG"
@@ -100,3 +101,13 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.534, -52.538, -41.612)
 
 [node name="Wall2" parent="." unique_id=1234059041 instance=ExtResource("2_trkb8")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612)
+
+[node name="Car" parent="." unique_id=1675819581 instance=ExtResource("3_mvsi4")]
+transform = Transform3D(-0.06893194, 0, -3.4993207, 0, 3.5, 0, 3.4993207, 0, -0.06893194, 97.469185, 12.686804, -110.80715)
+move_speed = -150.0
+despawn_time = 5.0
+
+[node name="Car2" parent="." unique_id=402395959 instance=ExtResource("3_mvsi4")]
+transform = Transform3D(-0.06893194, 0, -3.4993207, 0, 3.5, 0, 3.4993207, 0, -0.06893194, 97.469185, 12.686804, -51.50829)
+move_speed = -150.0
+despawn_time = 5.0

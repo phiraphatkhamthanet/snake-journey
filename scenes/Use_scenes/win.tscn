@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bf7airfb3wygu"]
+
+[ext_resource type="Script" uid="uid://jwufvk5hdc55" path="res://scripts/win_time.gd" id="1_2fxo0"]
+[ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="1_efihq"]
+[ext_resource type="Script" uid="uid://cpadnhcbfvcoj" path="res://scripts/win.gd" id="1_hykcv"]
+[ext_resource type="Texture2D" uid="uid://cq6s4crmmgn8o" path="res://asset/picture/The end.jpg" id="2_2fxo0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hykcv"]
+texture = ExtResource("1_efihq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pc7k3"]
+texture = ExtResource("1_efihq")
+
+[node name="Win" type="Node3D" unique_id=778778608]
+script = ExtResource("1_hykcv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1450793665]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1128612694]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2fxo0")
+
+[node name="Menu_button" type="Button" parent="CanvasLayer/Control" unique_id=515656697]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 551.0
+offset_right = 1055.0
+offset_bottom = 607.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_hykcv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pc7k3")
+text = "Go To Menu"
+alignment = 2
+
+[node name="VictoryLabel" type="Label" parent="CanvasLayer/Control" unique_id=1534053508]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 414.0
+offset_right = 981.0
+offset_bottom = 525.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 30
+text = "congratulations you win the game."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TheEnd" type="Sprite2D" parent="." unique_id=621255846]
+position = Vector2(542, 309)
+scale = Vector2(1.0086436, 1.0086436)
+texture = ExtResource("2_2fxo0")
+
+[connection signal="pressed" from="CanvasLayer/Control/Menu_button" to="CanvasLayer/Control" method="_on_menu_button_pressed"]

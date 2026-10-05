@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cu7qh1yy3h54c"]
+
+[ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_6fag5"]
+[ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_pw0yu"]
+[ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="3_thca4"]
+[ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="4_xmk1j"]
+[ext_resource type="PackedScene" uid="uid://db0niefwvgbd0" path="res://scenes/Ads/Ad3.tscn" id="5_w3g8d"]
+[ext_resource type="PackedScene" uid="uid://cw8hy8ukjqka4" path="res://scenes/Ads/Ad4.tscn" id="6_fy4fn"]
+[ext_resource type="PackedScene" uid="uid://bccw3saurx6j1" path="res://scenes/Ads/Ad5.tscn" id="7_s6gm8"]
+[ext_resource type="PackedScene" uid="uid://c1mb2gnupbvhc" path="res://Animals.undefined-glb/Baboon.glb" id="8_6fag5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(1.6030884, 1.4309082, 4.8430023)
+
+[node name="Car" type="Node3D" unique_id=1675819581]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_6fag5")
+next_scene = ExtResource("2_pw0yu")
+Sound = "monkey_sfx"
+ad_scenes = Array[PackedScene]([ExtResource("3_thca4"), ExtResource("4_xmk1j"), ExtResource("5_w3g8d"), ExtResource("6_fy4fn"), ExtResource("7_s6gm8")])
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1360078829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46586597, 0.18170168)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1273207321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103851356, 0.07702637, -0.44896704)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="Baboon" parent="." unique_id=397738065 instance=ExtResource("8_6fag5")]
+transform = Transform3D(0.035000004, 0, 0, 0, 0.035000004, 0, 0, 0, 0.035000004, 0, 1.6028514, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

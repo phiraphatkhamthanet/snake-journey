@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cxdmykij7iog"]
+
+[ext_resource type="Script" uid="uid://bskkgc8jaxlj1" path="res://scripts/Enermy.gd" id="1_n4yl0"]
+[ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_2ecyq"]
+[ext_resource type="PackedScene" uid="uid://ogk1dr6cipva" path="res://asset/creature/Camel by Poly by Google - 7XeLogrxLad.glb" id="2_gwann"]
+[ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="3_ombke"]
+[ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="4_uf6m3"]
+[ext_resource type="PackedScene" uid="uid://db0niefwvgbd0" path="res://scenes/Ads/Ad3.tscn" id="5_k088v"]
+[ext_resource type="PackedScene" uid="uid://cw8hy8ukjqka4" path="res://scenes/Ads/Ad4.tscn" id="6_3sxo1"]
+[ext_resource type="PackedScene" uid="uid://bccw3saurx6j1" path="res://scenes/Ads/Ad5.tscn" id="7_nqq7s"]
+[ext_resource type="Script" uid="uid://4nxtcj7a75ax" path="res://scripts/Kill.gd" id="8_ombke"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5jxa"]
+size = Vector3(5.376404, 8.720642, 4.076172)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02pkc"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+
+[sub_resource type="Curve" id="Curve_ooin1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.236318, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
+height = 0.36114502
+radius = 3.3476563
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0u6y"]
+albedo_color = Color(0.6375517, 2.3223088e-06, 2.8878452e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yf5fn"]
+top_radius = 3.3386915
+bottom_radius = 3.3536913
+height = 0.361
+
+[node name="Enemy" type="CharacterBody3D" unique_id=369938083]
+script = ExtResource("1_n4yl0")
+attack_speed = 25.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=168588563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.8154364)
+script = ExtResource("8_ombke")
+next_scene = ExtResource("2_2ecyq")
+Sound = "carmel_sfx"
+ad_scenes = Array[PackedScene]([ExtResource("3_ombke"), ExtResource("4_uf6m3"), ExtResource("5_k088v"), ExtResource("6_3sxo1"), ExtResource("7_nqq7s")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=489847479]
+transform = Transform3D(0.07658291, 0, 0.9970632, 0.99705505, 0.004035776, -0.07658228, -0.004023924, 0.99999183, 0.00030907147, 0.057040133, 2.770336, -0.58340734)
+shape = SubResource("BoxShape3D_x5jxa")
+
+[node name="gobot" type="Node3D" parent="." unique_id=927801049]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Camel by Poly by Google - 7XeLogrxLad" parent="gobot" unique_id=1097485361 instance=ExtResource("2_gwann")]
+transform = Transform3D(-0.035, 0, 5.284853e-09, 0, 0.035, 0, -5.284853e-09, 0, -0.035, 6.102073e-07, 3.747487, -4.041215)
+
+[node name="ParticleTrail" type="CPUParticles3D" parent="." unique_id=878555570]
+visible = false
+material_override = SubResource("StandardMaterial3D_02pkc")
+amount = 30
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_ooin1")
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=1739410249]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=206834094]
+transform = Transform3D(5, 0, 0, 0, 0.522, 0, 0, 0, 4.938, 0, 0.18478394, 0)
+shape = SubResource("CylinderShape3D_g4v7s")
+
+[node name="AttackIndicator" type="MeshInstance3D" parent="." unique_id=599165762]
+transform = Transform3D(5, 0, 0, 0, 0.526, 0, 0, 0, 4.998, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_d0u6y")
+transparency = 0.53
+mesh = SubResource("CylinderMesh_yf5fn")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

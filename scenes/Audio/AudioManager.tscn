@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://gobpphh5rbwf"]
+
+[ext_resource type="Script" uid="uid://xiuurxml06pb" path="res://scenes/Audio/audio_manager.gd" id="1_6jxb6"]
+[ext_resource type="AudioStream" uid="uid://mvtjl6aellwo" path="res://asset/Sound/Alien.mp3" id="2_p8gr7"]
+[ext_resource type="AudioStream" uid="uid://doa6arp5g8m1" path="res://asset/Sound/Camel.mp3" id="3_riki2"]
+[ext_resource type="AudioStream" uid="uid://d1t3wxmr2gkmx" path="res://asset/Sound/monkey.mp3" id="4_vvn5r"]
+[ext_resource type="AudioStream" uid="uid://dajbvgp6ydk76" path="res://asset/Sound/Car_honk.mp3" id="5_3ew24"]
+[ext_resource type="AudioStream" uid="uid://dsdtw0bhjqo5e" path="res://asset/Sound/Elephant.mp3" id="6_p2pea"]
+[ext_resource type="AudioStream" uid="uid://cgm7frba7e8v3" path="res://asset/Sound/Tiger.mp3" id="7_q5npp"]
+[ext_resource type="AudioStream" uid="uid://bsbotdeghuj1x" path="res://asset/Sound/Horse.mp3" id="8_riki2"]
+
+[node name="AudioManager" type="Node" unique_id=743230598]
+script = ExtResource("1_6jxb6")
+
+[node name="Alien" type="AudioStreamPlayer" parent="." unique_id=1418055414]
+stream = ExtResource("2_p8gr7")
+
+[node name="Camel" type="AudioStreamPlayer" parent="." unique_id=1470771369]
+stream = ExtResource("3_riki2")
+
+[node name="Monkey" type="AudioStreamPlayer" parent="." unique_id=679286892]
+stream = ExtResource("4_vvn5r")
+
+[node name="CarHonk" type="AudioStreamPlayer" parent="." unique_id=2088338738]
+stream = ExtResource("5_3ew24")
+
+[node name="Elephant" type="AudioStreamPlayer" parent="." unique_id=794571043]
+stream = ExtResource("6_p2pea")
+
+[node name="Tiger" type="AudioStreamPlayer" parent="." unique_id=571657839]
+stream = ExtResource("7_q5npp")
+
+[node name="Horse" type="AudioStreamPlayer" parent="." unique_id=510151789]
+stream = ExtResource("8_riki2")

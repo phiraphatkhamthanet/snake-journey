@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bktftur7suclc" path="res://scenes/Chunks/grass3.tscn" id="12_dwmkc"]
 [ext_resource type="PackedScene" uid="uid://buva0ngksw1v" path="res://scenes/Chunks/grass4.tscn" id="13_30fn3"]
 [ext_resource type="PackedScene" uid="uid://di2dasihs47c" path="res://scenes/Chunks/end.tscn" id="14_qdca4"]
+[ext_resource type="PackedScene" uid="uid://bf7airfb3wygu" path="res://scenes/Use_scenes/win.tscn" id="15_66fgd"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
@@ -42,6 +43,7 @@ chunk_scenes = Array[PackedScene]([ExtResource("3_b3faq"), ExtResource("4_ygioq"
 chunk_scenes1 = Array[PackedScene]([ExtResource("6_i4b1j"), ExtResource("7_c0d7e"), ExtResource("8_o1tcx"), ExtResource("9_rpuxp")])
 chunk_scenes2 = Array[PackedScene]([ExtResource("10_nthub"), ExtResource("11_44lqw"), ExtResource("12_dwmkc"), ExtResource("13_30fn3")])
 final_chunk_scene = ExtResource("14_qdca4")
+next_scene = ExtResource("15_66fgd")
 time_label = NodePath("../CanvasLayer/Control/Label")
 
 [node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]
