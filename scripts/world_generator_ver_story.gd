@@ -55,14 +55,16 @@ func _process(delta: float) -> void:
 
 	var player_chunk := get_player_chunk()
 
-	# หยุดเวลาและเปลี่ยนซีนเมื่อผู้เล่นวิ่งมาถึง Chunk ฉากจบ (max_story_chunks + 1)
-	if is_timer_running and player_chunk >= max_story_chunks + 1:
+	# หยุดเวลาและเปลี่ยนซีนเมื่อผู้เล่นวิ่งมาถึง Chunk ฉากจบ (และเล่นมาเกิน 1 วินาทีแล้วเพื่อป้องกัน Bug วาร์ป)
+	if is_timer_running and player_chunk >= max_story_chunks + 1 and elapsed_time > 1.0:
 		finish_story_mode()
 
 	generate_ahead(player_chunk)
 	remove_old_chunks(player_chunk)
 
 func get_player_chunk() -> int:
+	if player == null:
+		return 0
 	return floori(-player.global_position.z / chunk_length)
 
 func generate_ahead(player_chunk: int) -> void:
@@ -93,12 +95,14 @@ func create_chunk(chunk_index: int) -> void:
 	chunk.position = Vector3(0, 0, -chunk_index * chunk_length)
 	generated_chunks[chunk_index] = chunk
 
+# แก้ไขในไฟล์ ฟังก์ชัน get_random_chunk_for_index()
+
 func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
-	if chunk_index < 0:
+	if chunk_index <= 0:
 		return chunk_scenes.pick_random() if not chunk_scenes.is_empty() else null
 
-	# คำนวณ Level Index (0, 1, 2)
-	var level_index := floori(float(chunk_index) / chunks_per_level)
+	# คำนวณ Level Index (0, 1, 2) ให้ถูกต้อง (ใช้ chunk_index - 1 เพื่อให้ Chunk 1-20 อยู่ใน Level 0)
+	var level_index := floori(float(chunk_index - 1) / chunks_per_level)
 	level_index = clamp(level_index, 0, total_levels - 1)
 
 	var current_scenes: Array[PackedScene] = []
@@ -123,7 +127,6 @@ func get_random_chunk_for_index(chunk_index: int) -> PackedScene:
 	if current_scenes.is_empty():
 		return null
 
-	# ถ้าน้ำหนัก (Chances) ใส่มาไม่เท่ากับจำนวน Scene ให้สุ่มแบบปกติ
 	if current_chances.size() != current_scenes.size():
 		return current_scenes.pick_random()
 
@@ -163,15 +166,29 @@ func update_timer_ui() -> void:
 func finish_story_mode() -> void:
 	if not is_timer_running:
 		return
-		
+
 	is_timer_running = false
+
+	print("================================")
+	print("🎉 STORY MODE CLEAR")
+	print("Elapsed Time: ", elapsed_time)
+
+	# ส่งเวลารอบนี้ไปให้ ScoreManager
 	ScoreManager.save_story_time(elapsed_time)
-	print("Story Mode Clear! Time saved: ", elapsed_time)
-	
-	# เปลี่ยนไป Scene ใหม่
+
+	print("Current Session Time: ", ScoreManager.current_session_time)
+	print("Best Story Time: ", ScoreManager.best_time_story)
+
+	print("================================")
+
+	# เปลี่ยนไป Victory Scene
 	if next_scene != null:
+
 		if change_scene_delay > 0.0:
 			await get_tree().create_timer(change_scene_delay).timeout
+
 		get_tree().change_scene_to_packed(next_scene)
+
 	else:
-		print("Warning: next_scene is not assigned in Inspector!")
+
+		print("⚠️ WARNING: next_scene is not assigned!")

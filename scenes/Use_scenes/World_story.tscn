@@ -44,6 +44,7 @@ chunk_scenes1 = Array[PackedScene]([ExtResource("6_i4b1j"), ExtResource("7_c0d7e
 chunk_scenes2 = Array[PackedScene]([ExtResource("10_nthub"), ExtResource("11_44lqw"), ExtResource("12_dwmkc"), ExtResource("13_30fn3")])
 final_chunk_scene = ExtResource("14_qdca4")
 next_scene = ExtResource("15_66fgd")
+chunks_per_level = 1
 time_label = NodePath("../CanvasLayer/Control/Label")
 
 [node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]
