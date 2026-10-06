@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="1_efihq"]
 [ext_resource type="Script" uid="uid://cpadnhcbfvcoj" path="res://scripts/win.gd" id="1_hykcv"]
 [ext_resource type="Texture2D" uid="uid://cq6s4crmmgn8o" path="res://asset/picture/The end.jpg" id="2_2fxo0"]
+[ext_resource type="AudioStream" uid="uid://ce367o1436w3c" path="res://asset/Sound/win.mp3" id="5_pc7k3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hykcv"]
 texture = ExtResource("1_efihq")
@@ -52,5 +53,10 @@ autowrap_mode = 2
 position = Vector2(542, 309)
 scale = Vector2(1.0086436, 1.0086436)
 texture = ExtResource("2_2fxo0")
+
+[node name="Win2" type="AudioStreamPlayer" parent="." unique_id=410663949]
+stream = ExtResource("5_pc7k3")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/Menu_button" to="CanvasLayer/Control" method="_on_menu_button_pressed"]
