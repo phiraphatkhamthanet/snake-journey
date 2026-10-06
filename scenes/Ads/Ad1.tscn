@@ -8,6 +8,18 @@
 script = ExtResource("1_ls4vu")
 time = 7
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1210180139]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1.2915039
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1dops")
+expand_mode = 3
+stretch_mode = 6
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1882376209]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=382929114]
@@ -15,6 +27,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=907927354]
 layout_mode = 0
@@ -23,6 +36,7 @@ offset_top = 26.0
 offset_right = 1109.0
 offset_bottom = 57.0
 text = "X"
+metadata/_edit_use_anchors_ = true
 
 [node name="WhiteBackGround" type="Sprite2D" parent="." unique_id=107333338]
 position = Vector2(573, 329)

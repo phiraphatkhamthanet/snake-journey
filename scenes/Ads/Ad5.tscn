@@ -8,6 +8,18 @@
 script = ExtResource("1_n0sun")
 time = 7
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=146071648]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 1.2915039
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fd7wj")
+expand_mode = 3
+stretch_mode = 6
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1882376209]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=382929114]
@@ -23,11 +35,6 @@ offset_top = 26.0
 offset_right = 1109.0
 offset_bottom = 57.0
 text = "X"
-
-[node name="WhiteBackGround" type="Sprite2D" parent="." unique_id=107333338]
-position = Vector2(573, 329)
-scale = Vector2(2.0015771, 2.0015771)
-texture = ExtResource("2_fd7wj")
 
 [node name="Ads5" type="Sprite2D" parent="." unique_id=1595732082]
 position = Vector2(572.00006, 328)
