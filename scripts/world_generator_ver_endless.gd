@@ -28,8 +28,10 @@ var generated_chunks: Dictionary = {}
 
 var score: int = 0
 var max_passed_chunk: int = 0
+var score_frozen: bool = false  # true หลังผู้เล่นตาย คะแนนจะไม่เพิ่มอีก
 
 func _ready() -> void:
+	add_to_group("world_generator")
 	for chunk_index in range(-chunks_behind, chunks_ahead + 1):
 		create_chunk(chunk_index)
 
@@ -43,7 +45,7 @@ func _process(_delta: float) -> void:
 	var player_chunk := get_player_chunk()
 
 	# คำนวณคะแนนระยะทาง (Endless Score)
-	if player_chunk > max_passed_chunk:
+	if not score_frozen and player_chunk > max_passed_chunk:
 		var gained := player_chunk - max_passed_chunk
 		max_passed_chunk = player_chunk
 		score += gained
@@ -54,6 +56,11 @@ func _process(_delta: float) -> void:
 
 	generate_ahead(player_chunk)
 	remove_old_chunks(player_chunk)
+
+## เรียกจากหน้า Result ตอนผู้เล่นตาย: หยุดนับคะแนน
+func freeze_score() -> void:
+	score_frozen = true
+
 
 func get_player_chunk() -> int:
 	return floori(-player.global_position.z / chunk_length)

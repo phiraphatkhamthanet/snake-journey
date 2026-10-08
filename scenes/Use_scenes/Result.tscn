@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://fabxgsio6i3o"]
+
+[ext_resource type="Script" uid="uid://nf0lbwyliuqk" path="res://scripts/result.gd" id="1_7snqw"]
+[ext_resource type="Texture2D" uid="uid://cn4x51nv7k10t" path="res://asset/picture/died.png" id="2_40kam"]
+
+[node name="Result" type="CanvasLayer" unique_id=1182991342]
+
+[node name="Button" type="Button" parent="." unique_id=806015845]
+modulate = Color(1, 0, 0, 1)
+offset_left = -61.0
+offset_top = -46.0
+offset_right = 1222.0
+offset_bottom = 702.0
+disabled = true
+
+[node name="Control" type="Control" parent="." unique_id=112291964]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7snqw")
+
+[node name="menu" type="Button" parent="Control" unique_id=2074540455]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 468.0
+offset_right = 617.0
+offset_bottom = 512.0
+text = "Menu"
+
+[node name="VictoryLabel" type="Label" parent="Control" unique_id=1147342034]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 357.0
+offset_right = 980.0
+offset_bottom = 468.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 30
+text = "Bruhhhhhhh."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Died" type="Sprite2D" parent="." unique_id=651798884]
+position = Vector2(578, 153)
+texture = ExtResource("2_40kam")
+
+[connection signal="pressed" from="Control/menu" to="Control" method="_on_menu_button_pressed"]

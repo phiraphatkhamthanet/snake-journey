@@ -8,6 +8,7 @@ extends Node3D
 @export var knockback_up_force: float = 40.0          # แรงดีดพุ่งขึ้นฟ้า
 @export var delay_before_change_scene: float = 3.0    # เวลาหน่วงก่อนเปลี่ยนซีน (วินาที)
 @export var next_scene: PackedScene        
+@export var result_hold_time: float = 2.0            # ค้างหน้า Result กี่วินาทีก่อนไปโฆษณา/next_scene
 		   # ซีนที่จะเปลี่ยนไปหลังโดนชนปกติ
 @export_category("Sound System")
 @export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx") var Sound: String = "honk_sfx"
@@ -77,26 +78,22 @@ func _on_area_3d_body_entered(body: Node) -> void:
 		if player_owner and player_owner.has_method("apply_knockback"):
 			player_owner.apply_knockback(knockback_impulse)
 
-		# 5. รอตามเวลาที่กำหนดให้เห็นตัวละครลอยกระเด็น
-		await get_tree().create_timer(delay_before_change_scene).timeout
-		
-		# 6. ตรวจสอบเงื่อนไขการเปลี่ยน Scene / สุ่มแสดงโฆษณา
-		if hit_counter >= max_hits_for_ad:
-			# รีเซ็ตค่างวดนับกลับไปเป็น 0
-			hit_counter = 0
-			
-			# เช็คว่ามี Scene โฆษณาอยู่ใน Array หรือไม่
-			if not ad_scenes.is_empty():
-				# ระบุประเภท PackedScene ชัดเจนแทนการใช้ :=
-				var random_ad: PackedScene = ad_scenes.pick_random()
-				print("โดนชนครบกำหนด! สุ่มเปลี่ยนไปซีนโฆษณา...")
-				get_tree().change_scene_to_packed(random_ad)
-			else:
-				print("ไม่มี Scene ใน ad_scenes! กำลังรีโหลดฉากเดิม...")
-				get_tree().reload_current_scene()
-		else:
-			# หากยังไม่ครบตามจำนวนครั้ง ให้ย้ายไป next_scene หรือ reload ฉากเดิม
-			if next_scene != null:
-				get_tree().change_scene_to_packed(next_scene)
-			else:
-				get_tree().reload_current_scene()
+		# 5. ส่งต่อให้ Result จัดการ (รอ → โชว์ Result → โฆษณา/next_scene)
+		_trigger_result()
+
+## เลือกซีนที่จะไปต่อ (ตัดสินตอนชน เพราะหลังชนโหนดนี้อาจถูกลบไปพร้อม Chunk)
+func _pick_target() -> PackedScene:
+	if hit_counter >= max_hits_for_ad:
+		hit_counter = 0
+		if not ad_scenes.is_empty():
+			return ad_scenes.pick_random()
+	return next_scene
+
+
+## สั่งให้ Result (ซึ่งอยู่ในซีน World ตลอด) รอแล้วแสดงตัวเอง จากนั้นค่อยไปโฆษณา/next_scene
+func _trigger_result() -> void:
+	var result_control := get_tree().get_first_node_in_group("result_screen")
+	if result_control == null:
+		push_warning("ไม่พบ Result ในฉาก (group result_screen)")
+		return
+	result_control.trigger_death(delay_before_change_scene, result_hold_time, _pick_target())

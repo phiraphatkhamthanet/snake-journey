@@ -187,10 +187,10 @@ shape = SubResource("CapsuleShape3D_1jxqw")
 debug_color = Color(18.892157, 18.892157, 18.892157, 1)
 
 [node name="Physical Bone Tail2" type="PhysicalBone3D" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1468131642]
-transform = Transform3D(0.00989981, -1.3297361e-08, -0.001412008, -0.001412008, 2.9800333e-09, -0.00989981, 1.3584918e-08, 0.01, 1.0725782e-09, 0.0019241113, 0.005939842, 0.0012033369)
+transform = Transform3D(0.00989981, -1.33526745e-08, -0.001412008, -0.001412008, 2.979725e-09, -0.00989981, 1.3639633e-08, 0.01, 1.0644625e-09, 0.0019241113, 0.005939842, 0.0012033369)
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12044492, -0.0043296274, 0.098127596)
-body_offset = Transform3D(0.01, -1.4047445e-08, 1.14087015e-08, 1.1059456e-08, 2.821432e-11, -0.010000005, 1.40421506e-08, 0.010000004, -1.3116084e-09, 0.001204448, 0.0009812779, 4.3298118e-05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12044492, -0.004329627, 0.098127596)
+body_offset = Transform3D(0.01, -1.410216e-08, 1.14087015e-08, 1.1059456e-08, 2.009859e-11, -0.010000005, 1.4096866e-08, 0.010000004, -1.3197237e-09, 0.001204448, 0.0009812779, 4.3298118e-05)
 angular_damp = 0.001
 bone_name = "Tail2"
 joint_constraints/swing_span = 45.0
@@ -205,10 +205,10 @@ shape = SubResource("CapsuleShape3D_dw050")
 debug_color = Color(18.892157, 18.892157, 18.892157, 1)
 
 [node name="Physical Bone Mouth" type="PhysicalBone3D" parent="Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" unique_id=215867807]
-transform = Transform3D(-0.01, 1.0257404e-08, 6.2174506e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.005578351, -0.006218026, -0.017457401, 0.026837416)
+transform = Transform3D(-0.01, 1.0257404e-08, 6.2174506e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.005578351, -0.0062180255, -0.017457401, 0.026754798)
 joint_type = 2
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6139971, -0.8854953, 1.0231798)
-body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187957e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484576, 0.00612868, 0.013412195, 0.0018306803)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61399704, -0.8786383, 1.0277884)
+body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187957e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484576, 0.0061291945, 0.013413123, 0.0017480701)
 angular_damp = 0.001
 bone_name = "Mouth"
 joint_constraints/swing_span = 45.0
@@ -223,9 +223,13 @@ shape = SubResource("CapsuleShape3D_n7ghd")
 debug_color = Color(18.892157, 18.892157, 18.892157, 1)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1026205632]
+transform = Transform3D(1, 0, 0, 0, 0.98191506, 0.18932204, 0, -0.18932204, 0.98191506, 0, 3.2392483, 0)
 script = ExtResource("3_i3pqv")
+mouse_sensitivity = 0.0
+min_zoom = 5.0
+max_zoom = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1765304683]
-transform = Transform3D(1, 0, 0, 0, 0.99454355, -0.104322314, 0, 0.104322314, 0.99454355, 0, 0.9421916, 6.5336475)
+transform = Transform3D(1, 0, 0, 0, 0.96943367, 0.24535367, 0, -0.24535367, 0.96943367, 0, 10.112246, 22.411564)
 
 [editable path="Root Scene"]

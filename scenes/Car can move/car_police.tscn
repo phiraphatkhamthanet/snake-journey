@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://djrscx55h8f8w"]
 
 [ext_resource type="Script" uid="uid://b1o45dq01f0dw" path="res://scripts/car.gd" id="1_tw027"]
-[ext_resource type="PackedScene" uid="uid://dormgvlapmxn" path="res://scenes/Use_scenes/Menu.tscn" id="2_g6dvu"]
 [ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="3_6guwq"]
 [ext_resource type="PackedScene" uid="uid://dbsifjtwnlh3e" path="res://Cars Bundle-glb/Police Car.glb" id="3_tw027"]
 [ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="4_pxfl7"]
@@ -15,7 +14,6 @@ size = Vector3(1.6030884, 1.4309082, 3.872528)
 [node name="Car" type="Node3D" unique_id=1675819581]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
 script = ExtResource("1_tw027")
-next_scene = ExtResource("2_g6dvu")
 ad_scenes = Array[PackedScene]([ExtResource("3_6guwq"), ExtResource("4_pxfl7"), ExtResource("5_dbfl0"), ExtResource("6_5qpen"), ExtResource("7_rn3pk")])
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1360078829]

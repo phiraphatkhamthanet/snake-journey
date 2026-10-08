@@ -37,6 +37,7 @@ var is_timer_running: bool = true
 var max_story_chunks: int = 0  # จำนวน Chunk ทั้งหมดของ Story (20 * 3 = 60)
 
 func _ready() -> void:
+	add_to_group("world_generator")
 	max_story_chunks = chunks_per_level * total_levels
 	
 	for chunk_index in range(-chunks_behind, chunks_ahead + 1):
@@ -61,6 +62,11 @@ func _process(delta: float) -> void:
 
 	generate_ahead(player_chunk)
 	remove_old_chunks(player_chunk)
+
+## เรียกจากหน้า Result ตอนผู้เล่นตาย: หยุดจับเวลา
+func stop_timer() -> void:
+	is_timer_running = false
+
 
 func get_player_chunk() -> int:
 	if player == null:

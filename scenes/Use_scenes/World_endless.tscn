@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bktftur7suclc" path="res://scenes/Chunks/grass3.tscn" id="12_e7u5h"]
 [ext_resource type="PackedScene" uid="uid://buva0ngksw1v" path="res://scenes/Chunks/grass4.tscn" id="13_1lsps"]
 [ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://snake_can_use/player.tscn" id="14_718ov"]
+[ext_resource type="PackedScene" uid="uid://c77ubhar84n3c" path="res://scenes/Use_scenes/Result_endless.tscn" id="15_xhcmn"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
@@ -76,3 +77,8 @@ text = "Level 0"
 stream = SubResource("AudioStreamMP3_v0tnr")
 volume_db = -5.0
 autoplay = true
+
+[node name="Result" parent="." unique_id=1262239059 instance=ExtResource("15_xhcmn")]
+visible = false
+
+[editable path="Result"]

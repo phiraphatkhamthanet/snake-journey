@@ -24,20 +24,11 @@ albedo_color = Color(0.6313726, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5s0fj"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b6cxs"]
-texture = ExtResource("6_j122a")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4umqm"]
 texture = ExtResource("6_j122a")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aaywf"]
-texture = ExtResource("7_47gmt")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pp5m5"]
 texture = ExtResource("7_47gmt")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1abgu"]
-texture = ExtResource("8_im3ly")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt8fu"]
 texture = ExtResource("8_im3ly")
@@ -116,7 +107,6 @@ offset_left = 93.0
 offset_top = 146.0
 offset_right = 233.0
 offset_bottom = 202.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_b6cxs")
 theme_override_styles/hover = SubResource("StyleBoxTexture_4umqm")
 text = "Start"
 alignment = 2
@@ -127,7 +117,6 @@ offset_left = 93.0
 offset_top = 246.0
 offset_right = 233.0
 offset_bottom = 302.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_aaywf")
 theme_override_styles/hover = SubResource("StyleBoxTexture_pp5m5")
 text = "Credit"
 alignment = 0
@@ -138,7 +127,6 @@ offset_left = 93.0
 offset_top = 346.0
 offset_right = 233.0
 offset_bottom = 402.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_1abgu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yt8fu")
 text = "leave"
 alignment = 2
@@ -164,6 +152,12 @@ area_range = 2.191
 stream = SubResource("AudioStreamMP3_uq7h4")
 volume_db = -10.0
 autoplay = true
+
+[node name="Label3D" type="Label3D" parent="." unique_id=94273771]
+transform = Transform3D(0.18261963, 0, 0.9831837, 0, 1, 0, -0.9831837, 0, 0.18261963, -1.203718, 1.1923368, -0.63002884)
+pixel_size = 0.01
+billboard = 1
+text = "The ugly in present."
 
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_button_2_pressed"]

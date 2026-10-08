@@ -5,6 +5,7 @@ extends Area3D
 @export var knockback_up_force: float = 40.0
 @export var delay_before_change_scene: float = 3.0
 @export var next_scene: PackedScene
+@export var result_hold_time: float = 2.0
 
 @export_category("Sound System")
 @export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx") var Sound: String = "honk_sfx"
@@ -81,77 +82,21 @@ func _on_body_entered(body: Node3D) -> void:
 		if player_owner and player_owner.has_method("apply_knockback"):
 			player_owner.apply_knockback(knockback_impulse)
 
-		# ==========================================
-		# รอก่อนเปลี่ยน Scene
-		# ==========================================
+		_trigger_result()
 
-		await get_tree().create_timer(
-			delay_before_change_scene
-		).timeout
-
-		_change_scene()
-
-
-func _change_scene() -> void:
-
-	# ==========================================
-	# ครบจำนวนครั้ง → สุ่มโฆษณา
-	# ==========================================
-
+## เลือกซีนที่จะไปต่อ (ตัดสินตอนชน เพราะหลังชนโหนดนี้อาจถูกลบไปพร้อม Chunk)
+func _pick_target() -> PackedScene:
 	if hit_counter >= max_hits_for_ad:
-
 		hit_counter = 0
-
 		if not ad_scenes.is_empty():
+			return ad_scenes.pick_random()
+	return next_scene
 
-			var random_ad: PackedScene = ad_scenes.pick_random()
 
-			print(
-				"โดนชนครบ ",
-				max_hits_for_ad,
-				" ครั้ง! สุ่มโฆษณา..."
-			)
-
-			get_tree().change_scene_to_packed(
-				random_ad
-			)
-
-		else:
-
-			print(
-				"ไม่มี Scene ใน ad_scenes! "
-				+ "กำลังไป Next Scene..."
-			)
-
-			if next_scene != null:
-				get_tree().change_scene_to_packed(
-					next_scene
-				)
-			else:
-				get_tree().reload_current_scene()
-
+## สั่งให้ Result (ซึ่งอยู่ในซีน World ตลอด) รอแล้วแสดงตัวเอง จากนั้นค่อยไปโฆษณา/next_scene
+func _trigger_result() -> void:
+	var result_control := get_tree().get_first_node_in_group("result_screen")
+	if result_control == null:
+		push_warning("ไม่พบ Result ในฉาก (group result_screen)")
 		return
-
-	# ==========================================
-	# ยังไม่ครบ → Next Scene
-	# ==========================================
-
-	if next_scene != null:
-
-		print(
-			"โดนชนครั้งที่ ",
-			hit_counter,
-			"/",
-			max_hits_for_ad,
-			" → ไป Next Scene"
-		)
-
-		get_tree().change_scene_to_packed(
-			next_scene
-		)
-
-	else:
-
-		print("ไม่มี next_scene! กำลัง Reload Scene...")
-
-		get_tree().reload_current_scene()
+	result_control.trigger_death(delay_before_change_scene, result_hold_time, _pick_target())
