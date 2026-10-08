@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://di2dasihs47c" path="res://scenes/Chunks/end.tscn" id="14_qdca4"]
 [ext_resource type="PackedScene" uid="uid://bf7airfb3wygu" path="res://scenes/Use_scenes/win.tscn" id="15_66fgd"]
 [ext_resource type="PackedScene" uid="uid://fabxgsio6i3o" path="res://scenes/Use_scenes/Result.tscn" id="17_wfbbe"]
+[ext_resource type="PackedScene" uid="uid://cqaoyelk5o7q0" path="res://Snake by Quaternius - x9x0viZs8V.glb" id="18_pwbpl"]
+[ext_resource type="Script" uid="uid://dvekfd40562hr" path="res://run_snake.gd" id="19_i66j7"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
@@ -39,7 +41,7 @@ cell_size = Vector3(1, 0.5, 1)
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=21633873]
-transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.65176374, 0, -0.65176374, 0.7584221, 0, 4.4708242, 2.4642544)
+transform = Transform3D(1, 0, 0, 0, 0.7584221, 0.6517636, 0, -0.6517637, 0.7584221, 0, 6.5259447, 2.808376)
 
 [node name="WorldGenerator" type="Node3D" parent="." unique_id=309712316 node_paths=PackedStringArray("player", "time_label")]
 script = ExtResource("2_olfsu")
@@ -57,9 +59,9 @@ time_label = NodePath("../CanvasLayer/Control/Label")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.941677, 0)
 
 [node name="Physical Bone Root" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="0" unique_id=953439672]
-transform = Transform3D(0.009052934, 0.004064994, 0.0012329661, 0.0042478675, -0.0086632, -0.0026276591, 1.4959154e-09, 0.00290255, -0.009569493, -0.00070485997, 0.0015514735, 0.013139188)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020942017, -0.2183118, 1.3068119)
-body_offset = Transform3D(0.009052937, 0.00406499, 0.0012329649, 9.895305e-10, 0.002902551, -0.009569494, -0.004247864, 0.008663203, 0.0026276615, -0.00070485927, 0.013139188, -0.0015514756)
+transform = Transform3D(0.009052934, 0.004064994, 0.0012329661, 0.0042478675, -0.0086632, -0.0026276591, 1.4959154e-09, 0.00290255, -0.009569493, -0.00070485997, 0.0015694723, 0.013139188)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0028587654, -0.21675254, 1.3072848)
+body_offset = Transform3D(0.009052937, 0.00406499, 0.0012329649, 9.895305e-10, 0.002902551, -0.009569494, -0.004247864, 0.008663203, 0.0026276615, -0.00070485927, 0.013139188, -0.0015694743)
 
 [node name="Physical Bone Body" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="1" unique_id=2116344259]
 transform = Transform3D(-0.009999315, -5.7504276e-05, 0.0001019451, 0.00011704505, -0.0049133864, 0.008708899, 9.676425e-09, 0.008709496, 0.0049137226, -0.0009887383, -0.010986334, 0.014994413)
@@ -87,14 +89,14 @@ joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014810363, 0.21345675, 0
 body_offset = Transform3D(0.010000001, -2.728484e-09, 2.1781307e-07, 2.1781307e-07, -1.3969839e-07, -0.010000002, 2.7066562e-09, 0.0100000035, -1.4092075e-07, -0.00014815934, 0.0025837384, -0.0021345317)
 
 [node name="Physical Bone Tail2" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="6" unique_id=1468131642]
-transform = Transform3D(0.00989981, -1.3639271e-08, -0.001412008, -0.001412008, 2.9797267e-09, -0.00989981, 1.3923359e-08, 0.01, 1.0239967e-09, 0.0019241113, 0.005939842, 0.0012033284)
+transform = Transform3D(0.00989981, -1.3667661e-08, -0.001412008, -0.001412008, 2.9797267e-09, -0.00989981, 1.3951465e-08, 0.01, 1.0199876e-09, 0.0019241113, 0.005939842, 0.0012033284)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120444916, -0.0043300884, 0.09812761)
-body_offset = Transform3D(0.01, -1.4385885e-08, 1.14087015e-08, 1.1059456e-08, -2.0367708e-11, -0.010000005, 1.4380592e-08, 0.010000004, -1.3601895e-09, 0.0012044479, 0.000981278, 4.3302774e-05)
+body_offset = Transform3D(0.01, -1.4413994e-08, 1.14087015e-08, 1.1059456e-08, -2.4376945e-11, -0.010000005, 1.4408698e-08, 0.010000004, -1.3641992e-09, 0.0012044479, 0.000981278, 4.3302774e-05)
 
 [node name="Physical Bone Mouth" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="7" unique_id=215867807]
-transform = Transform3D(-0.01, 1.0257404e-08, 6.2174514e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.0055783517, -0.006218026, -0.017457401, 0.026837409)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6139971, -0.8854965, 1.0231787)
-body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187953e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484575, 0.00612868, 0.013412194, 0.0018306971)
+transform = Transform3D(-0.01, 1.0257404e-08, 6.2174506e-09, -5.617564e-10, -0.005578351, 0.008299517, 1.1981464e-08, 0.008299517, 0.005578351, -0.006218026, -0.017457401, 0.026837409)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6139971, -0.8854966, 1.0231787)
+body_offset = Transform3D(0.009999807, -5.2121468e-05, -3.4187957e-05, -2.8781755e-11, 0.0054846806, -0.008361715, 6.233349e-05, 0.008361552, 0.005484576, 0.00612868, 0.013412194, 0.0018306971)
 
 [node name="Camera3D" parent="Player/CameraPivot" parent_id_path=PackedInt32Array(1738546809, 1026205632) index="0" unique_id=1765304683]
 keep_aspect = 0
@@ -127,6 +129,11 @@ autoplay = true
 
 [node name="Result" parent="." unique_id=1262239059 instance=ExtResource("17_wfbbe")]
 visible = false
+
+[node name="Snake _run" parent="." unique_id=1310647478 instance=ExtResource("18_pwbpl")]
+transform = Transform3D(-1.4428629, 0, -0.13529606, 0, 1.4279208, 0, 0.14625031, 0, -1.3347915, 0, 12.390612, -0.3441217)
+script = ExtResource("19_i66j7")
+move_speed = -40.0
 
 [editable path="Player"]
 [editable path="Player/Root Scene"]

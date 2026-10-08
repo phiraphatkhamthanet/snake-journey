@@ -34,6 +34,7 @@ func trigger_death(delay: float, hold_time: float, target: PackedScene) -> void:
 	show_result()
 
 	if target == null:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		return
 	_pending_target = target
 	await get_tree().create_timer(hold_time).timeout
