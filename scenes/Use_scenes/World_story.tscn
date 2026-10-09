@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://fabxgsio6i3o" path="res://scenes/Use_scenes/Result.tscn" id="17_wfbbe"]
 [ext_resource type="PackedScene" uid="uid://cqaoyelk5o7q0" path="res://Snake by Quaternius - x9x0viZs8V.glb" id="18_pwbpl"]
 [ext_resource type="Script" uid="uid://dvekfd40562hr" path="res://run_snake.gd" id="19_i66j7"]
+[ext_resource type="PackedScene" uid="uid://cmk5xq0gh5f7x" path="res://scenes/Warning_car.tscn" id="20_i66j7"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
@@ -59,9 +60,9 @@ time_label = NodePath("../CanvasLayer/Control/Label")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.941677, 0)
 
 [node name="Physical Bone Root" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="0" unique_id=953439672]
-transform = Transform3D(0.009052934, 0.004064994, 0.0012329661, 0.0042478675, -0.0086632, -0.0026276591, 1.4959154e-09, 0.00290255, -0.009569493, -0.00070485997, 0.0015694723, 0.013139188)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0028587654, -0.21675254, 1.3072848)
-body_offset = Transform3D(0.009052937, 0.00406499, 0.0012329649, 9.895305e-10, 0.002902551, -0.009569494, -0.004247864, 0.008663203, 0.0026276615, -0.00070485927, 0.013139188, -0.0015694743)
+transform = Transform3D(0.009052934, 0.004064994, 0.0012329661, 0.0042478675, -0.0086632, -0.0026276591, 1.4959154e-09, 0.00290255, -0.009569493, -0.00070485997, 0.0015707866, 0.013139188)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0029145926, -0.21663867, 1.3073194)
+body_offset = Transform3D(0.009052937, 0.00406499, 0.0012329649, 9.895305e-10, 0.002902551, -0.009569494, -0.004247864, 0.008663203, 0.0026276615, -0.00070485927, 0.013139188, -0.0015707887)
 
 [node name="Physical Bone Body" parent="Player/Root Scene/RootNode/SnakeArmature/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(1738546809, 1974591439) index="1" unique_id=2116344259]
 transform = Transform3D(-0.009999315, -5.7504276e-05, 0.0001019451, 0.00011704505, -0.0049133864, 0.008708899, 9.676425e-09, 0.008709496, 0.0049137226, -0.0009887383, -0.010986334, 0.014994413)
@@ -134,6 +135,11 @@ visible = false
 transform = Transform3D(-1.4428629, 0, -0.13529606, 0, 1.4279208, 0, 0.14625031, 0, -1.3347915, 0, 12.390612, -0.3441217)
 script = ExtResource("19_i66j7")
 move_speed = -40.0
+
+[node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("20_i66j7")]
+player = NodePath("../Player")
+warn_ttc = 5.0
+danger_ttc = 2.0
 
 [editable path="Player"]
 [editable path="Player/Root Scene"]

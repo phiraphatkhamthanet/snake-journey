@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://buva0ngksw1v" path="res://scenes/Chunks/grass4.tscn" id="13_1lsps"]
 [ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://snake_can_use/player.tscn" id="14_718ov"]
 [ext_resource type="PackedScene" uid="uid://c77ubhar84n3c" path="res://scenes/Use_scenes/Result_endless.tscn" id="15_xhcmn"]
+[ext_resource type="PackedScene" uid="uid://cmk5xq0gh5f7x" path="res://scenes/Warning_car.tscn" id="16_s3r6j"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
 background_mode = 1
@@ -80,5 +81,10 @@ autoplay = true
 
 [node name="Result" parent="." unique_id=1262239059 instance=ExtResource("15_xhcmn")]
 visible = false
+
+[node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("16_s3r6j")]
+player = NodePath("../Player")
+warn_ttc = 5.0
+danger_ttc = 2.0
 
 [editable path="Result"]

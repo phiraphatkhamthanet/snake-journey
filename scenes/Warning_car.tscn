@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cmk5xq0gh5f7x"]
+
+[ext_resource type="Script" uid="uid://baordeh1xy8ra" path="res://scripts/car_warning.gd" id="1_ptcwr"]
+
+[node name="WarningCar" type="CanvasLayer" unique_id=1283989431]
+script = ExtResource("1_ptcwr")
+warning_text = "⚠ Watch out for cars.!"
+danger_text = "⚠ Car is coming!!"

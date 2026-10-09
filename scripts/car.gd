@@ -26,8 +26,18 @@ var is_hit: bool = false                 # ป้องกันการชน�
 
 
 func _ready() -> void:
-	# บันทึกตำแหน่งแรกที่วางวัตถุไว้ในฉาก
 	spawn_position = position
+	add_to_group("cars")          # <-- เพิ่มบรรทัดนี้
+
+## ความเร็วในพิกัดโลก (รถวิ่งตามแกน X ของโหนดแม่)
+func get_world_velocity() -> Vector3:
+	var p := get_parent() as Node3D
+	var b := p.global_transform.basis if p else Basis.IDENTITY
+	return b * Vector3.RIGHT * move_speed
+
+## ระยะที่รถจะวิ่งต่อได้ก่อน respawn (กันเตือนรถที่หายไปก่อนถึงงู)
+func get_remaining_time() -> float:
+	return maxf(despawn_time - current_time, 0.0)
 
 
 func _process(delta: float) -> void:
