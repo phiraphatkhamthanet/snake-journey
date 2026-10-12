@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ce7662k300deb"]
+
+[ext_resource type="PackedScene" uid="uid://yk24uwxbocll" path="res://scenes/player.tscn" id="1_g7g4h"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/ammo.tscn" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="3_7ddre"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7ddre"]
+data = PackedVector3Array(-0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5)
+
+[node name="test_scene" type="Node3D" unique_id=510996427]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1931203495]
+transform = Transform3D(198.5048, 0, 0, 0, 0.021542922, 0, 0, 0, 117.97519, 0.018304825, 0.03747368, -0.10409546)
+mesh = SubResource("BoxMesh_sn0t7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGMesh3D" unique_id=2036459134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/StaticBody3D" unique_id=890008399]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_7ddre")
+
+[node name="Player" parent="." unique_id=1517565166 instance=ExtResource("1_g7g4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.567486, 0, 37.09677)
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("2_nd71p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 7, 32)
+
+[node name="Ammo2" parent="." unique_id=981916343 instance=ExtResource("2_nd71p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.935226, 19)
+
+[node name="banana_man" parent="." unique_id=848403448 instance=ExtResource("3_7ddre")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=588782419]
+transform = Transform3D(0.7653575, 0.5469486, -0.33922735, 0.31162596, 0.14624679, 0.9388829, 0.56313163, -0.8242931, -0.0585123, 0, 74.672775, 0)
