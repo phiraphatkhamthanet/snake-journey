@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bb13wbi10rd0t"]
+
+[ext_resource type="PackedScene" uid="uid://dojf8fx1m7gto" path="res://asset/Bullets Pickup by Quaternius - bTEYFxKHF9.glb" id="1_8affh"]
+[ext_resource type="Script" uid="uid://cnupxgqyhrrkx" path="res://scripts/ammo.gd" id="1_oosrp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+
+[node name="Ammo" type="Area3D" unique_id=1723817141]
+script = ExtResource("1_oosrp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=545709782]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="Root Scene" parent="." unique_id=1473231041 instance=ExtResource("1_8affh")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.057243705, 0, 0.033338755)
+
+[editable path="Root Scene"]

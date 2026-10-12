@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2kg5lt0g7ko3"]
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_kxv44"]
-[ext_resource type="PackedScene" uid="uid://d0a2y02dhg6cu" path="res://scenes/player.tscn" id="2_e0x3u"]
+[ext_resource type="PackedScene" uid="uid://d0a2y02dhg6cu" path="res://scenes/player_test.tscn" id="2_e0x3u"]
 [ext_resource type="Script" uid="uid://dar4nyqo78yvf" path="res://scripts/world_generator.gd" id="3_1qwms"]
 [ext_resource type="PackedScene" uid="uid://cfatf6ucfygmk" path="res://scenes/Chunks/grass1.tscn" id="4_6w704"]
 [ext_resource type="PackedScene" uid="uid://cth6ryrkjvtvp" path="res://scenes/Chunks/grass2.tscn" id="5_2qkej"]
