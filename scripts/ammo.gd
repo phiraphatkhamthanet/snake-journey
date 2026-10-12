@@ -2,7 +2,7 @@
 extends Area3D
 
 @export_group("Ammo Pickup")
-@export var ammo_amount: int = 1
+@export var ammo_amount: int = 15
 
 @export_group("Visual")
 @export var rotate_speed: float = 90.0
@@ -10,6 +10,7 @@ extends Area3D
 @export var bob_speed: float = 2.0
 
 @onready var mesh: MeshInstance3D = $"Root Scene/RootNode/Pickup_Bullets"
+@onready var pickup_sound: AudioStreamPlayer = $pickup
 
 var start_height: float = 0.0
 var elapsed_time: float = 0.0
@@ -23,10 +24,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	# Spin pickup
+	if collected:
+		return
+
 	mesh.rotate_y(deg_to_rad(rotate_speed) * delta)
 
-	# Floating animation
 	elapsed_time += delta
 
 	mesh.position.y = (
@@ -39,9 +41,26 @@ func _on_body_entered(body: Node3D) -> void:
 	if collected:
 		return
 
-	if body.has_method("add_ammo"):
-		collected = true
+	if not body.has_method("add_ammo"):
+		return
 
-		body.add_ammo(ammo_amount)
+	# ไม่เก็บเมื่อกระสุนเต็ม
+	if body.get("ammo") >= body.get("max_ammo"):
+		return
 
-		queue_free()
+	collected = true
+
+	# เพิ่มกระสุนให้ Player
+	body.add_ammo(ammo_amount)
+
+	# ซ่อนของและปิด Collision
+	visible = false
+	monitoring = false
+	set_deferred("monitorable", false)
+
+	# เล่นเสียงก่อนลบ Pickup
+	if pickup_sound.stream != null:
+		pickup_sound.play()
+		await pickup_sound.finished
+
+	queue_free()

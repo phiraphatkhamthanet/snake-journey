@@ -1,79 +1,43 @@
 
 extends CharacterBody3D
 
-# =========================
-# Signals
-# =========================
 signal ammo_changed(current: int)
 signal health_changed(current: float, maximum: float)
 signal died
 
-
-# =========================
-# Movement
-# =========================
 @export_group("Movement")
 @export var move_speed: float = 10.0
 @export var jump_velocity: float = 5.0
 @export var mouse_sensitivity: float = 0.002
 @export var gravity: float = 9.8
 
-
-# =========================
-# Health
-# =========================
 @export_group("Health")
 @export var max_health: float = 100.0
 
-
-# =========================
-# Weapon
-# =========================
 @export_group("Weapon")
 @export var damage: float = 20.0
 @export var fire_rate: float = 0.15
 @export var automatic: bool = false
 
-
-# =========================
-# Ammo
-# =========================
 @export_group("Ammo")
 @export var starting_ammo: int = 30
 @export var max_ammo: int = 150
 
-
-# =========================
-# Weapon Sounds
-# =========================
 @export_group("Weapon Sounds")
 @export var empty_sound_cooldown: float = 0.3
 
-
-# =========================
-# Recoil
-# =========================
 @export_group("Recoil")
 @export var recoil_strength: float = 0.045
 @export var recoil_rotation: float = 8.0
 @export var recoil_recovery: float = 12.0
 @export var camera_recoil: float = 2.0
 
-
-# =========================
-# Muzzle Flash
-# =========================
 @export_group("Muzzle Flash")
 @export var muzzle_flash_duration: float = 0.06
 
-
-# =========================
-# Nodes
-# =========================
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var raycast: RayCast3D = $Head/Camera3D/RayCast3D
-
 @onready var weapon_holder: Node3D = $Head/Camera3D/weapon_holder
 @onready var model: Node3D = $Sketchfab_Scene
 
@@ -85,10 +49,9 @@ signal died
 @onready var shoot_sound: AudioStreamPlayer = $ShootSound
 @onready var empty_sound: AudioStreamPlayer = $EmptySound
 
+# NEW: เสียงเมื่อได้รับ Damage
+@onready var hurt_sound: AudioStreamPlayer = $hurt
 
-# =========================
-# Variables
-# =========================
 var health: float = 100.0
 var ammo: int = 0
 var is_dead: bool = false
@@ -105,9 +68,6 @@ var camera_recoil_target: float = 0.0
 var look_pitch: float = 0.0
 
 
-# =========================
-# Ready
-# =========================
 func _ready() -> void:
 	add_to_group("Player")
 
@@ -131,31 +91,24 @@ func _ready() -> void:
 	ammo_changed.emit(ammo)
 
 
-# =========================
-# Input
-# =========================
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead:
 		return
 
-	# Mouse Look
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			rotate_y(-event.relative.x * mouse_sensitivity)
 
 			look_pitch -= event.relative.y * mouse_sensitivity
-
 			look_pitch = clampf(
 				look_pitch,
 				deg_to_rad(-89),
 				deg_to_rad(89)
 			)
 
-	# Release Mouse
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	# Capture Mouse
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -163,38 +116,28 @@ func _unhandled_input(event: InputEvent) -> void:
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
-# =========================
-# Physics
-# =========================
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 
-	# Player ไม่ช้าลงตาม Time Slow
 	var time_factor: float = 1.0 / maxf(
 		Engine.time_scale, 0.001
 	)
-
 	var real_delta: float = delta * time_factor
 
-	# Gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta * time_factor * time_factor
 
-	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity * time_factor
 
-	# Movement
 	var input_dir := Input.get_vector(
 		"left", "right", "forward", "back"
 	)
 
 	var direction := (
 		transform.basis * Vector3(
-			input_dir.x,
-			0,
-			input_dir.y
+			input_dir.x, 0, input_dir.y
 		)
 	).normalized()
 
@@ -203,18 +146,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# Timers
-	shoot_timer = maxf(
-		shoot_timer - real_delta,
-		0.0
-	)
-
+	shoot_timer = maxf(shoot_timer - real_delta, 0.0)
 	empty_sound_timer = maxf(
-		empty_sound_timer - real_delta,
-		0.0
+		empty_sound_timer - real_delta, 0.0
 	)
 
-	# Shooting
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		if automatic:
 			if Input.is_action_pressed("shoot"):
@@ -223,41 +159,28 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("shoot"):
 				shoot()
 
-	# Weapon Effects
 	recover_recoil(real_delta)
 	update_muzzle_flash(real_delta)
 
 
-# =========================
-# Shoot
-# =========================
 func shoot() -> void:
-	if is_dead:
+	if is_dead or shoot_timer > 0.0:
 		return
 
-	# Fire Rate
-	if shoot_timer > 0.0:
-		return
-
-	# Empty Ammo
 	if ammo <= 0:
 		play_empty_sound()
 		return
 
 	shoot_timer = fire_rate
 
-	# Consume Ammo
 	ammo -= 1
-
 	update_ammo_ui()
 	ammo_changed.emit(ammo)
 
-	# Weapon Effects
 	play_shoot_sound()
 	apply_recoil()
 	play_muzzle_flash()
 
-	# Hitscan
 	raycast.force_raycast_update()
 
 	if raycast.is_colliding():
@@ -272,19 +195,18 @@ func shoot() -> void:
 
 
 # =========================
-# Receive Damage
+# Receive Damage + Hurt Sound
 # =========================
 func take_damage(amount: float) -> void:
-	if is_dead:
+	if is_dead or amount <= 0.0:
 		return
 
-	if amount <= 0.0:
-		return
+	var previous_health: float = health
 
-	health = maxf(
-		health - amount,
-		0.0
-	)
+	health = maxf(health - amount, 0.0)
+
+	if health < previous_health:
+		play_hurt_sound()
 
 	health_changed.emit(health, max_health)
 
@@ -295,8 +217,15 @@ func take_damage(amount: float) -> void:
 
 
 # =========================
-# Player Death
+# NEW: Hurt Sound
 # =========================
+func play_hurt_sound() -> void:
+	if hurt_sound.stream == null:
+		return
+	hurt_sound.stop()
+	hurt_sound.play()
+
+
 func die() -> void:
 	if is_dead:
 		return
@@ -311,20 +240,11 @@ func die() -> void:
 	print("Player died!")
 
 
-# =========================
-# Add Ammo
-# =========================
 func add_ammo(amount: int) -> void:
-	if is_dead:
+	if is_dead or amount <= 0:
 		return
 
-	if amount <= 0:
-		return
-
-	ammo = mini(
-		ammo + amount,
-		max_ammo
-	)
+	ammo = mini(ammo + amount, max_ammo)
 
 	update_ammo_ui()
 	ammo_changed.emit(ammo)
@@ -332,17 +252,11 @@ func add_ammo(amount: int) -> void:
 	print("Ammo: ", ammo, "/", max_ammo)
 
 
-# =========================
-# Ammo UI
-# =========================
 func update_ammo_ui() -> void:
 	if ammo_label:
 		ammo_label.text = str(ammo)
 
 
-# =========================
-# Shoot Sound
-# =========================
 func play_shoot_sound() -> void:
 	if shoot_sound.stream == null:
 		return
@@ -351,9 +265,6 @@ func play_shoot_sound() -> void:
 	shoot_sound.play()
 
 
-# =========================
-# Empty Ammo Sound
-# =========================
 func play_empty_sound() -> void:
 	if empty_sound_timer > 0.0:
 		return
@@ -367,35 +278,22 @@ func play_empty_sound() -> void:
 	empty_sound.play()
 
 
-# =========================
-# Recoil
-# =========================
 func apply_recoil() -> void:
 	weapon_holder.position.z += recoil_strength
+	weapon_holder.rotation.x += deg_to_rad(recoil_rotation)
 
-	weapon_holder.rotation.x += deg_to_rad(
-		recoil_rotation
-	)
-
-	camera_recoil_target += deg_to_rad(
-		camera_recoil
-	)
+	camera_recoil_target += deg_to_rad(camera_recoil)
 
 
 func recover_recoil(delta: float) -> void:
-	var weight := minf(
-		recoil_recovery * delta,
-		1.0
-	)
+	var weight := minf(recoil_recovery * delta, 1.0)
 
 	weapon_holder.position = weapon_holder.position.lerp(
-		weapon_start_position,
-		weight
+		weapon_start_position, weight
 	)
 
 	weapon_holder.rotation = weapon_holder.rotation.lerp(
-		weapon_start_rotation,
-		weight
+		weapon_start_rotation, weight
 	)
 
 	camera_recoil_offset = lerpf(
@@ -417,12 +315,8 @@ func recover_recoil(delta: float) -> void:
 	)
 
 
-# =========================
-# Muzzle Flash
-# =========================
 func play_muzzle_flash() -> void:
 	muzzle_flash.restart()
-
 	muzzle_light.visible = true
 	muzzle_flash_timer = muzzle_flash_duration
 
@@ -435,9 +329,6 @@ func update_muzzle_flash(delta: float) -> void:
 		muzzle_light.visible = false
 
 
-# =========================
-# Model Layer
-# =========================
 func set_model_layer(node: Node) -> void:
 	if node is VisualInstance3D:
 		node.layers = 2

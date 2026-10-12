@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dojf8fx1m7gto" path="res://asset/Bullets Pickup by Quaternius - bTEYFxKHF9.glb" id="1_8affh"]
 [ext_resource type="Script" uid="uid://cnupxgqyhrrkx" path="res://scripts/ammo.gd" id="1_oosrp"]
+[ext_resource type="AudioStream" uid="uid://dtjs7i5ev0ei" path="res://scenes/Audio/freesound_community-money-pickup-2-89563.mp3" id="3_yct24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
 
@@ -14,5 +15,8 @@ shape = SubResource("BoxShape3D_bhunq")
 
 [node name="Root Scene" parent="." unique_id=1473231041 instance=ExtResource("1_8affh")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.057243705, 0, 0.033338755)
+
+[node name="pickup" type="AudioStreamPlayer" parent="." unique_id=1745210984]
+stream = ExtResource("3_yct24")
 
 [editable path="Root Scene"]
