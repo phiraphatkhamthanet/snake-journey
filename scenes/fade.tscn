@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cy53apdhnlgyk"]
+
+[ext_resource type="Script" uid="uid://prnxwusjgexc" path="res://scenes/fade.gd" id="1_76d3x"]
+[ext_resource type="Shader" uid="uid://xmcyae4vp0hm" path="res://scenes/fade.gdshader" id="2_85vtu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riqys"]
+shader = ExtResource("2_85vtu")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1152.0
+shader_parameter/screen_height = 647.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn0t7"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 1)
+
+[node name="fade" type="CanvasLayer" unique_id=1938050062]
+script = ExtResource("1_76d3x")
+
+[node name="Panel" type="Panel" parent="." unique_id=1461070748]
+material = SubResource("ShaderMaterial_riqys")
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sn0t7")

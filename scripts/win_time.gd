@@ -4,7 +4,7 @@ extends Control
 @onready var victory_label: Label = $VictoryLabel
 
 @export_category("back")
-@export var next_scene: String = "res://scenes/Use_scenes/Menu.tscn"
+@export var next_scene: String = "res://scenes/outro.tscn"
 
 func _ready() -> void:
 	var time_played: float = ScoreManager.current_session_time

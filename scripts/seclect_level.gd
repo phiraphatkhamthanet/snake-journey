@@ -16,12 +16,20 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	if scenes1:
+		$"fade".reverse_circle()
+		$"fade".visible = true
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_packed(scenes1)
+		
 
 
 func _on_button_2_pressed() -> void:
 	if scenes2:
+		$"fade".reverse_circle()
+		$"fade".visible = true
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_packed(scenes2)
+		
 
 
 func _on_button_3_pressed() -> void:

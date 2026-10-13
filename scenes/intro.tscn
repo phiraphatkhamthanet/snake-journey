@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://6g4oeen7ym37"]
+
+[ext_resource type="Texture2D" uid="uid://0atjjf1218sj" path="res://asset/comic/intro.jpg" id="1_ioskq"]
+[ext_resource type="Script" uid="uid://djxksoqi2nyqo" path="res://scenes/intro.gd" id="1_yjqpq"]
+[ext_resource type="PackedScene" uid="uid://btrtfe0wbo2uw" path="res://scenes/Use_scenes/World_story.tscn" id="2_i2l1n"]
+[ext_resource type="PackedScene" uid="uid://cy53apdhnlgyk" path="res://scenes/fade.tscn" id="3_4bx60"]
+[ext_resource type="AudioStream" uid="uid://pjhf4yio2l1s" path="res://asset/Sound/Kevin MacLeod Sneaky Snitch.mp3" id="5_wfs7u"]
+
+[sub_resource type="Gradient" id="Gradient_yjqpq"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bhunq"]
+gradient = SubResource("Gradient_yjqpq")
+
+[sub_resource type="Animation" id="Animation_4bx60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1056, 1634)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pic:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6280924, 0.62809235)]
+}
+
+[sub_resource type="Animation" id="Animation_i2l1n"]
+resource_name = "pp"
+length = 59.533333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 6.5, 10.088778, 11.7, 14.9300585, 16.3, 19.066668, 20.133333, 22.786087, 24.766666, 28.266666, 29.533333, 31.966667, 33, 34.52957, 35.566666, 39.833332, 41.1, 42.3, 46.366665, 48.93333, 51.066666, 54.3, 58.866665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1056, 1634), Vector2(1056, 1634), Vector2(149.00006, 1600), Vector2(149.00006, 1600), Vector2(1048, 1077), Vector2(1048, 1077), Vector2(137.00006, 1170), Vector2(137.00006, 1170), Vector2(939.00006, 464), Vector2(939.00006, 464), Vector2(241.00006, 455), Vector2(241.00006, 455), Vector2(975, -174), Vector2(975, -174), Vector2(180, -199), Vector2(180, -199), Vector2(1567, -590), Vector2(1564, -992), Vector2(1564, -992), Vector2(978, -627), Vector2(933, -969), Vector2(933, -969), Vector2(74.00001, -724), Vector2(87.00001, -976), Vector2(87, -976)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pic:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26351333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6280924, 0.62809235), Vector2(0.6280924, 0.62809235)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfs7u"]
+_data = {
+&"RESET": SubResource("Animation_4bx60"),
+&"pp": SubResource("Animation_i2l1n")
+}
+
+[node name="intro" type="Node2D" unique_id=1285898544]
+script = ExtResource("1_yjqpq")
+scenes1 = ExtResource("2_i2l1n")
+times = 60.0
+play = "pp"
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1159024212]
+position = Vector2(1120, 1801.5)
+scale = Vector2(16.453125, 4811)
+texture = SubResource("GradientTexture1D_bhunq")
+metadata/_edit_lock_ = true
+
+[node name="pic" type="Sprite2D" parent="." unique_id=656485403]
+position = Vector2(1056, 1634)
+scale = Vector2(0.6280924, 0.62809235)
+texture = ExtResource("1_ioskq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=949673750]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=65528538]
+offset_left = 1033.0
+offset_top = 21.0
+offset_right = 1130.5454
+offset_bottom = 58.0
+text = "Skip >"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=500430745]
+libraries/ = SubResource("AnimationLibrary_wfs7u")
+
+[node name="fade" parent="." unique_id=1938050062 instance=ExtResource("3_4bx60")]
+
+[node name="sound" type="AudioStreamPlayer" parent="." unique_id=1334625093]
+stream = ExtResource("5_wfs7u")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

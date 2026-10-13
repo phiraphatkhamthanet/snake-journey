@@ -79,6 +79,8 @@ signal died
 # NEW: เสียงเมื่อได้รับ Damage
 @onready var hurt_sound: AudioStreamPlayer = $hurt
 
+var speed_upp = 100
+var move_speed_set:float = move_speed
 var health: float = 100.0
 var ammo: int = 0
 var is_dead: bool = false
@@ -535,3 +537,28 @@ func set_model_layer(node: Node) -> void:
 
 	for child in node.get_children():
 		set_model_layer(child)
+
+
+var ffff = false
+func _input(event: InputEvent) -> void:
+	var cheat = $"cheat"
+	if event is InputEventKey and event.pressed and event.keycode == KEY_F5:
+		if cheat:
+			cheat.visible = !cheat.visible
+			if (cheat.visible):
+				move_speed = move_speed_set + speed_upp
+				health += 100
+				ffff = true
+			else:
+				move_speed  = move_speed_set
+				ffff = false
+	if event is InputEventMouseButton and event.pressed:
+		if cheat and ffff:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				speed_upp += 1
+				move_speed = move_speed_set + speed_upp
+				$"cheat/cheat/speed".text = "speeed: " + str(speed_upp)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				speed_upp -= 1
+				move_speed = move_speed_set + speed_upp
+				$"cheat/cheat/speed".text = "speeed: " + str(speed_upp)

@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://1gqkh7svhx6h" path="res://scripts/seclect_level.gd" id="1_7eahy"]
 [ext_resource type="Texture2D" uid="uid://dnfjcikhlmvrl" path="res://asset/picture/forest.jpeg" id="1_tmixf"]
-[ext_resource type="PackedScene" uid="uid://btrtfe0wbo2uw" path="res://scenes/Use_scenes/World_story.tscn" id="2_8blqg"]
+[ext_resource type="PackedScene" uid="uid://6g4oeen7ym37" path="res://scenes/intro.tscn" id="2_8blqg"]
 [ext_resource type="Texture2D" uid="uid://cekkda6kshbsy" path="res://asset/picture/story_scelect.jpg" id="3_kduba"]
 [ext_resource type="PackedScene" uid="uid://ewollb8mugo0" path="res://scenes/Use_scenes/World_endless.tscn" id="3_ssnd0"]
 [ext_resource type="Texture2D" uid="uid://bssurrd4qdrb0" path="res://asset/picture/endless.jpg" id="4_w5nok"]
 [ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="5_8blqg"]
+[ext_resource type="PackedScene" uid="uid://cy53apdhnlgyk" path="res://scenes/fade.tscn" id="8_8blqg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 
@@ -90,6 +91,10 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 30
 text = "Endless Mode"
+
+[node name="fade" parent="." unique_id=1938050062 instance=ExtResource("8_8blqg")]
+visible = false
+startup = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
