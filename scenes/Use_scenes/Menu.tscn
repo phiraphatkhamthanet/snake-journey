@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dfck8rty8w4kh" path="res://asset/picture/egel.png" id="6_j122a"]
 [ext_resource type="Texture2D" uid="uid://cno3a6adbdckl" path="res://asset/picture/snake.png" id="7_47gmt"]
 [ext_resource type="Texture2D" uid="uid://dkv6dpbkvyqn0" path="res://asset/picture/leave.png" id="8_im3ly"]
+[ext_resource type="Texture2D" uid="uid://cjygas8c2lcyr" path="res://asset/picture/Caw_boy.png" id="8_qri1r"]
 
 [sub_resource type="Environment" id="Environment_jmdev"]
 background_mode = 1
@@ -45,7 +46,7 @@ scenes2 = ExtResource("2_chwfh")
 environment = SubResource("Environment_jmdev")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1050288874]
-transform = Transform3D(-0.11716695, -0.13430384, 0.983989, -0.01587984, 0.9909402, 0.13336173, -0.99298525, 0, -0.118238166, 2.532276, 1.3047996, -1.618729)
+transform = Transform3D(-0.11716695, -0.13430384, 0.983989, -0.01587984, 0.9909402, 0.13336173, -0.99298525, 0, -0.118238166, 2.532276, 1.3047996, -1.125489)
 
 [node name="Waterfall scene by Nikki Morin - dkbjOPcyB2l" parent="." unique_id=472831278 instance=ExtResource("4_o7p11")]
 transform = Transform3D(5.3190355, 0, 0, 0, 5.913333, 0, 0, 0, 7.7321405, 0, 0, 0)
@@ -154,10 +155,14 @@ volume_db = -10.0
 autoplay = true
 
 [node name="Label3D" type="Label3D" parent="." unique_id=94273771]
-transform = Transform3D(0.18261963, 0, 0.9831837, 0, 1, 0, -0.9831837, 0, 0.18261963, -1.203718, 1.1923368, -0.63002884)
+transform = Transform3D(0.18261963, 0, 0.9831837, 0, 1, 0, -0.9831837, 0, 0.18261963, -1.203718, 1.6735761, -0.63002884)
 pixel_size = 0.01
 billboard = 1
 text = "The ugly in present."
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1651850488]
+transform = Transform3D(-0.02384318, 0, 0.2488604, 0, 0.25, 0, -0.2488604, 0, -0.02384318, 1.021623, 0.86747706, -0.007891834)
+texture = ExtResource("8_qri1r")
 
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Button2" to="." method="_on_button_2_pressed"]

@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://difc3hjdc264v"]
 
-[ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_bullet"]
+[ext_resource type="Script" uid="uid://cnfwojbk8d8ta" path="res://scripts/enemy_bullet.gd" id="1_bullet"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_core"]
 radius = 0.25
@@ -21,19 +21,20 @@ blend_mode = 1
 shading_mode = 0
 albedo_color = Color(1, 0.55, 0.1, 0.7)
 
-[node name="EnemyBullet" type="Node3D"]
+[node name="EnemyBullet" type="Node3D" unique_id=2045890840]
 script = ExtResource("1_bullet")
+damage = 25.0
 
-[node name="Core" type="MeshInstance3D" parent="."]
+[node name="Core" type="MeshInstance3D" parent="." unique_id=1444662097]
 mesh = SubResource("SphereMesh_core")
 surface_material_override/0 = SubResource("Mat_core")
 
-[node name="Tracer" type="MeshInstance3D" parent="."]
+[node name="Tracer" type="MeshInstance3D" parent="." unique_id=1286351775]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 1.5)
 mesh = SubResource("CylinderMesh_tracer")
 surface_material_override/0 = SubResource("Mat_tracer")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1881344773]
 light_color = Color(1, 0.65, 0.2, 1)
 light_energy = 3.0
 omni_range = 8.0

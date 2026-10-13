@@ -17,13 +17,22 @@ signal died
 
 @export_group("Health Bar")
 @export var show_health_bar: bool = true
-## ความสูงของแถบเหนือพื้น (capsule สูง ~5.9)
 @export var health_bar_height: float = 6.8
 
 @export_group("Animations")
 @export var idle_animation: StringName = &"Melee-Library--OLD/Idle"
 @export var run_animation: StringName = &"Melee-Library--OLD/run"
 @export var punch_animation: StringName = &"Melee-Library--OLD/SlashATK1"
+
+@export_group("Ad System")
+@export var ad_scenes: Array[PackedScene]
+@export var max_hits_for_ad: int = 2
+@export var delay_before_change_scene: float = 3.0
+@export var result_hold_time: float = 2.0
+@export var next_scene: PackedScene
+
+# ใช้ตัวนับร่วมกันระหว่าง Banana Man ปกติและตัวถือปืน
+static var hit_counter: int = 0
 
 @onready var detection_area: Area3D = $DetectionArea
 @onready var punch_hitbox: Area3D = $punch
@@ -165,8 +174,16 @@ func punch_hit() -> void:
 	for body in punch_hitbox.get_overlapping_bodies():
 		if body.is_in_group("Player"):
 			if body.has_method("take_damage"):
+				# จำสถานะก่อนโจมตี เพื่อนับเฉพาะครั้งที่ตายใหม่
+				var was_dead: bool = body.get("is_dead") == true
+
 				body.take_damage(attack_damage)
+
 				print("Banana Man hit Player!")
+
+				if not was_dead and body.get("is_dead") == true:
+					on_player_killed()
+
 			break
 
 
@@ -237,8 +254,68 @@ func create_health_bar() -> void:
 	health_bar.set_script(
 		preload("res://scripts/enemy_health_bar.gd")
 	)
-	health_bar.position = Vector3(0.0, health_bar_height, 0.0)
-	# top_level ไม่ใช้ เพราะอยากให้หมุนตามตัว (billboard จัดการเรื่องหันหน้าจอเอง)
-	add_child(health_bar)
+	health_bar.position = Vector3(
+		0.0,
+		health_bar_height,
+		0.0
+	)
 
+	add_child(health_bar)
 	health_changed.connect(health_bar.update_health)
+
+
+# =========================
+# AD SYSTEM
+# =========================
+
+func on_player_killed() -> void:
+	hit_counter += 1
+
+	print(
+		"Banana Man: Player deaths = ",
+		hit_counter
+	)
+
+	_trigger_result()
+
+
+func _pick_target() -> PackedScene:
+	if hit_counter >= maxi(max_hits_for_ad, 1):
+		hit_counter = 0
+
+		if not ad_scenes.is_empty():
+			var ad: PackedScene = ad_scenes.pick_random()
+			print("สุ่มโฆษณาแล้ว")
+			return ad
+
+		push_warning(
+			"ครบจำนวนครั้งแล้ว แต่ยังไม่ได้ใส่ Ad Scenes"
+		)
+
+	return next_scene
+
+
+func _trigger_result() -> void:
+	var result_control: Node = (
+		get_tree().get_first_node_in_group("result_screen")
+	)
+
+	if result_control == null:
+		push_warning(
+			"ไม่พบ Result ในกลุ่ม result_screen"
+		)
+		return
+
+	if not result_control.has_method("trigger_death"):
+		push_warning(
+			"Result ไม่มีฟังก์ชัน trigger_death()"
+		)
+		return
+
+	var target: PackedScene = _pick_target()
+
+	result_control.trigger_death(
+		delay_before_change_scene,
+		result_hold_time,
+		target
+	)

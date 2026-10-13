@@ -11,7 +11,7 @@ extends Node
 @onready var tiger_sfx = get_node_or_null("Tiger")
 @onready var horse_sfx = get_node_or_null("Horse")
 
-
+@onready var die_sfx = get_node_or_null("Death")
 # ฟังก์ชันสำหรับเรียกเล่นเสียงอย่างปลอดภัย
 func play_sound(sound_name: String) -> void:
 	if sound_name.is_empty():

@@ -113,10 +113,10 @@ crosshair_color = Color(1, 1, 1, 1)
 [node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=2058942311]
 custom_minimum_size = Vector2(450, 20)
 custom_maximum_size = Vector2(250, 50)
-offset_left = 425.0
-offset_top = 601.0
-offset_right = 675.0
-offset_bottom = 628.0
+offset_left = 884.0
+offset_top = 565.0
+offset_right = 1134.0
+offset_bottom = 592.0
 value = 100.0
 script = ExtResource("6_tuyoq")
 

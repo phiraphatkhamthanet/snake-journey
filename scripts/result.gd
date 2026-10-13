@@ -5,6 +5,9 @@ extends Control
 @export_category("back")
 @export var next_scene: String = "res://scenes/Use_scenes/Menu.tscn"
 
+@export_category("Sound System")
+@export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx", "die_sfx") var Sound: String = "honk_sfx"
+
 var _triggered: bool = false
 var _pending_target: PackedScene = null  # ซีนที่รอไป (โฆษณา/next_scene)
 var _time_at_death: float = -1.0  # เวลาตอนชน (วินาที) -1 = ยังไม่มี
@@ -58,6 +61,9 @@ func show_result() -> void:
 	var layer := get_parent()
 	if layer is CanvasLayer:
 		layer.show()
+		var sound_node = AudioManager.get(Sound)
+		if sound_node and sound_node.has_method("play"):
+			sound_node.play()
 	show()
 
 

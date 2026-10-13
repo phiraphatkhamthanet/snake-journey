@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dvaaqaxys2kx5"]
 
-[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_man.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/banana_gunner.gd" id="2_script"]
-[ext_resource type="PackedScene" path="res://scenes/Enermy/enemy_bullet.tscn" id="3_bullet"]
+[ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://11grvmgugwlc" path="res://scripts/banana_gunner.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://difc3hjdc264v" path="res://scenes/Enermy/enemy_bullet.tscn" id="3_bullet"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gun"]
 size = Vector3(0.35, 0.5, 1.6)
@@ -20,24 +20,100 @@ height = 0.8
 shading_mode = 0
 albedo_color = Color(1, 0.85, 0.3, 1)
 
-[node name="banana_gunner" instance=ExtResource("1_base")]
+[node name="banana_gunner" unique_id=546955697 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
+attack_damage = 25.0
 bullet_scene = ExtResource("3_bullet")
+bullet_damage = 25.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
 
-[node name="Gun" type="MeshInstance3D" parent="." index="5"]
+[node name="GeneralSkeleton" parent="Fast Run" parent_id_path=PackedInt32Array(1341737604) index="0" unique_id=1905725933]
+bones/0/position = Vector3(0.029463442, 1.9352431, -0.065959424)
+bones/0/rotation = Quaternion(0.1582245, -0.12201875, 0.013357078, 0.97974396)
+bones/1/rotation = Quaternion(0.054556005, 0.055836912, -0.021165298, 0.9967236)
+bones/2/rotation = Quaternion(0.035077024, 0.023052081, 0.00016541524, 0.99911875)
+bones/3/rotation = Quaternion(0.035103492, 0.022959907, 0.0012797583, 0.99911916)
+bones/4/rotation = Quaternion(-0.05446477, 0.0027101606, 0.0030046604, 0.9985075)
+bones/5/rotation = Quaternion(-0.14674607, 0.022789592, -0.01053235, 0.98885554)
+bones/7/rotation = Quaternion(0.4853757, 0.48644075, 0.61352736, -0.38906324)
+bones/8/rotation = Quaternion(-0.004342675, 0.7828089, -0.47788417, -0.39851987)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.22656138, -0.676632, 0.20944117, 0.6685607)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.059432738, 0.43143535, 0.015869917, 0.90004414)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.18735336, 0.74183697, 0.036149394, 0.64286083)
+bones/13/rotation = Quaternion(0.036846485, -0.036455672, -0.10753302, 0.9928494)
+bones/13/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/16/rotation = Quaternion(0.45038626, -0.0031543523, -0.11627543, 0.88522446)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.29587197, 0.017148273, -0.10289462, 0.94951487)
+bones/17/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.5715162, -0.02291078, -0.104653314, 0.8135674)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.32991016, -0.013932718, -0.09932183, 0.93866944)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.4034108, -0.5533699, -0.62654954, -0.37212533)
+bones/24/rotation = Quaternion(-0.20836096, 0.8199619, -0.49731794, -0.1921541)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.41695663, 0.5839535, -0.40232643, 0.5685762)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.049825013, -0.582328, -0.20075917, 0.78619796)
+bones/26/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(-0.13862444, -0.7599957, -0.051941358, 0.6328444)
+bones/29/rotation = Quaternion(0.10439944, -0.005828725, 0.12666139, 0.9864196)
+bones/29/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
+bones/32/rotation = Quaternion(0.49507183, 0.004028917, -0.02396274, 0.8685123)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(0.3163678, 0.00038424143, -0.011026415, 0.9485726)
+bones/33/scale = Vector3(1, 1, 1)
+bones/36/rotation = Quaternion(0.36403856, 0.015766667, -0.011893036, 0.9311745)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.41327786, 0.01457978, -0.020986795, 0.9102464)
+bones/37/scale = Vector3(1, 1, 1)
+bones/39/rotation = Quaternion(0.1505802, 0.39764994, 0.9048041, -0.023014028)
+bones/39/scale = Vector3(1, 1, 1)
+bones/40/rotation = Quaternion(-0.06624659, 0.4277572, -0.90109694, 0.025683053)
+bones/40/scale = Vector3(1, 1, 1)
+bones/41/rotation = Quaternion(0.013866966, 0.7593794, -0.6504085, 0.010933473)
+bones/41/scale = Vector3(1, 1, 1)
+bones/42/rotation = Quaternion(7.1122805e-08, 0.9998512, 0.017251998, -7.9025355e-09)
+bones/42/scale = Vector3(1, 1, 1)
+bones/44/rotation = Quaternion(-0.04572852, 0.07906008, 0.9954495, -0.027183242)
+bones/44/scale = Vector3(1, 1, 1)
+bones/45/rotation = Quaternion(-0.015206695, 0.9791816, -0.19655502, 0.048355497)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/rotation = Quaternion(-0.004115775, 0.5632913, -0.8213588, 0.08975352)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(-1.05367135e-07, 0.9924207, 0.12288751, -1.0536714e-08)
+bones/47/scale = Vector3(1, 1, 1)
+
+[node name="Gun" type="MeshInstance3D" parent="." index="4" unique_id=638624275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 2.7, 1.3)
 mesh = SubResource("BoxMesh_gun")
 surface_material_override/0 = SubResource("Mat_gun")
 
-[node name="Muzzle" type="Marker3D" parent="." index="6"]
+[node name="Muzzle" type="Marker3D" parent="." index="5" unique_id=1315081069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 2.7, 2.3)
 
-[node name="Flash" type="MeshInstance3D" parent="Muzzle" index="0"]
+[node name="Flash" type="MeshInstance3D" parent="Muzzle" index="0" unique_id=1369779389]
 visible = false
 mesh = SubResource("SphereMesh_flash")
 surface_material_override/0 = SubResource("Mat_flash")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Muzzle/Flash" index="0"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Muzzle/Flash" index="0" unique_id=613932946]
 light_color = Color(1, 0.7, 0.25, 1)
 light_energy = 4.0
 omni_range = 10.0
+
+[editable path="Fast Run"]

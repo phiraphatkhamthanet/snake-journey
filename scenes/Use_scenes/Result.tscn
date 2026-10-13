@@ -19,6 +19,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_7snqw")
+Sound = "die_sfx"
 
 [node name="menu" type="Button" parent="Control" unique_id=2074540455]
 layout_mode = 0

@@ -2,7 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bsdu2ui3byi0r" path="res://asset/Fast Run.fbx" id="1_kxoj8"]
 [ext_resource type="Script" uid="uid://ccheb8wk8x6aa" path="res://scripts/banana_man.gd" id="1_xm51o"]
+[ext_resource type="PackedScene" uid="uid://lpor3mnuqo1d" path="res://scenes/Ads/Ad1.tscn" id="2_fir6y"]
 [ext_resource type="AnimationLibrary" uid="uid://tm3vpuvbe0rc" path="res://asset/Melee-Library--OLD.res" id="3_6wscv"]
+[ext_resource type="PackedScene" uid="uid://bawmiv2dfkdwq" path="res://scenes/Ads/Ad2.tscn" id="3_qebhj"]
+[ext_resource type="PackedScene" uid="uid://db0niefwvgbd0" path="res://scenes/Ads/Ad3.tscn" id="4_nvcfj"]
+[ext_resource type="PackedScene" uid="uid://cw8hy8ukjqka4" path="res://scenes/Ads/Ad4.tscn" id="5_khm8j"]
+[ext_resource type="PackedScene" uid="uid://bccw3saurx6j1" path="res://scenes/Ads/Ad5.tscn" id="6_g75i7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bhunq"]
 radius = 0.9848633
@@ -17,6 +22,7 @@ radius = 50.0
 script = ExtResource("1_xm51o")
 move_speed = 10.0
 attack_damage = 20.0
+ad_scenes = Array[PackedScene]([ExtResource("2_fir6y"), ExtResource("3_qebhj"), ExtResource("4_nvcfj"), ExtResource("5_khm8j"), ExtResource("6_g75i7")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=892553756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7928853, 0)
@@ -24,7 +30,7 @@ shape = SubResource("CapsuleShape3D_bhunq")
 
 [node name="Fast Run" parent="." unique_id=1341737604 instance=ExtResource("1_kxoj8")]
 
-[node name="GeneralSkeleton" parent="Fast Run" index="0" unique_id=679746494]
+[node name="GeneralSkeleton" parent="Fast Run" index="0" unique_id=1905725933]
 bones/0/position = Vector3(-0.020985063, 1.9250609, -0.015980175)
 bones/0/rotation = Quaternion(0.0003876686, 0.018873354, 0.0203954, 0.99961376)
 bones/1/rotation = Quaternion(-1.4994307e-06, -1.1007214e-06, -1.6064441e-05, 1)
@@ -103,7 +109,7 @@ bones/46/scale = Vector3(0.994997, 1.0008678, 1.0044551)
 bones/47/rotation = Quaternion(7.90507e-05, 1, -0.0002678037, 4.94241e-05)
 bones/47/scale = Vector3(0.99985653, 1.0001137, 1.0000297)
 
-[node name="AnimationPlayer" parent="Fast Run" index="1" unique_id=1349922654]
+[node name="AnimationPlayer" parent="Fast Run" index="1" unique_id=1055929458]
 libraries/Melee-Library--OLD = ExtResource("3_6wscv")
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=1295266145]

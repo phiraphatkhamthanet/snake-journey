@@ -1,5 +1,8 @@
+
 extends Node3D
-## กระสุนของศัตรู: บินตรงด้วยความเร็วคงที่ + ยิง ray ตรวจชนทุกเฟรม (กันกระสุนทะลุกำแพงบาง)
+## กระสุนของศัตรู:
+## บินตรงด้วยความเร็วคงที่ + ใช้ Raycast ตรวจชน
+## เมื่อยิงผู้เล่นตาย จะแจ้งผู้ยิงให้เรียกระบบโฆษณา
 
 @export var speed: float = 45.0
 @export var damage: float = 10.0
@@ -23,10 +26,12 @@ func launch(
 	damage = dmg
 	speed = bullet_speed
 
-	# หันหัวกระสุน (-Z) ไปตามทิศที่บิน
+	# หันหัวกระสุน (-Z) ไปตามทิศทางที่บิน
 	var up: Vector3 = Vector3.UP
+
 	if absf(direction.dot(Vector3.UP)) > 0.99:
 		up = Vector3.RIGHT
+
 	look_at(global_position + direction, up)
 
 
@@ -35,6 +40,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	age += delta
+
 	if age >= lifetime:
 		queue_free()
 		return
@@ -43,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	var to: Vector3 = from + direction * speed * delta
 
 	var exclude: Array[RID] = []
+
 	if is_instance_valid(shooter):
 		exclude.append(shooter.get_rid())
 
@@ -50,11 +57,14 @@ func _physics_process(delta: float) -> void:
 		get_world_3d().direct_space_state
 	)
 
-	# ลองได้สูงสุด 4 ครั้ง เผื่อทะลุศัตรูตัวอื่น
+	# ตรวจชนได้สูงสุด 4 ครั้ง
 	for i in 4:
 		var query := PhysicsRayQueryParameters3D.create(
-			from, to, hit_mask
+			from,
+			to,
+			hit_mask
 		)
+
 		query.exclude = exclude
 
 		var hit: Dictionary = space.intersect_ray(query)
@@ -64,22 +74,55 @@ func _physics_process(delta: float) -> void:
 
 		var collider: Object = hit["collider"]
 
-		if collider is Node and (collider as Node).is_in_group("Player"):
-			if collider.has_method("take_damage"):
-				collider.take_damage(damage)
+		# ชนผู้เล่น
+		if (
+			collider is Node
+			and (collider as Node).is_in_group("Player")
+		):
+			var player_node: Node = collider as Node
+
+			var was_dead: bool = (
+				player_node.get("is_dead") == true
+			)
+
+			# สร้างความเสียหาย
+			if player_node.has_method("take_damage"):
+				player_node.take_damage(damage)
+
+			# ตรวจว่าผู้เล่นเพิ่งตายจากกระสุนนัดนี้หรือไม่
+			var is_dead_now: bool = (
+				is_instance_valid(player_node)
+				and player_node.get("is_dead") == true
+			)
+
+			if not was_dead and is_dead_now:
+				_notify_shooter_player_killed()
+
 			_impact(hit["position"])
 			return
 
-		# ศัตรูตัวอื่น (CharacterBody3D ที่ไม่ใช่ Player) ให้กระสุนทะลุผ่าน
+		# ศัตรู CharacterBody3D ตัวอื่นให้กระสุนทะลุผ่าน
 		if collider is CharacterBody3D:
-			exclude.append((collider as CollisionObject3D).get_rid())
+			exclude.append(
+				(collider as CollisionObject3D).get_rid()
+			)
 			continue
 
-		# ชนกำแพง/พื้น
+		# ชนกำแพงหรือพื้น
 		_impact(hit["position"])
 		return
 
+	# ไม่ชนอะไร ให้เคลื่อนที่ต่อ
 	global_position = to
+
+
+func _notify_shooter_player_killed() -> void:
+	if not is_instance_valid(shooter):
+		return
+
+	if shooter.has_method("on_player_killed"):
+		shooter.on_player_killed()
+		print("แจ้งผู้ยิงแล้ว: ผู้เล่นตายจากกระสุน")
 
 
 func _impact(pos: Vector3) -> void:
