@@ -45,6 +45,7 @@ script = ExtResource("2_ypm2n")
 player = NodePath("../Player")
 chunk_scenes = Array[PackedScene]([ExtResource("3_ovov8"), ExtResource("4_vegd2"), ExtResource("5_p5sj4")])
 chunk_scenes1 = Array[PackedScene]([ExtResource("6_xfj7q"), ExtResource("7_2ntge"), ExtResource("8_u6xrx"), ExtResource("9_na6f8")])
+chunk_chances1 = Array[float]([40.0, 10.0, 40.0, 10.0])
 chunk_scenes2 = Array[PackedScene]([ExtResource("10_qaodi"), ExtResource("11_qiqrx"), ExtResource("12_e7u5h"), ExtResource("13_1lsps")])
 chunks_per_level = 10
 score_label = NodePath("../CanvasLayer/Control/Label")
