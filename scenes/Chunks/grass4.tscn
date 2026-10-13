@@ -2,6 +2,8 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_hjguu"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_5wika"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="3_o84es"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_s2c4s"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -19,3 +21,9 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612
 
 [node name="Wall2" parent="." unique_id=1476191160 instance=ExtResource("2_5wika")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 113.096344, -52.538, -41.612)
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("3_o84es")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.776451, 17.000004, -90.635574)
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("4_s2c4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.561207, 17.64327, -97.588646)

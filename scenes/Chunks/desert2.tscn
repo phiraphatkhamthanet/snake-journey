@@ -3,6 +3,8 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_81yat"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_trkb8"]
 [ext_resource type="PackedScene" uid="uid://gnjvtyhqvkxp" path="res://scenes/Car can move/Carmel.tscn" id="3_mvsi4"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_buucs"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="5_w4mch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aj5x"]
 resource_name = "lambert2SG"
@@ -111,3 +113,9 @@ despawn_time = 5.0
 transform = Transform3D(-0.06893194, 0, -3.4993207, 0, 3.5, 0, 3.4993207, 0, -0.06893194, 97.469185, 12.686804, -51.50829)
 move_speed = -150.0
 despawn_time = 5.0
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("4_buucs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.44388, 17.000011, -80.95355)
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("5_w4mch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.945337, 17, -58.024063)

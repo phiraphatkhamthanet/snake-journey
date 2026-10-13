@@ -8,6 +8,7 @@
 
 [node name="Ammo" type="Area3D" unique_id=1723817141]
 script = ExtResource("1_oosrp")
+ammo_amount = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=545709782]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -18,5 +19,9 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.057243705, 0, 0.033338755)
 
 [node name="pickup" type="AudioStreamPlayer" parent="." unique_id=1745210984]
 stream = ExtResource("3_yct24")
+
+[node name="GlowLight" type="OmniLight3D" parent="." unique_id=803971277]
+light_color = Color(0.8536664, 0.72019315, 3.85046e-07, 1)
+light_energy = 1.2
 
 [editable path="Root Scene"]

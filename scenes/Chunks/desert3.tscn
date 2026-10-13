@@ -3,6 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_mxodc"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="3_0q5o8"]
 [ext_resource type="PackedScene" uid="uid://cxdmykij7iog" path="res://scenes/Enermy/Camel.tscn" id="3_8ynrs"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_8ynrs"]
 
 [node name="desert" type="Node3D" unique_id=353269156]
 
@@ -38,3 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.756767, 12.0949545, -90.5
 
 [node name="Enemy6" parent="." unique_id=265053160 instance=ExtResource("3_8ynrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7365093, 12.094958, -54.13713)
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("4_8ynrs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.49234, 17.000008, -75.68115)

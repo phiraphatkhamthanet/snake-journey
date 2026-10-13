@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhnp4s6vvsklv"]
+
+[ext_resource type="Script" uid="uid://qxbg8xs0fbue" path="res://scripts/drunk_potion.gd" id="1_0j1k5"]
+[ext_resource type="PackedScene" uid="uid://dkqc02khl2k5h" path="res://asset/low-poly_green_potion.glb" id="2_0j1k5"]
+[ext_resource type="AudioStream" uid="uid://dtjs7i5ev0ei" path="res://scenes/Audio/freesound_community-money-pickup-2-89563.mp3" id="3_54b0v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+radius = 2.5
+
+[node name="AlienPotion" type="Area3D" unique_id=1105505685]
+script = ExtResource("1_0j1k5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=429611968]
+shape = SubResource("SphereShape3D_pickup")
+
+[node name="Visual" type="Node3D" parent="." unique_id=1996587267]
+
+[node name="Sketchfab_Scene2" parent="Visual" unique_id=2092791727 instance=ExtResource("2_0j1k5")]
+transform = Transform3D(1.3957626, 0, 0, 0, 1.3166659, 0, 0, 0, 1.2018795, 0, 0, 0)
+
+[node name="GlowLight" type="OmniLight3D" parent="." unique_id=1871502133]
+light_color = Color(0.11936014, 0.7991343, 7.70092e-07, 1)
+light_energy = 1.2
+
+[node name="pickup" type="AudioStreamPlayer" parent="." unique_id=536172788]
+stream = ExtResource("3_54b0v")

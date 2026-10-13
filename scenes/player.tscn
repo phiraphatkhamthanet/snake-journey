@@ -45,6 +45,8 @@ size = Vector2(3, 3)
 
 [node name="Player" type="CharacterBody3D" unique_id=1517565166 groups=["Player"]]
 script = ExtResource("1_g2els")
+starting_ammo = 15
+max_ammo = 60
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1898939415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624448, 2.3082051, -0.00332153)
@@ -53,10 +55,10 @@ shape = SubResource("CapsuleShape3D_oo8ef")
 [node name="Sketchfab_Scene" parent="." unique_id=191705430 instance=ExtResource("2_g2els")]
 transform = Transform3D(-0.45, 0, -3.934025e-08, 0, 0.45, 0, 3.934025e-08, 0, -0.45, 0, 0, 0)
 
-[node name="Sphere_Material_002_0" parent="Sketchfab_Scene/Sketchfab_model/0cbfc0752bca4b4e83314b13aa425df7_fbx/RootNode/Sphere/Skeleton3D" parent_id_path=PackedInt32Array(191705430, 1387064627) index="0" unique_id=772794114]
+[node name="Sphere_Material_002_0" parent="Sketchfab_Scene/Sketchfab_model/0cbfc0752bca4b4e83314b13aa425df7_fbx/RootNode/Sphere/Skeleton3D" parent_id_path=PackedInt32Array(191705430, 1093703362) index="0" unique_id=2119593038]
 layers = 2
 
-[node name="Sphere_Edge_0" parent="Sketchfab_Scene/Sketchfab_model/0cbfc0752bca4b4e83314b13aa425df7_fbx/RootNode/Sphere/Skeleton3D" parent_id_path=PackedInt32Array(191705430, 1387064627) index="1" unique_id=973682438]
+[node name="Sphere_Edge_0" parent="Sketchfab_Scene/Sketchfab_model/0cbfc0752bca4b4e83314b13aa425df7_fbx/RootNode/Sphere/Skeleton3D" parent_id_path=PackedInt32Array(191705430, 1093703362) index="1" unique_id=1137647292]
 layers = 2
 
 [node name="Head" type="Node3D" parent="." unique_id=124032949]

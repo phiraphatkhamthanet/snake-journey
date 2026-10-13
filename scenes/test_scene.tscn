@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://ce7662k300deb"]
 
 [ext_resource type="PackedScene" uid="uid://yk24uwxbocll" path="res://scenes/player.tscn" id="1_g7g4h"]
-[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/ammo.tscn" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="2_nd71p"]
 [ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="3_7ddre"]
 [ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="4_7ddre"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="5_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://bhnp4s6vvsklv" path="res://scenes/Item/Drunk_potion.tscn" id="6_3qnke"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
 
@@ -51,3 +53,9 @@ shoot_animation = &""
 shoot_pose_time = 0.35
 muzzle_flash_time = 0.06
 gun_recoil_distance = 0.35
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("5_qjeyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.960175, 2.2312608, 17.146967)
+
+[node name="AlienPotion" parent="." unique_id=619397532 instance=ExtResource("6_3qnke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.244133, 3.3441978, 17.75998)

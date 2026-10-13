@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_h5art"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_sd6q8"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="3_taf3x"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -19,3 +20,6 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 111.534, -52.538, -41.612)
 
 [node name="Wall2" parent="." unique_id=281991021 instance=ExtResource("2_sd6q8")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -132.033, -52.538, -41.612)
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("3_taf3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4261713, 17, -24.20536)

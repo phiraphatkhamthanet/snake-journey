@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b674nwbwj4wp5" path="res://scenes/Enermy/Elephant.tscn" id="3_rwrr5"]
 [ext_resource type="PackedScene" uid="uid://ofr42hdomsiy" path="res://scenes/Enermy/Tiger.tscn" id="4_ooc8i"]
 [ext_resource type="PackedScene" uid="uid://cxdmykij7iog" path="res://scenes/Enermy/Camel.tscn" id="5_twrsf"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="6_twrsf"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="7_5mvhe"]
 
 [node name="grassland" type="Node3D" unique_id=353269156]
 
@@ -40,3 +42,9 @@ transform = Transform3D(0.74237514, 0, 0.66998446, 0, 1, 0, -0.66998446, 0, 0.74
 
 [node name="Enemy5" parent="." unique_id=1363437527 instance=ExtResource("5_twrsf")]
 transform = Transform3D(0.9701698, 0, 0.24242656, 0, 1, 0, -0.24242656, 0, 0.9701698, -69.3921, 12.094943, -98.39794)
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("6_twrsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.785007, 17, -67.45744)
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("7_5mvhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.3559, 17.000004, -64.205025)

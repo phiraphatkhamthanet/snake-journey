@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_g0hjg"]
 [ext_resource type="PackedScene" uid="uid://bugtjjh7w7aun" path="res://scenes/Car can move/car.tscn" id="3_g0hjg"]
 [ext_resource type="PackedScene" uid="uid://djrscx55h8f8w" path="res://scenes/Car can move/car_police.tscn" id="4_kwiej"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="5_u58t7"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="6_yypgb"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -41,3 +43,9 @@ despawn_time = 5.0
 transform = Transform3D(-0.025309324, 0, 3.4999082, 0, 3.4999993, 0, -3.4999082, 0, -0.025309324, -131.62518, 12.056915, -84.734924)
 move_speed = 100.0
 despawn_time = 3.0
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("5_u58t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.89691, 15.868958, -42.877987)
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("6_yypgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.82628, 14.8714485, -41.71019)

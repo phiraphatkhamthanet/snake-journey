@@ -69,10 +69,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1850555540]
 layout_mode = 0
-offset_left = 857.0
-offset_top = 34.0
-offset_right = 1083.0
-offset_bottom = 145.0
+offset_left = 975.0
+offset_top = 83.0
+offset_right = 1201.0
+offset_bottom = 194.0
 theme_override_font_sizes/font_size = 25
 text = "Time 00:00:00
 "
@@ -90,8 +90,7 @@ transform = Transform3D(-1.4428629, 0, -0.13529606, 0, 1.4279208, 0, 0.14625031,
 script = ExtResource("19_i66j7")
 move_speed = -40.0
 
-[node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("20_i66j7")]
-player = NodePath("")
+[node name="WarningCar" parent="." unique_id=1333778363 instance=ExtResource("20_i66j7")]
 warn_ttc = 5.0
 danger_ttc = 2.0
 

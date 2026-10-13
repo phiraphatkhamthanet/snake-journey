@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d03gyt4se3w7x" path="res://asset/building/Flying saucer by Poly by Google - 6hu2h8v78mO_fying_saucerSurface_Color.png" id="2_8oock"]
 [ext_resource type="PackedScene" uid="uid://06bfsr08eoih" path="res://scenes/Enermy/Alien.tscn" id="4_blq35"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="4_mt12r"]
+[ext_resource type="PackedScene" uid="uid://bhnp4s6vvsklv" path="res://scenes/Item/Drunk_potion.tscn" id="5_bib1v"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="6_i2hxf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7b1a"]
 resource_name = "MAIN"
@@ -90,3 +92,18 @@ transform = Transform3D(-0.90930194, 0, 0.416137, 0, 1, 0, -0.416137, 0, -0.9093
 
 [node name="Enemy4" parent="." unique_id=885545134 instance=ExtResource("4_blq35")]
 transform = Transform3D(0.22692217, 0, -0.9739129, 0, 1, 0, 0.9739129, 0, 0.22692217, -90.92345, 12.094943, -51.08024)
+
+[node name="AlienPotion" parent="." unique_id=1105505685 instance=ExtResource("5_bib1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.932743, 17.000004, -53.702976)
+
+[node name="AlienPotion2" parent="." unique_id=1851146343 instance=ExtResource("5_bib1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.546644, 16.999998, -73.133705)
+
+[node name="AlienPotion3" parent="." unique_id=1919287638 instance=ExtResource("5_bib1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61771, 17.000002, -71.23729)
+
+[node name="AlienPotion4" parent="." unique_id=1558294675 instance=ExtResource("5_bib1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.851489, 17, -70.441956)
+
+[node name="HealingPotion" parent="." unique_id=1336868162 instance=ExtResource("6_i2hxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.179539, 17, -49.84262)

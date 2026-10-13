@@ -3,6 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_b0ytd"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_y4sv2"]
 [ext_resource type="PackedScene" uid="uid://buo3b8qv57c6u" path="res://scenes/Car can move/Antelope.tscn" id="3_qu62e"]
+[ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="4_pabva"]
 
 [node name="desert" type="Node3D" unique_id=353269156]
 
@@ -40,3 +41,9 @@ despawn_time = 10.0
 transform = Transform3D(-0.1487838, 0, 3.4968362, 0, 3.5, 0, -3.4968362, 0, -0.1487838, -150.93161, 13.218336, -89.954544)
 move_speed = 80.0
 despawn_time = 10.0
+
+[node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("4_pabva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.19219, 17.000008, -125.28618)
+
+[node name="Ammo2" parent="." unique_id=851724631 instance=ExtResource("4_pabva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.53272, 17.000008, -31.081558)

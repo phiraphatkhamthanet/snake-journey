@@ -414,6 +414,32 @@ func _show_death_result() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
+func add_health(amount: float) -> void:
+	if is_dead or amount <= 0.0:
+		return
+
+	health = minf(health + amount, max_health)
+
+	health_changed.emit(health, max_health)
+
+	print("Player HP: ", health, "/", max_health)
+
+
+var drunk_effect: CanvasLayer = null
+
+
+# น้ำยาเมา: จอบิดและสีวนเป็นเวลา seconds วินาที (เรียกซ้ำ = เริ่มนับใหม่)
+func apply_drunk(seconds: float) -> void:
+	if is_dead or seconds <= 0.0:
+		return
+
+	if drunk_effect == null:
+		drunk_effect = preload("res://scripts/drunk_effect.gd").new()
+		add_child(drunk_effect)
+
+	drunk_effect.start(seconds)
+
+
 func add_ammo(amount: int) -> void:
 	if is_dead or amount <= 0:
 		return
@@ -428,7 +454,7 @@ func add_ammo(amount: int) -> void:
 
 func update_ammo_ui() -> void:
 	if ammo_label:
-		ammo_label.text = str(ammo)
+		ammo_label.text = "%d/%d" % [ammo, max_ammo]
 
 
 func play_shoot_sound() -> void:

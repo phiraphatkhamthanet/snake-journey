@@ -3,6 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://du41raewbshqv" path="res://asset/Tiles.tres" id="1_ct0g5"]
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_1aaud"]
 [ext_resource type="PackedScene" uid="uid://cu7qh1yy3h54c" path="res://scenes/Car can move/Monkey.tscn" id="3_luhw4"]
+[ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_suwlx"]
 
 [node name="grassland" type="Node3D" unique_id=353269156]
 
@@ -35,3 +36,6 @@ despawn_time = 5.0
 transform = Transform3D(0.4844383, 0, 3.466312, 0, 3.4999993, 0, -3.466312, 0, 0.4844383, -122.14695, 12.970093, -119.78442)
 move_speed = 125.0
 despawn_time = 8.0
+
+[node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("4_suwlx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.913778, 17.000008, -54.288795)
