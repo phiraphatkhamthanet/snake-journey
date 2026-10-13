@@ -10,6 +10,10 @@ extends Node3D
 @export var next_scene: PackedScene        
 @export var result_hold_time: float = 2.0            # ค้างหน้า Result กี่วินาทีก่อนไปโฆษณา/next_scene
 		   # ซีนที่จะเปลี่ยนไปหลังโดนชนปกติ
+@export_category("Player (FPS) Hit Settings")
+@export var hit_damage: float = 50.0       # ดาเมจที่ผู้เล่น player.tscn โดนต่อการชน 1 ครั้ง
+@export var hit_cooldown: float = 1.0      # ชนแล้วรถคันนี้จะชนซ้ำได้อีกกี่วินาที (ถ้าผู้เล่นยังไม่ตาย)
+
 @export_category("Sound System")
 @export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx") var Sound: String = "honk_sfx"
 
@@ -60,6 +64,11 @@ func _on_area_3d_body_entered(body: Node) -> void:
 	if is_hit:
 		return
 
+	# ผู้เล่นแบบ FPS (scenes/player.tscn = CharacterBody3D ในกลุ่ม "Player")
+	if body is CharacterBody3D and body.is_in_group("Player"):
+		_hit_character_player(body)
+		return
+
 	# ตรวจสอบว่าเป็น PhysicalBone3D ของผู้เล่นหรือไม่
 	if body is PhysicalBone3D:
 		is_hit = true
@@ -107,3 +116,31 @@ func _trigger_result() -> void:
 		push_warning("ไม่พบ Result ในฉาก (group result_screen)")
 		return
 	result_control.trigger_death(delay_before_change_scene, result_hold_time, _pick_target())
+
+
+## ชนผู้เล่นแบบ CharacterBody3D (player.tscn): ลดเลือด + กระเด็น ถ้าตายค่อยขึ้น Result
+func _hit_character_player(body: CharacterBody3D) -> void:
+	is_hit = true
+
+	var sound_node = AudioManager.get(Sound)
+	if sound_node and sound_node.has_method("play"):
+		sound_node.play()
+
+	# กระเด็นไปตามทิศที่รถวิ่ง + พุ่งขึ้น
+	var dir := get_world_velocity().normalized()
+	if dir == Vector3.ZERO:
+		dir = Vector3.RIGHT
+	var impulse := dir * knockback_force + Vector3.UP * knockback_up_force
+
+	if body.has_method("take_damage"):
+		body.take_damage(hit_damage)
+	if body.has_method("apply_knockback"):
+		body.apply_knockback(impulse)
+
+	if body.get("is_dead"):
+		hit_counter += 1
+		print("ผู้เล่นโดนรถชนตาย! จำนวนครั้งสะสม: ", hit_counter)
+		_trigger_result()
+	else:
+		await get_tree().create_timer(hit_cooldown).timeout
+		is_hit = false

@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_bullet"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_core"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="Mat_core"]
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.35, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tracer"]
+top_radius = 0.02
+bottom_radius = 0.16
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_tracer"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.55, 0.1, 0.7)
+
+[node name="EnemyBullet" type="Node3D"]
+script = ExtResource("1_bullet")
+
+[node name="Core" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_core")
+surface_material_override/0 = SubResource("Mat_core")
+
+[node name="Tracer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 1.5)
+mesh = SubResource("CylinderMesh_tracer")
+surface_material_override/0 = SubResource("Mat_tracer")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 3.0
+omni_range = 8.0

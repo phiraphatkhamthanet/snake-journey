@@ -7,6 +7,10 @@ extends Area3D
 @export var next_scene: PackedScene
 @export var result_hold_time: float = 2.0
 
+@export_category("Player (FPS) Hit Settings")
+@export var hit_damage: float = 100.0       # ดาเมจที่ผู้เล่น player.tscn โดนต่อการโดน 1 ครั้ง
+@export var hit_cooldown: float = 1.0      # โดนแล้วจะโดนซ้ำได้อีกกี่วินาที (ถ้ายังไม่ตาย)
+
 @export_category("Sound System")
 @export_enum("alien_sfx", "carmel_sfx", "monkey_sfx", "honk_sfx", "elephant_sfx", "tiger_sfx", "horse_sfx") var Sound: String = "honk_sfx"
 
@@ -22,6 +26,11 @@ var is_hit: bool = false
 func _on_body_entered(body: Node3D) -> void:
 
 	if is_hit:
+		return
+
+	# ผู้เล่นแบบ FPS (scenes/player.tscn = CharacterBody3D ในกลุ่ม "Player")
+	if body is CharacterBody3D and body.is_in_group("Player"):
+		_hit_character_player(body)
 		return
 
 	# ตรวจว่าเป็น PhysicalBone3D ของ Player หรือไม่
@@ -100,3 +109,31 @@ func _trigger_result() -> void:
 		push_warning("ไม่พบ Result ในฉาก (group result_screen)")
 		return
 	result_control.trigger_death(delay_before_change_scene, result_hold_time, _pick_target())
+
+
+## โดนสัตว์ชนแบบ CharacterBody3D (player.tscn): ลดเลือด + กระเด็นออกจากตัวสัตว์ ถ้าตายค่อยขึ้น Result
+func _hit_character_player(body: CharacterBody3D) -> void:
+	is_hit = true
+
+	var sound_node = AudioManager.get(Sound)
+	if sound_node and sound_node.has_method("play"):
+		sound_node.play()
+
+	var away := body.global_position - global_position
+	away.y = 0.0
+	if away.length() < 0.01:
+		away = Vector3.RIGHT
+	var impulse := away.normalized() * knockback_force + Vector3.UP * knockback_up_force
+
+	if body.has_method("take_damage"):
+		body.take_damage(hit_damage)
+	if body.has_method("apply_knockback"):
+		body.apply_knockback(impulse)
+
+	if body.get("is_dead"):
+		hit_counter += 1
+		print("ผู้เล่นโดนสัตว์ชนตาย! จำนวนครั้งสะสม: ", hit_counter)
+		_trigger_result()
+	else:
+		await get_tree().create_timer(hit_cooldown).timeout
+		is_hit = false

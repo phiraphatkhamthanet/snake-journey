@@ -52,6 +52,8 @@ func _process(delta: float) -> void:
 		update_timer_ui()
 
 	if player == null:
+		player = get_tree().get_first_node_in_group("Player") as CharacterBody3D
+	if player == null:
 		return
 
 	var player_chunk := get_player_chunk()

@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cth6ryrkjvtvp" path="res://scenes/Chunks/grass2.tscn" id="11_qiqrx"]
 [ext_resource type="PackedScene" uid="uid://bktftur7suclc" path="res://scenes/Chunks/grass3.tscn" id="12_e7u5h"]
 [ext_resource type="PackedScene" uid="uid://buva0ngksw1v" path="res://scenes/Chunks/grass4.tscn" id="13_1lsps"]
-[ext_resource type="PackedScene" uid="uid://cx0my0ex2xejb" path="res://snake_can_use/player.tscn" id="14_718ov"]
 [ext_resource type="PackedScene" uid="uid://c77ubhar84n3c" path="res://scenes/Use_scenes/Result_endless.tscn" id="15_xhcmn"]
+[ext_resource type="PackedScene" uid="uid://yk24uwxbocll" path="res://scenes/player.tscn" id="16_i2trs"]
 [ext_resource type="PackedScene" uid="uid://cmk5xq0gh5f7x" path="res://scenes/Warning_car.tscn" id="16_s3r6j"]
 
 [sub_resource type="Environment" id="Environment_g4v7s"]
@@ -51,9 +51,6 @@ score_label = NodePath("../CanvasLayer/Control/Label")
 
 [node name="Chunks" type="Node3D" parent="WorldGenerator" unique_id=321709650]
 
-[node name="Player" parent="." unique_id=1738546809 instance=ExtResource("14_718ov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.941677, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=932311153]
 environment = SubResource("Environment_g4v7s")
 
@@ -83,8 +80,11 @@ autoplay = true
 visible = false
 
 [node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("16_s3r6j")]
-player = NodePath("../Player")
+player = NodePath("")
 warn_ttc = 5.0
 danger_ttc = 2.0
+
+[node name="Player" parent="." unique_id=1517565166 instance=ExtResource("16_i2trs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.002396, 0)
 
 [editable path="Result"]

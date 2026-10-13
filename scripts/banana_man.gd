@@ -15,6 +15,11 @@ signal died
 @export var attack_cooldown: float = 1.0
 @export var punch_hit_time: float = 0.4
 
+@export_group("Health Bar")
+@export var show_health_bar: bool = true
+## ความสูงของแถบเหนือพื้น (capsule สูง ~5.9)
+@export var health_bar_height: float = 6.8
+
 @export_group("Animations")
 @export var idle_animation: StringName = &"Melee-Library--OLD/Idle"
 @export var run_animation: StringName = &"Melee-Library--OLD/run"
@@ -32,10 +37,14 @@ var punch_timer: float = 0.0
 var is_attacking: bool = false
 var is_dead: bool = false
 var has_hit_this_punch: bool = false
+var health_bar: Node3D = null
 
 
 func _ready() -> void:
 	health = max_health
+
+	if show_health_bar:
+		create_health_bar()
 
 	detection_area.body_entered.connect(
 		_on_detection_area_body_entered
@@ -221,3 +230,15 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 func _on_detection_area_body_exited(body: Node3D) -> void:
 	if body == player:
 		player = null
+
+
+func create_health_bar() -> void:
+	health_bar = Node3D.new()
+	health_bar.set_script(
+		preload("res://scripts/enemy_health_bar.gd")
+	)
+	health_bar.position = Vector3(0.0, health_bar_height, 0.0)
+	# top_level ไม่ใช้ เพราะอยากให้หมุนตามตัว (billboard จัดการเรื่องหันหน้าจอเอง)
+	add_child(health_bar)
+
+	health_changed.connect(health_bar.update_health)

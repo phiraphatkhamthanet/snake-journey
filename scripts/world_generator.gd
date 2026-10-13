@@ -33,6 +33,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if player == null:
+		player = get_tree().get_first_node_in_group("Player") as CharacterBody3D
+	if player == null:
+		return
+
 	var player_chunk := get_player_chunk()
 
 	generate_ahead(player_chunk)

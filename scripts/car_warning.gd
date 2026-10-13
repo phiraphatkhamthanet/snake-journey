@@ -191,6 +191,10 @@ func _clear_all() -> void:
 
 
 func _get_player_node() -> Node3D:
+	# ไม่ได้ลากใส่ช่อง Player (หรือโดนลบไปแล้ว) -> หาจากกลุ่ม "Player" เช่น player.tscn
+	if player == null or not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("Player") as Node3D
+		_bone = null
 	if player == null:
 		return null
 	if _bone == null or not is_instance_valid(_bone):

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://yk24uwxbocll" path="res://scenes/player.tscn" id="1_g7g4h"]
 [ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/ammo.tscn" id="2_nd71p"]
 [ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="3_7ddre"]
+[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="4_7ddre"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sn0t7"]
 
@@ -35,3 +36,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.935226, 19)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=588782419]
 transform = Transform3D(0.7653575, 0.5469486, -0.33922735, 0.31162596, 0.14624679, 0.9388829, 0.56313163, -0.8242931, -0.0585123, 0, 74.672775, 0)
+
+[node name="banana_gunner" parent="." unique_id=730401785 instance=ExtResource("4_7ddre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.431582, 7.348245, -6.2595396)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
