@@ -23,9 +23,9 @@ script = ExtResource("1_5g3m0")
 [node name="menu" type="Button" parent="Control" unique_id=2074540455]
 layout_mode = 0
 offset_left = 514.0
-offset_top = 468.0
+offset_top = 506.0
 offset_right = 617.0
-offset_bottom = 512.0
+offset_bottom = 550.0
 text = "Menu"
 
 [node name="VictoryLabel" type="Label" parent="Control" unique_id=1147342034]

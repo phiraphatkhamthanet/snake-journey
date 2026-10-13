@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="3_0q5o8"]
 [ext_resource type="PackedScene" uid="uid://cxdmykij7iog" path="res://scenes/Enermy/Camel.tscn" id="3_8ynrs"]
 [ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_8ynrs"]
+[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="5_4s3db"]
 
 [node name="desert" type="Node3D" unique_id=353269156]
 
@@ -42,3 +43,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7365093, 12.094958, -54.137
 
 [node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("4_8ynrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.49234, 17.000008, -75.68115)
+
+[node name="banana_gunner" parent="." unique_id=1492301328 instance=ExtResource("5_4s3db")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.162006, 19.3, -71.852234)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35

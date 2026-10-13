@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://chdq7jinvl1kq" path="res://scenes/wall.tscn" id="2_y4sv2"]
 [ext_resource type="PackedScene" uid="uid://buo3b8qv57c6u" path="res://scenes/Car can move/Antelope.tscn" id="3_qu62e"]
 [ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="4_pabva"]
+[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="5_hn17t"]
+[ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="6_wdaji"]
 
 [node name="desert" type="Node3D" unique_id=353269156]
 
@@ -45,5 +47,71 @@ despawn_time = 10.0
 [node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("4_pabva")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.19219, 17.000008, -125.28618)
 
+[node name="Ammo3" parent="." unique_id=105919182 instance=ExtResource("4_pabva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5014076, 17.000008, -86.808075)
+
 [node name="Ammo2" parent="." unique_id=851724631 instance=ExtResource("4_pabva")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.53272, 17.000008, -31.081558)
+
+[node name="banana_gunner" parent="." unique_id=1373393199 instance=ExtResource("5_hn17t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.56532, 19.300007, -35.03897)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
+
+[node name="banana_gunner2" parent="." unique_id=1818886668 instance=ExtResource("5_hn17t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.935482, 19.300014, -111.36856)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
+
+[node name="banana_man" parent="." unique_id=848403448 instance=ExtResource("6_wdaji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.27686, 12.000721, -72.014885)
+
+[node name="banana_gunner3" parent="." unique_id=1274265663 instance=ExtResource("5_hn17t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.290695, 19.300007, -50.84942)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
+
+[node name="banana_gunner4" parent="." unique_id=1562073833 instance=ExtResource("5_hn17t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8977, 19.300007, -55.143013)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35

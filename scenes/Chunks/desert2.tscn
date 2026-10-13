@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://gnjvtyhqvkxp" path="res://scenes/Car can move/Carmel.tscn" id="3_mvsi4"]
 [ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="4_buucs"]
 [ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="5_w4mch"]
+[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="6_pwdox"]
+[ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="7_l5d3n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aj5x"]
 resource_name = "lambert2SG"
@@ -119,3 +121,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.44388, 17.000011, -80.953
 
 [node name="Ammo" parent="." unique_id=1723817141 instance=ExtResource("5_w4mch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.945337, 17, -58.024063)
+
+[node name="banana_gunner" parent="." unique_id=1050422700 instance=ExtResource("6_pwdox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.168438, 19.300003, -84.9078)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
+
+[node name="banana_man" parent="." unique_id=848403448 instance=ExtResource("7_l5d3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.531263, 12.00071, -93.78042)
+
+[node name="banana_man2" parent="." unique_id=213828339 instance=ExtResource("7_l5d3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.71349, 12.00071, -78.982704)

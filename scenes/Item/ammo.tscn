@@ -8,7 +8,6 @@
 
 [node name="Ammo" type="Area3D" unique_id=1723817141]
 script = ExtResource("1_oosrp")
-ammo_amount = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=545709782]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

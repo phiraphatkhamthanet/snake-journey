@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://djrscx55h8f8w" path="res://scenes/Car can move/car_police.tscn" id="4_kwiej"]
 [ext_resource type="PackedScene" uid="uid://bb13wbi10rd0t" path="res://scenes/Item/ammo.tscn" id="5_u58t7"]
 [ext_resource type="PackedScene" uid="uid://cx8l76cfjxpmt" path="res://scenes/Item/healing_potion.tscn" id="6_yypgb"]
+[ext_resource type="PackedScene" uid="uid://d0h6hhadobbm3" path="res://scenes/Enermy/Banana_man.tscn" id="7_jevwu"]
+[ext_resource type="PackedScene" path="res://scenes/Enermy/Banana_gunner.tscn" id="8_a5bod"]
 
 [node name="grassland2" type="Node3D" unique_id=353269156]
 
@@ -49,3 +51,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.89691, 15.868958, -42.877
 
 [node name="HealingPotion" parent="." unique_id=1105505685 instance=ExtResource("6_yypgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.82628, 14.8714485, -41.71019)
+
+[node name="banana_man" parent="." unique_id=848403448 instance=ExtResource("7_jevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.53056, 12.000702, -73.66594)
+
+[node name="banana_gunner" parent="." unique_id=1913433782 instance=ExtResource("8_a5bod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7831497, 19.300003, -112.0812)
+bullet_damage = 10.0
+bullet_speed = 45.0
+shoot_range = 45.0
+shoot_cooldown = 1.2
+aim_height = 2.3
+spread_degrees = 2.0
+face_tolerance = 0.97
+require_line_of_sight = true
+shoot_animation = &""
+shoot_pose_time = 0.35
+muzzle_flash_time = 0.06
+gun_recoil_distance = 0.35
+
+[node name="banana_man2" parent="." unique_id=411935863 instance=ExtResource("7_jevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.533566, 12.000706, -76.54334)
+
+[node name="Ammo2" parent="." unique_id=584094913 instance=ExtResource("5_u58t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.917496, 17, -72.8515)
