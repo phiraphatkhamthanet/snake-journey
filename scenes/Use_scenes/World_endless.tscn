@@ -79,9 +79,11 @@ autoplay = true
 [node name="Result" parent="." unique_id=1262239059 instance=ExtResource("15_xhcmn")]
 visible = false
 
-[node name="WarningCar" parent="." unique_id=1333778363 instance=ExtResource("16_s3r6j")]
-warn_ttc = 5.0
-danger_ttc = 2.0
+[node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("16_s3r6j")]
+player = NodePath("../Player")
+warn_ttc = 8.0
+danger_ttc = 3.5
+hit_radius = 8.0
 
 [node name="Player" parent="." unique_id=1517565166 instance=ExtResource("16_i2trs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.002396, 0)

@@ -90,9 +90,11 @@ transform = Transform3D(-1.4428629, 0, -0.13529606, 0, 1.4279208, 0, 0.14625031,
 script = ExtResource("19_i66j7")
 move_speed = -40.0
 
-[node name="WarningCar" parent="." unique_id=1333778363 instance=ExtResource("20_i66j7")]
-warn_ttc = 5.0
-danger_ttc = 2.0
+[node name="WarningCar" parent="." unique_id=1333778363 node_paths=PackedStringArray("player") instance=ExtResource("20_i66j7")]
+player = NodePath("../Player")
+warn_ttc = 8.0
+danger_ttc = 3.5
+hit_radius = 8.0
 
 [node name="Player" parent="." unique_id=1517565166 instance=ExtResource("20_a6ybv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.702816, 0)
